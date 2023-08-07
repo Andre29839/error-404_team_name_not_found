@@ -1,1 +1,0 @@
-new SmoothScroll('a[href*="#"]');
