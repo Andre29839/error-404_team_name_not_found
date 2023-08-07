@@ -1,0 +1,183 @@
+.hero {
+  background-color: var(--white-color);
+  background-image: url(../images/mobile/hero/pic@1x.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 140px;
+  padding-bottom: 313px;
+  margin: 0 auto;
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero {
+    background-image: url(../images/mobile/hero/pic@2x.jpg);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .hero {
+    background-image: none;
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 0;
+    background-image: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .hero-background {
+    background-image: url(../images/tablet/hero/pic@1x.jpg),
+      url(../images/tablet/hero/pic2@1x.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom, right;
+    background-size: auto;
+    height: 531px;
+    margin-bottom: 32px;
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .hero-background {
+      background-image: url(../images/tablet/hero/pic@2x.jpg),
+        url(../images/tablet/hero/pic2@2x.jpg);
+      background-size: 308px 329px, 364px 531px;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero-background {
+    background-image: url(../images/desktop/hero/pic@1x.jpg),
+      url(../images/desktop/hero/pic2@1x.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: left bottom, right;
+    height: 530px;
+    min-width: 983px;
+    margin-bottom: 0px;
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .hero-background {
+      background-image: url(../images/desktop/hero/pic@2x.jpg),
+        url(../images/desktop/hero/pic2@2x.jpg);
+      background-size: 310px 329px, 648px 530px;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .button-wrapper {
+    background-image: url(../images/desktop/hero/pic3@1x.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: right top;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .button-wrapper {
+      background-image: url(../images/desktop/hero/pic3@2x.jpg);
+      background-size: 312px 337px;
+    }
+  }
+}
+
+.hero-title {
+  font-family: 'Playfair Display';
+  font-size: 28px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--blue-font);
+  font-weight: normal;
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .hero-title {
+    font-size: 50px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero-title {
+    max-width: 648px;
+    font-size: 50px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+}
+
+.hero-description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--blue-font);
+  margin-bottom: 28px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .hero-description {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 312px;
+    margin-bottom: 30px;
+  }
+}
+
+.button {
+  background-color: var(--blue-font);
+  padding: 13px 0;
+  width: 224px;
+  border: transparent;
+  color: var(--white-color);
+  font-size: 16px;
+  line-height: 1.5;
+  position: relative;
+  transition: 0.3s ease-in-out 0.5s;
+}
+.button:hover,
+.button:focus {
+  transition: 0.3s ease-in-out;
+  background: transparent;
+  color: var(--blue-font);
+  outline: none;
+}
+
+.button:hover svg,
+.button:focus svg {
+  stroke-dashoffset: 0;
+}
+
+.svg-animation {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: var(--blue-font);
+  stroke-dasharray: 548;
+  stroke-dashoffset: 548;
+  transition: 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 1440px) {
+  .hero-tablet-wrapper {
+    display: flex;
+    gap: 32px;
+  }
+}

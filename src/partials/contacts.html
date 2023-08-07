@@ -1,0 +1,126 @@
+<section class="contacts" id="contacts">
+  <div class="contacts-container container">
+    <div class="contacts-tittles-wrapper">
+      <h2 class="contacts-tittle">Newsletter</h2>
+      <p class="contacts-subtittle">
+        Every week we will send you new designs and information about sales.
+      </p>
+
+      <form class="contacts-form">
+        <input
+          type="text"
+          placeholder="Name"
+          class="contacts-form-imput"
+          id="user_name"
+          name="user_name"
+          required
+          minlength="2"
+          maxlength="16"
+          pattern="[A-Za-z]{1,}"
+          title="Enter only letters of the English alphabet"
+        />
+        <input
+          type="email"
+          placeholder="E-mail"
+          class="contacts-form-imput"
+          id="user_email"
+          name="user_email"
+          required
+          pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+          title="Please,enter a valid email"
+        />
+        <label for="user_privacy" class="checkbox-label">
+          <input
+            type="checkbox"
+            class="contacts-checkbox"
+            id="user_privacy"
+            name="user_privacy"
+            required
+          />
+          <span class="fake-checkbox">
+            <svg class="fake-checkbox-svg" width="13" height="13">
+              <use href="./images/svg/icons.svg#icon-check"></use>
+            </svg>
+          </span>
+          Agree to subscribe to the newsletter</label
+        >
+        <button class="contacts-send-btn button" type="submit">
+          <svg
+            class="svg-animation"
+            width="224px"
+            height="50px"
+            viewBox="0 0 224 50"
+          >
+            <polyline points="0,0 224,0 224,50 0,50 0,0" class="bg-line" />
+            <polyline points="0,0 224,0 224,50 0,50 0,0" class="hl-line" />
+          </svg>
+          Send
+        </button>
+      </form>
+    </div>
+    <div class="contacts-img-tumb">
+      <picture>
+        <!-- Desktop screen -->
+        <source
+          srcset="
+            ./images/desktop/newsletter/pic@1x.webp 1x,
+            ./images/desktop/newsletter/pic@2x.webp 2x
+          "
+          media="(min-width:1440px)"
+          type="image/webp"
+        />
+        <source
+          srcset="
+            ./images/desktop/newsletter/pic@1x.jpg 1x,
+            ./images/desktop/newsletter/pic@2x.jpg 2x
+          "
+          media="(min-width:1440px)"
+          type="image/jpg"
+        />
+
+        <!-- Tablet screen -->
+        <source
+          srcset="
+            ./images/tablet/newsletter/pic@1x.webp 1x,
+            ./images/tablet/newsletter/pic@2x.webp 2x
+          "
+          media="(min-width:768px)"
+          type="image/webp"
+        />
+
+        <source
+          srcset="
+            ./images/tablet/newsletter/pic@1x.jpg 1x,
+            ./images/tablet/newsletter/pic@2x.jpg 2x
+          "
+          media="(min-width:768px)"
+          type="image/jpg"
+        />
+
+        <!-- Mobile screen -->
+        <source
+          srcset="
+            ./images/mobile/newsletter/pic@1x.webp 1x,
+            ./images/mobile/newsletter/pic@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <source
+          srcset="
+            ./images/mobile/newsletter/pic@1x.jpg 1x,
+            ./images/mobile/newsletter/pic@2x.jpg 2x
+          "
+          type="image/jpg"
+        />
+
+        <img
+          src="./images/mobile/newsletter/pic@1x.jpg"
+          class="contacts-img"
+          alt="blue-gray sofa"
+          width="343"
+          height="300"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
