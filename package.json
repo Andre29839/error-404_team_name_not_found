@@ -1,11 +1,11 @@
 {
-  "name": "project-pixel-vikings",
+  "name": "error-404_team_name_not_found",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/team.project/",
+    "build": "vite build --base=/error-404_team_name_not_found/",
     "preview": "vite preview"
   },
   "devDependencies": {
