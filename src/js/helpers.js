@@ -1,10 +1,11 @@
 const refs = {
     API_KEY: "c3755e1c88b3f430b9a9356edda9caa4",
-    BASIC_URL: "https://developers.themoviedb.org/3",
-    trending: "/trending/get-trending",
-    new_films: "/movies/get-upcoming",
-    search_films: "/search/search-movies",
-    movie_detailes: "/movies/get-movie-details",
-    trailer: "/movies/get-movie-videos",
-    genger: "/genres/get-movie-list",
+    BASIC_URL: "https://api.themoviedb.org/3",
+    trending_day: "/trending/movie/day",
+    trending_week:"/trending/movie/week",
+    new_films: "/movies/upcoming",
+    search_films: "/search/movie",
+    movie_detailes: "/movie/",
+    trailer: `/movie/${movie_id}/videos`,
+    genger: "/genre/movie/list",
 }
