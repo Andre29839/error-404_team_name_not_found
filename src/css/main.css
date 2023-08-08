@@ -2,7 +2,7 @@
 @import url('./base/_common.css');
 @import url('./base/_container.css');
 @import url('./layout/body.css');
-@import url('.//layout/container-films.css');
+@import url('./layout/container-films.css');
 @import url('./layout/error-section.css');
 @import url('./layout/footer.css');
 @import url('./layout/header.css');

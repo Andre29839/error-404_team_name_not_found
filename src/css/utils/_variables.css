@@ -9,4 +9,6 @@
     --red: #F84119;
     --yellow: #FFC226;
     --shadow: rgba(1, 1, 1, 0.25);
+    --linear-btn: linear-gradient(145deg, #FFC226 0%, #F84119 100%);
+    --linear-start: linear-gradient(145deg, #F84119 0%, rgba(248, 159, 25, 0.68) 100%);
 }
