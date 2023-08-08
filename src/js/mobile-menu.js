@@ -1,8 +1,8 @@
 (() => {
   const mobileMenu = document.querySelector('.js-menu-container');
   const openMenuBtn = document.querySelector('.js-open-menu');
-  const closeMenuBtn = document.querySelector('.js-close-menu');
   const navLinks = document.querySelectorAll('.menu-item a');
+  const closeModalMenu = document.querySelector('.menu-container')
 
   const toggleMenu = () => {
     const isMenuOpen =
@@ -17,7 +17,7 @@
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu);
+
   navLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
   // Close the mobile menu on wider screens if the device orientation changes
@@ -28,3 +28,35 @@
     bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
+
+closeModalMenu.addEventListener("click", offModalClick)
+
+let modal
+
+function offModalClick(e) {
+  e.preventDefault()
+
+  if (e.currentTarget !== mobileMenu) return
+
+  modal = {
+    onShow: () => {
+      document.addEventListener("keydown", onModal)
+    },
+    onClose: () => {
+      document.removeEventListener("keydown", onModal)
+    }
+  }
+
+  modal.show()
+}
+
+
+function onModal(e) {
+  if (e.code !== "Escape") {
+    return
+  }
+
+  modal.close()
+}
+
+
