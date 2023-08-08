@@ -1,0 +1,9 @@
+.is-active {
+    color: var(--orange);
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
