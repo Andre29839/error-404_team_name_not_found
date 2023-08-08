@@ -16,7 +16,7 @@
     background-image: url();
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+@media screen and (min-width: 768px) {
   .hero-section {
     padding-top: 62px;
     padding-bottom: 62px;
@@ -41,7 +41,7 @@
   color: var(--total-white);
 }
 
-@media screen and (min-width: 768px) and (max-width: 1439.9px){
+@media screen and (min-width: 768px){
 .hero-section{
   f
 }
@@ -60,7 +60,7 @@
   color: var(--ligth-white);
 }
 
-@media screen and (min-width: 768px) and (max-width: 1439.9px){
+@media screen and (min-width: 768px){
 .hero-section{
   f
 }
