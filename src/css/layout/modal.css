@@ -15,18 +15,3 @@
     border-radius: 4px;
     overflow: hidden;
 }
-
-@media (min-device-pixel-ratio: 2),
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .modal-menu {
-    background: linear-gradient(
-        86.77deg,
-        #111111 30.38%,
-        rgba(17, 17, 17, 0) 65.61%
-      ),
-      var(--total-black) url(../images/hero/1hero_mob@2x.jpg) no-repeat center /
-        cover;
-  }
-}
