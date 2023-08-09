@@ -1,0 +1,36 @@
+.gallery {
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 280px;
+  height: 406px;
+  border-radius: 5px;
+}
+
+.movie-img {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  position: absolute;
+}
+
+.input {
+  padding: 10px 142px 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+.button-search {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+}

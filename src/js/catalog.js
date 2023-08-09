@@ -1,3 +1,4 @@
+import Pagination from 'tui-pagination';
 import { refs } from "./helpers";
 
 const { API_KEY, BASIC_URL, search_films, trending_week } = refs;
@@ -6,12 +7,13 @@ const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
  
 let input;
-let userParms = {
+let userParams = {
   query: '' 
 }
 
-
 searchForm.addEventListener('submit', onSubmitForm);
+// gallery.addEventListener('click', onModalOpenClick);
+
 
 async function fetchFilms() { 
     const response = await fetch(`${BASIC_URL}${trending_week}?api_key=${API_KEY}`)
@@ -23,7 +25,7 @@ function createDefaultMarkup(pictures) {
 const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const markup = pictures.map(({ title, backdrop_path, genre_ids, vote_average, overview, release_date}) => 
  `<div class="movie-card">
-    <img src="${WEEK_IMG_URL}${backdrop_path}" alt="${overview}" loading="lazy" />
+    <img class="movie-img" src="${WEEK_IMG_URL}${backdrop_path}" alt="${overview}" loading="lazy" />
     <div class="info">
       <p class="movie-title">
         ${title}
@@ -63,14 +65,14 @@ function onSubmitForm(e) {
   if (dataText.trim() === '') {
   return alert('Blyat')
   }
-  userParms.query = input;
+  userParams.query = input;
   getFilmsOnSearch();
 }
 
 async function getFilmsOnSearch() {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    query: userParms.query,
+    query: userParams.query,
     include_adult: false,
     primary_release_year: '',
     page: 1,
@@ -89,4 +91,5 @@ async function getFilmsOnSearch() {
   }
 }
 getFilmsOnSearch()
+
 
