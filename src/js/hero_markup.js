@@ -42,5 +42,5 @@ function createMarkup(arr) {
     .join('');
 
   const container = document.getElementById('hero-section'); // Replace 'your-container-id' with the actual ID of the container element
-  container.insertAdjacentHTML('beforeend', markup);
+  container.innerHTML = markup;
 }
