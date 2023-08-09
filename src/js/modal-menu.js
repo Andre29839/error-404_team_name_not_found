@@ -16,7 +16,7 @@ export const modalMovieInfoMarkup = movie => {
   } = movie;
 
   const genreList = genres.map(({ name }) => name).join(', ');
-  let posterUrl;
+  let posterUrl = '';
 
   if (poster_path) {
     posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
