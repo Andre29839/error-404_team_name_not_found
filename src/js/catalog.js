@@ -2,8 +2,7 @@ import { refs } from "./helpers";
 
 const { API_KEY, BASIC_URL, search_films, trending_week } = refs;
 
- const searchForm = document.querySelector('.search-form');
-//  const loadMore = document.querySelector('.load-more');
+const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
  
 let input;
@@ -17,10 +16,8 @@ searchForm.addEventListener('submit', onSubmitForm);
 async function fetchFilms() { 
     const response = await fetch(`${BASIC_URL}${trending_week}?api_key=${API_KEY}`)
     const moviesData = await response.json();
-    console.log(moviesData);
     return moviesData.results;
   }
-// fetchFilms();
 
 function createDefaultMarkup(pictures) {
 const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -59,7 +56,6 @@ function onSubmitForm(e) {
 
   const dataText = searchForm.elements.searchQuery.value;
   input = dataText;
-  console.log(input);
   
      e.target.reset();
   gallery.innerHTML = '';
