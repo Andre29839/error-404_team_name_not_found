@@ -15,7 +15,6 @@ async function getTrending(page = 1) {
   const url = `${BASIC_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
     const res = await fetch(url);
     const object = await res.json();
-    console.log(object);
     return object;
 }
 getTrending()
@@ -33,7 +32,6 @@ async function createMovie() {
     const movieArr = await topDayFilm(1);
     createMarkup(movieArr);
 }
-console.log(createMovie());
 createMovie();
 
 function createRandomMovie(arr, movieNumber) {
@@ -49,7 +47,6 @@ async function topDayFilm(movieNumber) {
     try {
         const data = await getTrending();
         const movieArr = data.results;
-        console.log(data.results);
         return createRandomMovie(movieArr, movieNumber);
     } catch (error) {
         
