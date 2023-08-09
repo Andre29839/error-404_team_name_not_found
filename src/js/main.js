@@ -3,3 +3,4 @@ import "./mobile-menu.js";
 import "./helpers.js";
 import "./library.js";
 import "./catalog.js";
+import "./weekly-trends.js";
