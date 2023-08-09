@@ -62,3 +62,9 @@ picture {
 .link {
   text-decoration: none;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--total-white);
+}
+
