@@ -75,3 +75,9 @@ body.light .footer-link {
         padding-bottom: 80px;
     }
 }
+
+@media screen and (max-width: 767.9px) {
+   .footer-p {
+    width: 250px;
+} 
+}
