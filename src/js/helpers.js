@@ -6,6 +6,6 @@ export const refs = {
     new_films: "/movie/upcoming",
     search_films: "/search/movie",
     movie_detailes: "/movie/",
-    // trailer: `/movie/${movie_id}/videos`,
+    // trailer: "/movie/${movie_id}/videos",
     genger: "/genre/movie/list",
 }
