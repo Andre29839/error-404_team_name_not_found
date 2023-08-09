@@ -1,55 +1,50 @@
-import { refs } from "./helpers";
+import { refs } from './helpers';
 
 const { BASIC_URL } = refs;
 
 export const modalMovieInfoMarkup = movie => {
-    const {
-      id,
-      title,
-      original_title,
-      vote_average,
-      vote_count,
-      popularity,
-      overview,
-      genres,
-      poster_path,
-    } = movie;
-  
-    const genreList = genres.map(({ name }) => name).join(', ');
-    let posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
-  
-    if (!poster_path) {
-      if (window.innerWidth < 768) {
-        posterUrl = new URL(
-          '../images/oops_opt/oops_mob@1x.webp',
-          import.meta.url
-        );
-      }
-  
-      if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-        posterUrl = new URL(
-          '../images/oops_opt/oops_tab@1x.webp',
-          import.meta.url
-        );
-      }
-  
-      if (window.innerWidth >= 1280) {
-        posterUrl = new URL(
-          '../images/oops_opt/oops_des@1x.png',
-          import.meta.url
-        );
-      }
+  const {
+    id,
+    title,
+    original_title,
+    vote_average,
+    vote_count,
+    popularity,
+    overview,
+    genres,
+    poster_path,
+  } = movie;
+
+  const genreList = genres.map(({ name }) => name).join(', ');
+  let posterUrl;
+
+  if (poster_path) {
+    posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
+  } else {
+    const resolution = window.devicePixelRatio > 1 ? '@2x' : '@1x';
+
+    if (window.innerWidth < 768) {
+      posterUrl = new URL(`../images/oops_opt/oops_mob${resolution}.png`);
     }
 
-    return `
+    if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+      posterUrl = new URL(`../images/oops_opt/oops_tab${resolution}.png`);
+    }
+
+    if (window.innerWidth >= 1280) {
+      posterUrl = new URL(`../images/oops_opt/oops_des${resolution}.png`);
+    }
+  }
+
+  return `
       <div class="modal">
         <button class="modal__btn-close" type="button">
           <i class="fa-solid fa-xmark"></i>
         </button>
         
         <img class ="modal__image" src="${posterUrl}" alt="${
-      title || original_title
-    }" />
+    title || original_title
+  }" />
   
         <div class="modal__content">
           <h2 class="modal__title">${title || original_title}</h2>
@@ -89,4 +84,4 @@ export const modalMovieInfoMarkup = movie => {
         </div>
       </div>
     `;
-  };
+};
