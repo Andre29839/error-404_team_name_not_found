@@ -13,13 +13,17 @@
 
 .button-orange {
   display: block;
-  background-color: var(--orange);
+  background: linear-gradient(145deg, #ffc226 0%, #f84119 100%);
   border: transparent;
   border-radius: 74px;
   color: var(--total-black);
-  font-size: 16px;
+  font-weight: 500;
   line-height: 1.5;
   text-align: center;
+
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    outline 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-transparent {
@@ -31,4 +35,8 @@
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
+
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    outline 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }

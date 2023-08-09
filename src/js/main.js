@@ -3,3 +3,4 @@ import "./mobile-menu.js";
 import "./helpers.js";
 import "./library.js";
 import "./catalog.js";
+import "./hero_markup.js";
