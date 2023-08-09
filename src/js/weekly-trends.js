@@ -12,10 +12,11 @@ const refsMonth = {
 };
 
 refsMonth.addToLibraryBtn.addEventListener('click', onOpenLibraryBtn);
+
 window.addEventListener('resize', onResizeDisplay);
 
 function onResizeDisplay() {
-  if ((window.innerWidth = 768)) {
+  if ((window.innerWidth === 768)) {
     renderAndAppendMarkup();
   }
 }
