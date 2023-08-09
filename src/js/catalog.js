@@ -12,7 +12,7 @@ let userParams = {
 }
 
 searchForm.addEventListener('submit', onSubmitForm);
-gallery.addEventListener('click', onModalOpenClick);
+// gallery.addEventListener('click', onModalOpenClick);
 
 
 async function fetchFilms() { 
@@ -95,6 +95,7 @@ getFilmsOnSearch()
 // ПАГІНАЦІЯ
 
 const paginationContainer = document.getElementById('pagination');
+console.log(paginationContainer);
 const pagination = new Pagination(paginationContainer, {
   totalItem: 100,
   itemsPerPAge: 20,
