@@ -1,11 +1,4 @@
 .hero-section {
-  background: linear-gradient(
-      86.77deg,
-      #111111 30.38%,
-      rgba(17, 17, 17, 0) 65.61%
-    ),
-    var(--total-black) url(../images/hero/1hero_mob@1x.jpg) no-repeat center /
-      cover;
   padding-top: 40px;
   padding-bottom: 80px;
 }
@@ -181,4 +174,18 @@
   background: transparent;
 
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+}
+
+/*---------------        
+CSS for Slider    
+---------------------*/
+
+.hero-img {
+  background: linear-gradient(
+      86.77deg,
+      #111111 30.38%,
+      rgba(17, 17, 17, 0) 65.61%
+    ),
+    var(--total-black) url(../images/hero/1hero_mob@1x.jpg) no-repeat center /
+      cover;
 }

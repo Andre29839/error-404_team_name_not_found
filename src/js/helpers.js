@@ -9,3 +9,4 @@ export const refs = {
     // trailer: "/movie/${movie_id}/videos",
     genger: "/genre/movie/list",
 }
+

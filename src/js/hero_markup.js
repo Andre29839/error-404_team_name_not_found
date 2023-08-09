@@ -44,3 +44,5 @@ function createMarkup(arr) {
   const container = document.getElementById('hero-section'); // Replace 'your-container-id' with the actual ID of the container element
   container.innerHTML = markup;
 }
+
+export { createMarkup };
