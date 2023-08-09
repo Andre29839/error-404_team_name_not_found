@@ -36,7 +36,7 @@ async function fetchTrendingMovies() {
     return [data.results[randomIndex]];
   }
   const arrayFilms = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i += 1) {
     const randomIndex = Math.floor(Math.random() * data.results.length);
     arrayFilms.push(data.results[randomIndex]);
   }
