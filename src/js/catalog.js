@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { refs } from "./helpers";
 
 const { API_KEY, BASIC_URL, search_films, trending_week } = refs;
