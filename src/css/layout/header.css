@@ -3,9 +3,8 @@ width:fit-content;
 }
 
 .logo {
-    margin-right: 82px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .mobile-logo {
@@ -15,7 +14,6 @@ margin-bottom: 40px;
 .nav-menu {
   display: block;
   color: var(--ligth-grey); 
-  margin-right: 78px;
   transition: 1000ms;
 }
 
@@ -36,6 +34,7 @@ margin-bottom: 40px;
 .flex-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .button {
