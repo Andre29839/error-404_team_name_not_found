@@ -196,12 +196,10 @@ CSS for Slider
 
   padding-top: 40px;
   padding-bottom: 80px;
-
-  max-height: 380px;
 }
 
 .hero-title-slide {
-  width: 193px;
+  width: 232px;
   font-size: 32px;
   line-height: 1.17;
 
@@ -209,11 +207,10 @@ CSS for Slider
 }
 
 .hero-descr {
-  height: 80px;
+  height: 66px;
 
   overflow-y: scroll;
   overflow: hidden;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.17;
   font-weight: 700;
@@ -223,7 +220,7 @@ CSS for Slider
 
 .hero-btn-wrap {
   display: flex;
-  gap: 14px;
+  gap: 8px;
 }
 
 .hero-btn-trailer {
@@ -288,6 +285,14 @@ CSS for Slider
 }
 
 @media screen and (min-width: 768px) {
+  .hero-section-slide {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    padding-left: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .hero-title-slide {
     width: 445px;
     font-size: 44px;
@@ -298,7 +303,7 @@ CSS for Slider
 
 @media screen and (min-width: 768px) {
   .hero-descr {
-    width: 254px;
+    width: 300px;
   }
 }
 
@@ -313,6 +318,14 @@ CSS for Slider
   .hero-btn-more {
     font-size: 14px;
     line-height: 1.42;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .hero-section-slide {
+    padding-top: 140px;
+    padding-bottom: 240px;
+    padding-left: 135px;
   }
 }
 
@@ -341,5 +354,12 @@ CSS for Slider
   .hero-btn-more {
     font-size: 16px;
     line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero-section-slide {
+    padding-top: 600px;
+    padding-bottom: 500px;
   }
 }

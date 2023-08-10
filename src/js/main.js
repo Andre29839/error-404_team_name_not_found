@@ -5,3 +5,4 @@ import "./library.js";
 import "./catalog.js";
 import "./hero_markup.js";
 import "./hero_app.js";
+import "./trailer.js"
