@@ -182,7 +182,7 @@ export const modalMovieInfoMarkup = movie => {
         </div>
       </div>
     `;
-};
+
 
 console.log(addButtonLibrary);
 
