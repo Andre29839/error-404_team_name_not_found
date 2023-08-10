@@ -1,21 +1,161 @@
 <footer>
   <div class="footer-content">
-    <p>&#169; 2023 | All Rights Reserved |</p>
     <p>
-      Developed with
+      &#169; 2023 | All Rights Reserved | Developed with
       <span class="heart">
         <svg width="14" height="12.8">
           <use href="../images/icons.svg#icon-heart"></use>
         </svg>
       </span>
       by
-      <a
-        href="https://goit.global/ua/courses/"
-        target="_blank"
-        rel="noreferrer noopener"
-        class="footer-link"
-        >GoIT Students</a
-      >
+      <button class="footer-link" type="button" modal-footer-open>
+        GoIT Students
+      </button>
     </p>
   </div>
+
+  <div class="backdrop visually-hidden" modal-footer>
+    <div class="modal-ftr">
+      <div class="modal-ftr-top">
+        <button modal-footer-close class="modal-ftr-btn-close" type="button">
+          <svg class="mod-ftr-btn-icon" width="10" height="10">
+            <use href="../images/icons.svg#icon-cross"></use>
+          </svg>
+        </button>
+      </div>
+
+      <p class="students-title">Our team</p>
+      <div class="students">
+        <ul class="list">
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Andrii Nepomniashczii"
+              class="st-pic"
+            />
+            <a href="https://github.com/Andre29839" class="sign link">
+              <div>
+                <p class="st-name">Andrii Nepomniashczii</p>
+                <p class="st-descript">Team leader</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Olexandr Liashenko"
+              class="st-pic"
+            />
+            <a href="https://github.com/AlexLiashenko19" class="sign link">
+              <div>
+                <p class="st-name">Olexandr Liashenko</p>
+                <p class="st-descript">Scrum master</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Elona Savchenko"
+              class="st-pic"
+            />
+            <a href="https://github.com/Elonka5" class="sign link">
+              <div>
+                <p class="st-name">Elona Savchenko</p>
+                <p class="st-descript">Frontend developer</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Marija Cherkashina"
+              class="st-pic"
+            />
+            <a href="https://github.com/gostraa" class="sign link">
+              <div>
+                <p class="st-name">Marija Cherkashina</p>
+                <p class="st-descript">Frontend developer</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Diana Shylova"
+              class="st-pic"
+            />
+            <a href="https://github.com/DianaShylova" class="sign link">
+              <div>
+                <p class="st-name">Diana Shylova</p>
+                <p class="st-descript">Web developer</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Shtephan Denysuk"
+              class="st-pic"
+            />
+            <a href="https://github.com/DenShtephen" class="sign link">
+              <div>
+                <p class="st-name">Shtephan Denysuk</p>
+                <p class="st-descript">Frontend developer</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="student">
+            <img
+              src="../images/profile_anonym.jpg"
+              alt="Andrii Krytsia"
+              class="st-pic"
+            />
+            <a href="https://github.com/AndriiKrytsia" class="sign link">
+              <div>
+                <p class="st-name">Andrii Krytsia</p>
+                <p class="st-descript">Frontend developer</p>
+              </div>
+              <div class="gith">
+                <svg width="24" height="24">
+                  <use href="../images/icons.svg#icon-github"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="../js/modal-footer.js"></script>
 </footer>
