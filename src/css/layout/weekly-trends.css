@@ -75,12 +75,8 @@ font-size: 12px;
 }
 
 .wrapper-month-section{
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-between; */
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
 }
 
 .description-wrapper-left{
@@ -88,7 +84,7 @@ font-size: 12px;
     margin-bottom: 20px;
     justify-content: space-between;
     flex-wrap: wrap;
-gap: 12px;
+    gap: 12px;
 }
 
 .description-wrapper-right{
@@ -148,12 +144,6 @@ gap: 12px;
     margin-bottom: 20px;
     font-size: 14px;
 }
-
-/* .img-weekly{
-    width: 280px;
-    height: 406px;
-} */
-
 
   @media only screen and (min-width: 768px) {
 
