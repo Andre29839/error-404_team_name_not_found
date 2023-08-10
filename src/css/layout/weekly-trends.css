@@ -2,8 +2,16 @@
     display: none;
 }
 
+li{
+    list-style: none;
+}
+
 .weekly-section {
     margin-bottom: 32px;
+}
+
+.img-weekly{
+border-radius: 5px;
 }
 
 .header-weekly{
@@ -18,7 +26,7 @@
 }
 
 .weekly-link{
-    color: #F87719;
+    color: var(--orange);
     font-size: 16px;
 }
 
@@ -60,12 +68,12 @@ font-size: 12px;
 .add-to-library{
     width: 140px;
     height: 38px;
-    /* background-color:var(--linear-btn); */
-    background: var(--linear, linear-gradient(145deg, #FFC226 0%, #F84119 100%));
+    background: var(--linear, linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%));
     border: none;
     border-radius: 74px;
     padding: 12px 24px;
     font-size: 12px;
+    margin-top: 20px;
 }
 
 .month-title-movie{
@@ -75,27 +83,36 @@ font-size: 12px;
 
 .wrapper-month-section{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .description-wrapper-left{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.description-wrapper-right{
+    display: flex;
     margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .release-text,
 .vote-text,
 .popularity-text,
 .genre-text{
-    color: #B7B7B7;
-    margin-bottom: 12px;
+    color: var(--ligth-grey);
     font-size: 16px;
 }
 
 .descr-release-text{
-    color: #F87719;
+    color: var(--orange);
     font-size: 16px;
-    margin-bottom: 12px;
 }
 
 .descr-vote-text{
@@ -107,20 +124,22 @@ font-size: 12px;
     margin-bottom: 12px;
 }
 .vote-numbers{
+    display: inline-block;
+    text-align: center;
     width: 36px;
-    height: 18px;
-    background-color: #fff;
-    color: black;
+    background-color: var( --total-white);
+    color: var(--total-black);
     border-radius: 5px;
     padding: 0;
 }
 
 .votes-numbers{
-    width: 40px;
-    height: 18px;
-    background-color: #fff;
-    color: black;
-    border-radius: 5px;
+        display: inline-block;
+        width: 40px;
+        background-color: var(--total-white);
+        color: var(--total-black);
+        border-radius: 5px;
+        text-align: center;
 }
 
 .about-text{
@@ -133,11 +152,26 @@ font-size: 12px;
     font-size: 14px;
 }
 
-/* .img-weekly{
-    width: 280px;
-    height: 406px;
-} */
+.remove-from-library{
+    width: 176px;
+    height: 38px;
+    background: var(--linear, linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%));
+    border: none;
+    border-radius: 74px;
+    padding: 12px 24px;
+    font-size: 12px;
+    margin-top: 20px;
+}
+.add-to-library:hover,
+.add-to-library:focus,
+.remove-from-library:hover,
+.remove-from-library:focus{
+color: var(--orange);
+outline: 1px solid var(--orange);
+background: transparent;
 
+box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+}
 
   @media only screen and (min-width: 768px) {
 
@@ -150,20 +184,17 @@ font-size: 12px;
     }
 
     .container-img-weekly{
+        gap: 16px;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .hidden-img{
         display: block;
     }
 
-    .container-img-weekly{
-        gap: 16px;
-    }
-
     .img-weekly{
-        max-width: 224px;
+        max-width: 395px;
     }
 
     .month-title{
@@ -181,9 +212,48 @@ font-size: 12px;
     margin-bottom: 24px;
 }
 
+.description-wrapper-left{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 200px;
+    margin-right: 120px;
+
+}
+
+.description-wrapper-right{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+max-width: 150px;
+margin-bottom: 20px;
+}
+
+.description-text{
+    margin-bottom: 20px;
+    max-width: 625px;
+font-weight: 400;
+line-height: 1.4;
+}
+
+.month-wrapper{
+    margin-bottom: 20px;
+}
+
+.wrapper-month-section{
+    justify-content: unset;
+}
+
   }
 
   @media only screen and (min-width: 1280px) {
+    .month-wrapper{
+        display: flex;
+        margin-bottom: 20px;
+    }
 
+.title-cinema{
+font-size: 20px
+}
   }
-  
