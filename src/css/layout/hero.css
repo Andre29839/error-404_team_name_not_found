@@ -182,7 +182,7 @@
       #111111 30.38%,
       rgba(17, 17, 17, 0) 65.61%
     ),
-    var(--total-black) url(../images/hero/1hero_mob@1x.jpg) no-repeat center /
+    var(--total-black) url(./images/hero/1hero_mob@1x.jpg) no-repeat center /
       center;
 }
 
@@ -213,7 +213,6 @@ CSS for Slider
 
   overflow-y: scroll;
   overflow: hidden;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.17;
   font-weight: 700;
@@ -228,7 +227,7 @@ CSS for Slider
 
 .hero-btn-trailer {
   display: block;
-  background: linear-gradient(145deg, #ffc226 0%, #f84119 100%);
+  background: linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%));
   border: transparent;
   border-radius: 74px;
   color: var(--total-black);
@@ -294,27 +293,22 @@ CSS for Slider
     line-height: 1.17;
     font-weight: 700;
   }
-}
-
-@media screen and (min-width: 768px) {
-  .hero-descr {
+  
+   .hero-descr {
     width: 254px;
   }
-}
-
-@media screen and (min-width: 768px) {
-  .hero-btn-trailer {
+  
+   .hero-btn-trailer {
+    font-size: 14px;
+    line-height: 1.42;
+  }
+  
+   .hero-btn-more {
     font-size: 14px;
     line-height: 1.42;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .hero-btn-more {
-    font-size: 14px;
-    line-height: 1.42;
-  }
-}
 
 @media screen and (min-width: 1280px) {
   .hero-title-slide {
@@ -322,23 +316,17 @@ CSS for Slider
     font-size: 64px;
     line-height: 1.17;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .hero-descr {
+    .hero-descr {
     width: 367px;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .hero-btn-trailer {
+    .hero-btn-trailer {
     font-size: 16px;
     line-height: 1.5;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .hero-btn-more {
+    .hero-btn-more {
     font-size: 16px;
     line-height: 1.5;
   }
