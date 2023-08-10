@@ -3,8 +3,6 @@ import { refs,LIBRARY_KEY } from './helpers';
 const { BASIC_URL, API_KEY, trending_week, new_films } = refs;
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
-// export const LIBRARY_KEY = 'favorite-film';
-
 const refsMonth = {
   wrapper: document.querySelector('.month-wrapper'),
   addToLibraryBtn: document.querySelector('.add-to-library'),
