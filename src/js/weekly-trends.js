@@ -27,7 +27,6 @@ async function fetchTrendingMonthMovies() {
 }
 
 function onOpenLibraryBtn() {
-  console.log(filmInStorage);
   filmInStorage.push(toStorage);
   localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
 }
