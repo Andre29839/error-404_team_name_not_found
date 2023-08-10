@@ -1,7 +1,7 @@
 import { refs } from './helpers';
 
 const { BASIC_URL, trending_week, API_KEY, LIBRARY_KEY } = refs;
-import { LIBRARY_KEY } from './helpers';
+// import { LIBRARY_KEY } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
@@ -122,12 +122,13 @@ export const modalMovieInfoMarkup = movie => {
   }
 
   return `
-      <div class="mod-con"> 
-      <button class="modal__btn-close" type="button">
+  <button class="modal__btn-close" type="button">
             <svg width="14" height="14" class="modal__icon-moon">
               <use href="./images/icons.svg#icon-cross"></use>
             </svg> 
-          </button>      
+          </button>
+      <div class="mod-con"> 
+            
         <img class ="modal__image" src="${posterUrl}" alt="${
     title || original_title
   }" />
@@ -188,18 +189,17 @@ function dermo () {
       
       addButtonLibrary.textContent = "Remove from my library";
     }
+  } else {
+    let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+  
+    const index = filmInStorage.findIndex(movie => movie.id === movieId);
+    
+    if (index !== -1) {
+      filmInStorage.splice(index, 1); 
+      localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+    }
   }
+
 };
 
 
-
-function removeFromLocalStorage(movieId) {
-  let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
-  
-  const index = filmInStorage.findIndex(movie => movie.id === movieId);
-  
-  if (index !== -1) {
-    filmInStorage.splice(index, 1); 
-    localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
-  }
-}
