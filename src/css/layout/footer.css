@@ -5,7 +5,7 @@
 .link{
     text-decoration: none;
 }
-body.dark footer {
+footer {
     background-color: var(--total-black);
 }
 
@@ -14,12 +14,9 @@ body.light footer {
 }
 
 .footer-content {
-    /*max-width: 236px;*/
-    font-family: Roboto;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.6;
     text-align: center;
     padding: 0;
     margin-top: 0;
@@ -32,11 +29,9 @@ body.light footer {
 }
 
 .footer-link {
-    font-family: Roboto;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.6;
     text-decoration-line: underline;
     cursor: pointer;
     background-color: transparent;
@@ -44,8 +39,8 @@ body.light footer {
     border: none;
 }
 
-body.dark .footer-content,
-body.dark .footer-link {
+.footer-content,
+.footer-link {
     color: var(--light-grey);
 }
 
@@ -57,11 +52,9 @@ body.light .footer-link {
 @media screen and (min-width: 768px) {
     .footer-content {
         width: 100%;
-        font-family: Roboto;
         font-size: 16px;
-        font-style: normal;
         font-weight: 400;
-        line-height: normal;
+        line-height: 1.6;
         text-align: center;
 
         margin-top: 0;
@@ -69,14 +62,12 @@ body.light .footer-link {
     }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
     .footer-content {
         width: 100%;
-        font-family: Roboto;
         font-size: 16px;
-        font-style: normal;
         font-weight: 400;
-        line-height: normal;
+        line-height: 1.6;
         text-align: center;
 
         margin-top: 0;
@@ -122,7 +113,7 @@ visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
 
-body.dark .modal-ftr {
+.modal-ftr {
     background-color: var(--total-black);
     box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
@@ -154,43 +145,43 @@ body.light .modal-ftr {
     
 }
 
- body.dark .mod-ftr-btn-icon{
+.mod-ftr-btn-icon{
     fill: var(--ligth-white);
 }
+
 body.light .mod-ftr-btn-icon {
     fill: var(--ligth-black);
 }
 
 .students-title{
-   font-family: Roboto;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: 1.6;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 16px;
 }
+
 .students{
     border-radius: 5px;
     overflow-y: auto;
 }
+
 .st-pic{
 
 }
+
 .student{
     margin-bottom: 20px;
 }
+
 .sign{
     display: flex;
     justify-content: space-between;
     padding: 16px;
-
 }
 .st-name{
-    font-family: Roboto;
     font-size: 12px;
-    font-style: normal;
     font-weight: 500;
     line-height: 1.6;
     text-align: left;
@@ -198,9 +189,7 @@ body.light .mod-ftr-btn-icon {
 }
 
 .st-descript{
-    font-family: Roboto;
     font-size: 12px;
-    font-style: normal;
     font-weight: 500;
     line-height: 1.6;
 }
@@ -209,48 +198,4 @@ body.light .mod-ftr-btn-icon {
     width: 24px;
     height: 24px;
     fill: var(--total-white);
-
 }
-
-/*font for modal title light:
-
-color: var(--background, #111);
-
-
-*font for modal title dark:
-
-color: var(--white, #FFF);
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-text-transform: uppercase;
-
-
-pic for card:
-
-width: 280px;
-height: 406px;
-border-radius: 5px;
-background: var(--linear, linear-gradient(180deg, rgba(0, 0, 0, 0.00) 63.48%, rgba(0, 0, 0, 0.90) 92.16%));
-
-name for card:
-
-color: var(--white, #FFF);
-
-
-description:
-
-color: var(--grey, #B7B7B7);
-
-
-size of git 16*16px
-
-
- TEAM 
-.team-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 72px
-}*/
