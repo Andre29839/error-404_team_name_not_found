@@ -28,8 +28,9 @@
 
 .button-transparent {
   display: block;
-  background-color: var(--total-black);
-  border: var(--total-white);
+  background-color: transparent;
+  outline: 1px solid var(--total-white);
+  border: transparent;
   border-radius: 74px;
   color: var(--total-white);
   font-size: 16px;

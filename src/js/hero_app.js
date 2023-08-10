@@ -22,7 +22,8 @@ getTrending()
 async function heroLiber() {
     if (window.location.href.includes('../partials/my-library.html')) {
         refsHero.heroBtn.style.display = none;
-        refsHero.heroImg.style.display = none;
+        refsHero.heroImg.classList.remove('hero-img')
+        refsHero.heroImg.classList.add('background-library');
         return;
     }
 }
