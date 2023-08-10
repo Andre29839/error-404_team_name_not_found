@@ -9,7 +9,7 @@ function createSlideMarkup(
   return `
   <section class="hero-section-slide" id="hero-section" style="background: linear-gradient(
           86.77deg,
-          #111111 30.38%,
+          var(--total-black) 30.38%,
           rgba(17, 17, 17, 0) 65.61%
         ),
         var(--total-black) url('https://image.tmdb.org/t/p/original${backdrop_path}') no-repeat center / cover;">

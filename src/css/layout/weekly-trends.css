@@ -1,0 +1,226 @@
+.hidden-img{
+    display: none;
+}
+
+.weekly-section {
+    margin-bottom: 32px;
+}
+
+.header-weekly{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.weekly-wrapper{
+    display: flex;
+ justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.weekly-link{
+    color: var(--orange);
+    font-size: 16px;
+}
+
+.title-cinema{
+font-size: 12px;
+margin-bottom: 6px;
+}
+
+.genre-year-text{
+font-size: 12px;
+}
+
+.img-wrapper{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+}
+.container-img-weekly {
+    position: relative;
+}
+
+.month-section{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 32px; 
+}
+
+.month-title{
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.month-img{
+    margin-bottom: 24px;
+}
+
+.add-to-library{
+    width: 140px;
+    height: 38px;
+    /* background-color:var(--linear-btn); */
+    background: var(--linear, linear-gradient(145deg, #FFC226 0%, #F84119 100%));
+    border: none;
+    border-radius: 74px;
+    padding: 12px 24px;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.month-title-movie{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.wrapper-month-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.description-wrapper-left{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.description-wrapper-right{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.release-text,
+.vote-text,
+.popularity-text,
+.genre-text{
+    color: var(--ligth-grey);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.descr-release-text{
+    color: var(--orange);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.descr-vote-text{
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+.descr-popularity-text{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.vote-numbers{
+    width: 36px;
+    height: 18px;
+    background-color: var( --total-white);
+    color: var(--total-black);
+    border-radius: 5px;
+    padding: 0;
+}
+
+.votes-numbers{
+    width: 40px;
+    height: 18px;
+    background-color: var( --total-white);
+    color: var(--total-black);
+    border-radius: 5px;
+}
+
+.about-text{
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.description-text{
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+  @media only screen and (min-width: 768px) {
+
+    .header-weekly{
+        font-size: 24px;
+    }
+
+    .weekly-link {
+        font-size: 24px; 
+    }
+
+    .container-img-weekly{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .hidden-img{
+        display: block;
+    }
+
+    .container-img-weekly{
+        gap: 16px;
+    }
+
+    .img-weekly{
+        max-width: 224px;
+    }
+
+    .month-title{
+        font-size: 24px;
+    }
+
+.month-img{
+    max-width: 704px;
+    margin-bottom: 32px;
+    border-radius: 5px;
+}
+
+.month-title-movie{
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+.description-wrapper-left{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 200px;
+    margin-right: 120px;
+}
+
+.description-wrapper-right{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+max-width: 150px;
+margin-bottom: 20px;
+}
+
+.description-text{
+    margin-bottom: 20px;
+    max-width: 625px;
+font-weight: 400;
+line-height: 1.4;
+}
+
+.month-wrapper{
+    margin-bottom: 20px;
+}
+
+.wrapper-month-section{
+    justify-content: unset;
+}
+
+  }
+
+  @media only screen and (min-width: 1280px) {
+
+  }
