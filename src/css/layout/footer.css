@@ -75,6 +75,7 @@ body.light .footer-link {
     }
 }
 
+
 .backdrop {
 position: fixed;
 top: 0;
@@ -198,4 +199,10 @@ body.light .mod-ftr-btn-icon {
     width: 24px;
     height: 24px;
     fill: var(--total-white);
+
+@media screen and (max-width: 767.9px) {
+   .footer-p {
+    width: 250px;
+} 
+
 }
