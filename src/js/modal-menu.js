@@ -1,11 +1,9 @@
 import { refs } from './helpers';
 
 const { BASIC_URL, trending_week, API_KEY, LIBRARY_KEY } = refs;
-// import { LIBRARY_KEY } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
-
 
 const film = {
   adult: false,
@@ -109,15 +107,15 @@ export const modalMovieInfoMarkup = movie => {
     const resolution = window.devicePixelRatio > 1 ? '@2x' : '@1x';
 
     if (window.innerWidth < 768) {
-      posterUrl = new URL(`../images/oops_opt/oops_mob${resolution}.png`);
+      posterUrl = new URL(`./images/oops_opt/oops_mob${resolution}.png`);
     }
 
     if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-      posterUrl = new URL(`../images/oops_opt/oops_tab${resolution}.png`);
+      posterUrl = new URL(`./images/oops_opt/oops_tab${resolution}.png`);
     }
 
     if (window.innerWidth >= 1280) {
-      posterUrl = new URL(`../images/oops_opt/oops_des${resolution}.png`);
+      posterUrl = new URL(`./images/oops_opt/oops_des${resolution}.png`);
     }
   }
 
