@@ -10,3 +10,4 @@ export const refs = {
     genger: "/genre/movie/list",
 }
 
+export const LIBRARY_KEY = 'favorite-film';
