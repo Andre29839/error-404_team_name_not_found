@@ -18,7 +18,7 @@
 }
 
 .weekly-link{
-    color: #F87719;
+    color: var(--orange);
     font-size: 16px;
 }
 
@@ -66,6 +66,7 @@ font-size: 12px;
     border-radius: 74px;
     padding: 12px 24px;
     font-size: 12px;
+    margin-top: 20px;
 }
 
 .month-title-movie{
@@ -74,26 +75,41 @@ font-size: 12px;
 }
 
 .wrapper-month-section{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
 }
 
 .description-wrapper-left{
+    display: flex;
     margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+gap: 12px;
+}
+
+.description-wrapper-right{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .release-text,
 .vote-text,
 .popularity-text,
 .genre-text{
-    color: #B7B7B7;
+    color: var(--ligth-grey);
     margin-bottom: 12px;
     font-size: 16px;
 }
 
 .descr-release-text{
-    color: #F87719;
+    color: var(--orange);
     font-size: 16px;
     margin-bottom: 12px;
 }
@@ -109,8 +125,8 @@ font-size: 12px;
 .vote-numbers{
     width: 36px;
     height: 18px;
-    background-color: #fff;
-    color: black;
+    background-color: var( --total-white);
+    color: var(--total-black);
     border-radius: 5px;
     padding: 0;
 }
@@ -118,8 +134,8 @@ font-size: 12px;
 .votes-numbers{
     width: 40px;
     height: 18px;
-    background-color: #fff;
-    color: black;
+    background-color: var( --total-white);
+    color: var(--total-black);
     border-radius: 5px;
 }
 
@@ -181,9 +197,40 @@ font-size: 12px;
     margin-bottom: 24px;
 }
 
+.description-wrapper-left{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 200px;
+    margin-right: 120px;
+}
+
+.description-wrapper-right{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+max-width: 150px;
+margin-bottom: 20px;
+}
+
+.description-text{
+    margin-bottom: 20px;
+    max-width: 625px;
+font-weight: 400;
+line-height: 1.4;
+}
+
+.month-wrapper{
+    margin-bottom: 20px;
+}
+
+.wrapper-month-section{
+    justify-content: unset;
+}
+
   }
 
   @media only screen and (min-width: 1280px) {
 
   }
-  
