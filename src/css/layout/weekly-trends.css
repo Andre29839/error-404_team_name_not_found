@@ -68,7 +68,7 @@ font-size: 12px;
 .add-to-library{
     width: 140px;
     height: 38px;
-    background: var(--linear, linear-gradient(145deg, #FFC226 0%, #F84119 100%));
+    background: var(--linear, linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%));
     border: none;
     border-radius: 74px;
     padding: 12px 24px;
@@ -155,7 +155,7 @@ font-size: 12px;
 .remove-from-library{
     width: 176px;
     height: 38px;
-    background: var(--linear, linear-gradient(145deg, #FFC226 0%, #F84119 100%));
+    background: var(--linear, linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%));
     border: none;
     border-radius: 74px;
     padding: 12px 24px;
