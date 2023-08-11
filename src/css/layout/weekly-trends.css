@@ -6,18 +6,6 @@ li {
   list-style: none;
 }
 
-.body.light .weekly-section, .month-section {
-    background-color: var(--total-black);
-}
-
-.body.light .header-weekly, .month-title, .month-title-movie, .release-text, .vote-text, .popularity-text, .genre-text, .about-text {
-    color: var(--total-black);
-}
-
-.body.light .vote-numbers, .votes-numbers, .descr-popularity-text, .descr-genre-text, .description-text{
-    color: var(--ligth-black);
-}
-
 .weekly-section {
   margin-bottom: 32px;
   padding-top: 40px;
@@ -107,10 +95,7 @@ li {
 .add-to-library {
   width: 140px;
   height: 38px;
-  background: var(
-    --linear,
-    linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%)
-  );
+  background: linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%);
   border: none;
   border-radius: 74px;
   padding: 12px 24px;
@@ -204,16 +189,14 @@ li {
 .remove-from-library {
   width: 176px;
   height: 38px;
-  background: var(
-    --linear,
-    linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%)
-  );
+  background: linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%);
   border: none;
   border-radius: 74px;
   padding: 12px 24px;
   font-size: 12px;
   margin-top: 20px;
 }
+
 .add-to-library:hover,
 .add-to-library:focus,
 .remove-from-library:hover,
@@ -222,6 +205,18 @@ li {
   outline: 1px solid var(--orange);
   background: transparent;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+}
+
+body.light .weekly-section, .month-section {
+    background-color: var(--total-white);
+}
+
+body.light .header-weekly, .month-title, .month-title-movie, .release-text, .vote-text, .popularity-text, .genre-text, .about-text {
+    color: var(--total-black);
+}
+
+body.light .vote-numbers, .votes-numbers, .descr-popularity-text, .descr-genre-text, .description-text{
+    color: var(--ligth-black);
 }
 
 @media only screen and (min-width: 768px) {
