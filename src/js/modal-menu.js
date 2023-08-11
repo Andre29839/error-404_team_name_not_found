@@ -1,7 +1,5 @@
 import { LIBRARY_KEY } from './helpers';
 
-// const { LIBRARY_KEY } = refs;
-
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
 
