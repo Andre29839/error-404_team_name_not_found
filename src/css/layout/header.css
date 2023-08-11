@@ -129,10 +129,6 @@ body.light .backdrop-menu {
     gap: 8px;
   }
 
-  .nav-menu {
-    display: none;
-  }
-
   .nav-list {
     display: flex;
     text-align: center;
@@ -156,13 +152,10 @@ body.light .backdrop-menu {
     color: var(--orange);
   }
 
-  .backdrop-menu {
+  .backdrop-menu, .menu-container, .nav-menu {
     display: none;
   }
-
-  .menu-container {
-    display: none;
-  }
+  
   .switcher {
     width: 60px;
     height: 24px;
