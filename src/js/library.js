@@ -2,13 +2,27 @@ import { LIBRARY_KEY } from './helpers';
 const myLibraryDiv = document.querySelector("#my-library");
 const buttonSearch = document.querySelector(".search-movie-btn-link");
 const buttonLoadMore = document.querySelector(".load-more-btn");
-const select = document.querySelector(".genre-select");
+const filterButton = document.querySelector(".filter-down-button");
+const listOfGenre = document.querySelector(".dropdown-list");
 const savedMovies = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
-buttonLoadMore.addEventListener("click", onClickBtnLoadMore);
+
 let page = 1;
 const moviesPerPage = 9;
 
+buttonLoadMore.addEventListener("click", onClickBtnLoadMore);
+listOfGenre.addEventListener("click", function (e) {
+  if (e.target.tagName !== 'A') { return } 
+ 
+  let eventText = e.target.textContent;
+  filterButton.textContent = eventText;
+  
 
+});
+filterButton.addEventListener("click", function () {
+  listOfGenre.classList.toggle("visually-hidden");
+  listOfGenre.classList.toggle("active");
+   
+})
 
 
 function createMarkupToLibrary(array) {
@@ -55,7 +69,7 @@ function renderFavoriteFilm() {
        myLibraryDiv.insertAdjacentHTML("beforeend", libraryFilmMarkup);
          buttonSearch.classList.add("visually-hidden");
          buttonLoadMore.classList.remove("visually-hidden"); 
-       select.classList.remove("visually-hidden");
+       
         if (endIdx >= savedMovies.length) {
           buttonLoadMore.classList.add("visually-hidden");
           buttonSearch.classList.remove("visually-hidden")
@@ -74,3 +88,10 @@ function onClickBtnLoadMore() {
   page += 1;
   renderFavoriteFilm();
 }
+
+
+
+
+
+
+

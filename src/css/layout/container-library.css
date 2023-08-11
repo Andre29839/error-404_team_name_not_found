@@ -24,10 +24,10 @@
     line-height: 1.4;
 }
 
-.genre-select{
-    appearance: none;
-    cursor: pointer;
+ .filter-down-button{
 
+    cursor: pointer;
+    text-align: left;
     width: 173px;
     height: 40px;
     padding: 10px 56px 10px 16px;
@@ -41,17 +41,58 @@
     line-height: 1.14;
 }
 
-.filter-option{
+.genre-item{
     width: 172px;
     height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 56px 10px 16px;
     background-color: #1C1C1C;
     border: 1px solid var(--total-white);
-    border-right: 1px solid var(--white);
-    border-left: 1px solid var(--white);
+    border-radius: 8px;
+    color: var(--ligth-grey);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.14;
+} 
+
+
+.genre-item:hover {
+  color: orange;
+
 }
 
+.dropdown-list li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown-list li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.dropdown-list.active li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.dropdown-list.active {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+
+.dropdown-list{
+    position:absolute;
+    z-index: 100;
+}
 .my-library, .gallery{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap:16px;
     padding: 16px 0 24px 0;
