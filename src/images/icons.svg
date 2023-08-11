@@ -11,7 +11,7 @@
         </symbol>
         
         <symbol id="icon-cross" viewBox="0 0 32 32">
-            <path fill="none" stroke="#f87719" style="stroke: var(--color1, #f87719)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M30 30l-28-28M30 2l-28 28"></path>
+            <path fill="none" d="M30 30l-28-28M30 2l-28 28"></path>
         </symbol>
         <symbol id="icon-sun" viewBox="0 0 32 32">
             <path fill="none" stroke="#fff" style="stroke: var(--color16, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M16 26c5.523 0 10-4.477 10-10s-4.477-10-10-10v0c-5.523 0-10 4.477-10 10s4.477 10 10 10v0z"></path>
