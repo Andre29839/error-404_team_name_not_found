@@ -1,10 +1,17 @@
 import { Notify } from 'notiflix';
-import { refs } from "./helpers";
+import { refs } from './helpers'
 
-const { BASIC_URL, API_KEY, } = refs
+const trailerRefs = {
+  backDropRef: document.querySelector('.trailer-backdrop'), // Replace with your actual selector
+  trailerRef: document.querySelector('.trailer-container') // Replace with your actual selector
+};
 
-async function getMovie(movie_id) {
-  const url = `${BASIC_URL}/movie/${movie_id}/videos?api_key=${API_KEY}&language=en-US`;
+const { BASIC_URL, API_KEY } = refs
+
+async function getFilmTrailer(someId) {
+
+  const url = `${BASIC_URL}/movie/${someId}/videos?api_key=${API_KEY}&language=en-US`;
+  
   try {
     const result = await fetch(url);
 
@@ -12,57 +19,30 @@ async function getMovie(movie_id) {
       throw new Error(`Request failed with status: ${result.status}`);
     }
 
-    const obj = await result.json();
-    console.log(obj);
-    return obj;
+    const data = await result.json();
+    return data.results[0]?.key || null; // Assuming you want the first video's key
   } catch (error) {
-    Notify.info('Error fetching movie:')
+    Notify.warning('Error fetching movie:', error);
+    return null;
   }
-}
-
-const trailerRefs = {
-  backDropRef: document.querySelector('.trailer-backdrop'),
-    trailerRef: document.querySelector('.trailer-container'),
 };
-
-function onWatchTrailer(evt) {
-  if (evt.target.classList.contains('hero-btn-trailer')) {
-    const dataId = evt.target.dataset.id;
-    getTrailerByFilmId(dataId);
-  }
-}
-
-async function getTrailerByFilmId(id) {
-  const movieData = await getMovie(id);
-  if (movieData.results.length > 0) {
-    const trailerKey = movieData.results[0].key;
-    renderTrailer(trailerKey);
-  } else {
-    Notify.info('No trailers found for this movie.')
-  }
-}
 
 function renderTrailer(movieKey) {
   document.body.classList.add('is-scroll-block');
-
-    trailerRefs.backDropRef.classList.remove('visually-hidden');
-    console.log(trailerRefs);
-    trailerRefs.trailerRef.innerHTML = `<div><iframe class="trailer-iframe" src='https://www.youtube.com/embed/${movieKey}
-  'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- </div>`;
-
+  trailerRefs.backDropRef.classList.remove('visually-hidden');
+  trailerRefs.trailerRef.innerHTML = `<div><iframe class="trailer-iframe" src='https://www.youtube.com/embed/${movieKey}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
   trailerRefs.backDropRef.addEventListener('click', listenBackdropClick);
   document.body.addEventListener('keydown', listenKeyDawn);
 }
 
-const listenBackdropClick = event => {
-  if (event.target.classList.contains('trailer-backdrop')) {
+const listenBackdropClick = evt => {
+  if (evt.target.classList.contains('trailer-backdrop')) {
     closeTrailer();
   }
 };
 
-const listenKeyDawn = event => {
-  if (event.key === 'Escape') {
+const listenKeyDawn = evt => {
+  if (evt.key === 'Escape') {
     closeTrailer();
   }
 };
@@ -70,12 +50,26 @@ const listenKeyDawn = event => {
 const closeTrailer = () => {
   document.body.classList.remove('is-scroll-block');
   trailerRefs.backDropRef.classList.add('visually-hidden');
-
   trailerRefs.trailerRef.innerHTML = '';
-
-
   document.body.removeEventListener('keydown', listenKeyDawn);
   trailerRefs.backDropRef.removeEventListener('click', listenBackdropClick);
 };
+
+async function getTrailerByFilmId(id) {
+  const trailerKey = await getFilmTrailer(id);
+
+  if (trailerKey) {
+    renderTrailer(trailerKey);
+  } else {
+    Notify.warning('No trailers found for this movie.');
+  }
+}
+
+function onWatchTrailer(evt) {
+  if (evt.target.classList.contains('hero-btn-trailer')) {
+    const dataId = evt.target.dataset.id;
+    getTrailerByFilmId(dataId);
+  }
+}
 
 export { renderTrailer, getTrailerByFilmId, onWatchTrailer };

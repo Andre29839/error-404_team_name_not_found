@@ -1,9 +1,11 @@
 import { refs } from "./helpers";
-import { createMarkup } from "./hero_markup";
+import { createMarkup} from "./hero_markup";
 import { onWatchTrailer } from './trailer';
+import { modalMovieInfoMarkup } from './modal-menu'
 
 
-const { BASIC_URL, API_KEY} = refs
+
+const { BASIC_URL, API_KEY } = refs
 
 const refsHero = {
     heroSect: document.querySelector('.hero-section'),
@@ -11,10 +13,19 @@ const refsHero = {
     heroImg: document.querySelector('.hero-img'),
  backDropRef: document.querySelector('.hero-trailer-backdrop'),
   trailerRef: document.querySelector('.trailer-container'),
-  trailerBtn: document.querySelector('.modal-trailer-btn'),
+    trailerBtn: document.querySelector('.modal-trailer-btn'),
+  moreDetails: document.querySelector('.hero-btn-more')
 };
 
-window.addEventListener('click', onWatchTrailer);
+
+document.addEventListener('click', onWatchTrailer);
+
+
+
+// function onWatchDetails() {
+//      modalMovieInfoMarkup()
+// }
+
 
 async function getTrending(page = 1) {
   const url = `${BASIC_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
@@ -60,6 +71,8 @@ async function topDayFilm(movieNumber) {
     }
 }
 
+document.addEventListener('click', onWatchTrailer);
+
 const ratings = document.querySelectorAll('.rating');
 
 
@@ -87,3 +100,8 @@ ratingActive.style.width = `${ratingNumber * 10}%`;
     
     });
 });
+
+
+
+//*--------------------------             Визвати модальне вікно на деталі       ----------------------------------------------------*//
+
