@@ -29,7 +29,9 @@ function createDefaultMarkup(pictures) {
 const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const markup = pictures.map(({ title, poster_path, genre_ids, vote_average, overview, release_date}) => 
  `<li class="movie-card">
-    <img class="movie-img" src="${WEEK_IMG_URL}${poster_path}" alt="${overview}" loading="lazy" />
+        <div class="gradient"></div>
+    <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
+}" alt="${overview}" loading="lazy" />
     <div class="info">
       <p class="movie-title">
         ${title}
