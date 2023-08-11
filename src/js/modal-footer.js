@@ -24,19 +24,16 @@
     let scrollTop = document.scrollingElement.scrollTop;
     refs.modal.style.top = "calc(" + scrollTop + "px + 50%)"; 
     refs.backdrop.style.top = "calc(" + scrollTop + "px)";
-    
-    document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
-  }
-})();
-
-    document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
-    
-    if (refs.backdrop.classList.contains("visually-hidden")) {
+        if (refs.backdrop.classList.contains("visually-hidden")) {
       document.removeEventListener("keydown", closeFooterModal)
     } else {
       document.addEventListener("keydown", closeFooterModal);
       refs.backdrop.focus();
     }
-}
-}
-)();
+    
+    document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
+  }
+})();
+
+    
+

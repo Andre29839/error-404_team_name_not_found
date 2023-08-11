@@ -26,4 +26,4 @@ function toggleModal() {
   }
 }
   refs.body.classList.toggle('is-open');
-}
+
