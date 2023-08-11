@@ -98,14 +98,14 @@ export const modalMovieInfoMarkup = movie => {
     poster_path,
   } = movie;
 
-  // const genreList = genres.map(({ name }) => name).join(', ');
-  const genreList = Array.isArray(genres) ? genres.map(({ name }) => name).join(', ') : '';
+  const genreList = genres.map(({ name }) => name).join(', ');
+  // const genreList = Array.isArray(genres) ? genres.map(({ name }) => name).join(', ') : '';
   let posterUrl = '';
 
-  // if (poster_path) {
-  //   posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
-  // } else {
-  //   const resolution = window.devicePixelRatio > 1 ? '@2x' : '@1x';
+  if (poster_path) {
+    posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
+  } else {
+    const resolution = window.devicePixelRatio > 1 ? '@2x' : '@1x';
 
   //   if (window.innerWidth < 768) {
   //     posterUrl = new URL(`../images/oops_opt/oops_mob${resolution}.png`);
@@ -182,7 +182,7 @@ export const modalMovieInfoMarkup = movie => {
         </div>
       </div>
     `;
-
+}
 
 console.log(addButtonLibrary);
 
