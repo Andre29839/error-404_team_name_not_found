@@ -9,6 +9,8 @@ refs.menuBtn.addEventListener('click', toggleModal);
 
 refs.menuBackdrop.addEventListener('click', closeOnBackdropClick);
 
+let scrollPosition
+
 function closeOnBackdropClick(e) {
   if (e.target === refs.menuBackdrop) {
     toggleModal();
@@ -18,5 +20,10 @@ function closeOnBackdropClick(e) {
 function toggleModal() {
   refs.menuBackdrop.classList.toggle('visually-hidden');
   refs.menuContainer.classList.toggle('is-open');
+  refs.body.classList.toggle('fixed');
+  if (refs, body.classList.contains('fixe')) {
+    scrollPosition = window.scrollY;
+  }
+}
   refs.body.classList.toggle('is-open');
 }
