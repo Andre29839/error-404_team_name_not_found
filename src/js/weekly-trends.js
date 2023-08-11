@@ -2,6 +2,7 @@ import { refs,LIBRARY_KEY } from './helpers';
 
 const { BASIC_URL, API_KEY, trending_week, new_films } = refs;
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
+const MOVIE_ID = 'https://api.themoviedb.org/3/movie/';
 
 const refsMonth = {
   wrapper: document.querySelector('.month-wrapper'),
@@ -15,6 +16,7 @@ window.addEventListener('resize', onResizeDisplay);
 refsMonth.removeLibraryBtn.addEventListener('click',onRemoveFromLibrary)
 
 let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+
 let toStorage;
 
 async function fetchTrendingMonthMovies() {
@@ -22,7 +24,7 @@ async function fetchTrendingMonthMovies() {
   const response = await fetch(url);
   const data = await response.json();
   const randomIndex = Math.floor(Math.random() * data.results.length);
-  toStorage = data.results[randomIndex];
+  // toStorage = data.results[randomIndex];
   return [data.results[randomIndex]];
 }
 
@@ -46,18 +48,13 @@ function onResizeDisplay() {
   }
 }
 
-const GENRES_URL = "/genre/movie/list"
-
-let res;
-
-async function fetchGenres(){
-  const urlGenre = `${BASIC_URL}${GENRES_URL}?api_key=${API_KEY}`
-  const response = await fetch(urlGenre);
-  const data = await response.json();
-  res = data.genres.map(({name}) => name);
-  console.log(res);
+async function getGenres(movieId){
+  const urlGenres = `${MOVIE_ID}${movieId}?api_key=${API_KEY}`
+  const response = await fetch(urlGenres);
+  const datas = await response.json();
+  const genres = datas.genres.slice(0,2).map(({name}) => name).join(', ')
+return genres;
 }
-fetchGenres()
 
 async function fetchTrendingMovies() {
   const url = `${BASIC_URL}${trending_week}?api_key=${API_KEY}`;
@@ -76,79 +73,101 @@ async function fetchTrendingMovies() {
   return arrayFilms;
 }
 
-async function renderAndAppendMarkup() {
+export async function getYear(data) {
+  if (!data) {
+    return 'There is no release date';
+  }
+  const year = await data.slice(0, 4);
+  return year;
+}
+
+export async function renderAndAppendMarkup() {
   try {
     const movies = await fetchTrendingMovies();
-    const markup = renderPageMarkup(movies);
-    refsMonth.container.insertAdjacentHTML('beforeend', markup);
+    renderPageMarkup(movies);
   } catch (error) {
     console.log('Error fetching or rendering movies:', error);
   }
 }
 renderAndAppendMarkup();
 
-function renderPageMarkup(array) {
-  const result = array
-    .map(
-      ({ title, id, poster_path, genre_ids, release_date,overview }) =>
-        `<li data-id="${id}" class="container-img-weekly">
-        <img src="${IMG_URL}${poster_path}" alt="${overview}" loading="lazy" class="img-weekly">
-        <div class="img-wrapper">
-            <h3 class="title-cinema">${title}</h3>
-            <p class="genre-year-text">${genre_ids} | ${release_date}</p>
-        </div>
-    </li>`
-    )
-    .join('');
-  return result;
+export async function renderPageMarkup(array) {
+  let markupWeekly ='';
+  for (const elem of array) {
+      const {
+        title,
+        id,
+        poster_path,
+        release_date:date,
+        overview,
+      } = elem;
+const movieWeekGenre = await getGenres(id);
+const movieYear = await getYear(date);
+
+markupWeekly += `<li data-id="${id}" class="container-img-list">
+<div class="gradient-wrap-img"></div>
+<img src="${IMG_URL}${poster_path}" alt="${overview}" loading="lazy" class="img-weekly">
+<div class="img-wrapper">
+<h3 class="title-cinema">${title}</h3>
+<p class="genre-year-text">${movieWeekGenre} | ${movieYear}</p> 
+</div> 
+</li>`
+  }
+refsMonth.container.insertAdjacentHTML('beforeend', markupWeekly); 
 }
 
 async function renderMonthMarkup() {
   try {
     const monthMovies = await fetchTrendingMonthMovies();
-    const monthMarkup = renderTrendingMonthMarkup(monthMovies);
-    refsMonth.wrapper.insertAdjacentHTML('beforeend', monthMarkup);
+   renderTrendingMonthMarkup(monthMovies);
+    // refsMonth.wrapper.insertAdjacentHTML('beforeend', monthMarkup);
   } catch (error) {
     console.log('Error fetching or rendering movies:', error);
   }
 }
 renderMonthMarkup();
 
-function renderTrendingMonthMarkup(array) {
-  const markupMonth = array
-    .map(
-      ({
-        title,
-        id,
-        backdrop_path,
-        release_date,
-        vote_average,
-        vote_count,
-        popularity,
-        genre_ids,
-        overview,
-      }) => `<li data-id="${id}" class="js-card-month">
-<img src="${IMG_URL}${backdrop_path}" alt="" class="month-img">
-<h4 class="month-title-movie">${title}</h4>
-<div class="wrapper-month-section">
-<div class="description-wrapper-left">      
-<p class="release-text">Release date</p>
-<p class="descr-release-text">${release_date}</p>
-<p class="vote-text">Vote / Votes</p>
-<p class="descr-vote-text"><span class="vote-numbers">${vote_average}</span> / <span class="votes-numbers">${vote_count}</span></p>
-</div>
-<div class="description-wrapper-right">
-<p class="popularity-text">Popularity</p>
-<p class="descr-popularity-text">${popularity}</p>
-<p class="genre-text">Genre</p>
-<p class="descr-genre-text">${genre_ids}</p>
-</div>
-</div>
-<p class="about-text">ABOUT</p>
-<p class="description-text">${overview}</p>
-</li>
-`
-    )
-    .join('');
-  return markupMonth;
+// 
+
+async function renderTrendingMonthMarkup(array) {
+  let markup = '';
+  for (const movie of array) {
+    const {
+      title,
+      id,
+      backdrop_path,
+      release_date,
+      vote_average,
+      vote_count,
+      popularity,
+      overview,
+    } = movie;
+
+    const movieGenre = await getGenres(id);
+
+    markup += `<li data-id="${id}" class="js-card-month">
+      <img src="${IMG_URL}${backdrop_path}" alt="" class="month-img">
+      </li>
+      <div class = "wrapper-month">
+      <h4 class="month-title-movie">${title}</h4>
+      <div class="wrapper-month-section">
+      <div class="description-wrapper-left">      
+      <p class="release-text">Release date</p>
+      <p class="descr-release-text">${release_date}</p>
+      <p class="vote-text">Vote / Votes</p>
+      <p class="descr-vote-text"><span class="vote-numbers">${vote_average}</span> / <span class="votes-numbers">${vote_count}</span></p>
+      </div>
+      <div class="description-wrapper-right">
+      <p class="popularity-text">Popularity</p>
+      <p class="descr-popularity-text">${popularity.toFixed(1)}</p>
+      <p class="genre-text">Genre</p>
+      <p class="descr-genre-text">${movieGenre}</p>
+      </div>
+      </div>
+      <p class="about-text">ABOUT</p>
+      <p class="description-text">${overview}</p>
+      </div>
+      `
 }
+refsMonth.wrapper.insertAdjacentHTML('beforeend', markup);
+} 
