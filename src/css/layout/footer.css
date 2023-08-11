@@ -35,7 +35,7 @@ body.light footer {
     text-decoration-line: underline;
     cursor: pointer;
     background-color: transparent;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     border: none;
 }
 
@@ -166,10 +166,6 @@ body.light .mod-ftr-btn-icon {
 .students{
     border-radius: 5px;
     overflow-y: auto;
-}
-
-.st-pic{
-
 }
 
 .student{
