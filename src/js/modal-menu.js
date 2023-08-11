@@ -1,6 +1,4 @@
-import { refs } from './helpers';
-
-const { BASIC_URL, trending_week, API_KEY, LIBRARY_KEY } = refs;
+import { LIBRARY_KEY } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
@@ -20,7 +18,7 @@ const film = {
   original_language: 'en',
   original_title: 'Kandahar',
   overview:
-    'John Wick (Keanu Reeves) takes on his most lethal adversaries yet in the upcoming fourth instalment of the series. With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. ',
+    'John Wick (Keanu Reeves) takes on his most lethal adversaries yet in the upcoming fourth instalment of the series. With the price on his head ever increasing,Reeves) takes on his most lethal adversaries yReeves) takes on his most lethal adversaries y John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. ',
   popularity: 162.109,
   poster_path: '/lCanGgsqF4xD2WA5NF8PWeT3IXd.jpg',
   release_date: '2023-05-25',
@@ -85,7 +83,7 @@ export const moadlWind = document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-export const modalMovieInfoMarkup = movie => {
+export function modalMovieInfoMarkup (film) {
   const {
     id,
     title,
@@ -96,29 +94,15 @@ export const modalMovieInfoMarkup = movie => {
     overview,
     genres,
     poster_path,
-  } = movie;
+  } = film;
 
   const genreList = genres.map(({ name }) => name).join(', ');
-  // const genreList = Array.isArray(genres) ? genres.map(({ name }) => name).join(', ') : '';
   let posterUrl = '';
 
   if (poster_path) {
     posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`;
   } else {
     const resolution = window.devicePixelRatio > 1 ? '@2x' : '@1x';
-
-  //   if (window.innerWidth < 768) {
-  //     posterUrl = new URL(`../images/oops_opt/oops_mob${resolution}.png`);
-  //   }
-
-  //   if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-  //     posterUrl = new URL(`../images/oops_opt/oops_tab${resolution}.png`);
-  //   }
-
-  //   if (window.innerWidth >= 1280) {
-  //     posterUrl = new URL(`../images/oops_opt/oops_des${resolution}.png`);
-  //   }
-  // }
     if (window.innerWidth < 768) {
       posterUrl = new URL(`./images/oops_opt/oops_mob${resolution}.png`);
     }
@@ -184,33 +168,27 @@ export const modalMovieInfoMarkup = movie => {
     `;
 }
 
-console.log(addButtonLibrary);
-
-function dermo () {
-
+function dermo() {
   if (addButtonLibrary) {
     const movieId = addButtonLibrary.dataset.movieId;
     const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
-    
 
-    const existingMovie = filmInStorage.find(movie => movie.id === movieId);
+    const existingMovie = filmInStorage.find(movie => movie.id === Number(movieId));
+    console.log(existingMovie);
     if (!existingMovie) {
       filmInStorage.push(film);
       localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
-      
+
       addButtonLibrary.textContent = "Remove from my library";
-    }
-  } else {
-    let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
-  
-    const index = filmInStorage.findIndex(movie => movie.id === movieId);
-    
-    if (index !== -1) {
-      filmInStorage.splice(index, 1); 
-      localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+    } else {
+      const index = filmInStorage.findIndex(movie => movie.id === Number(movieId));
+      if (index !== -1) {
+        filmInStorage.splice(index, 1);
+        localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+        addButtonLibrary.textContent = "Add to my library";
+      }
     }
   }
-
-};
+}
 
 

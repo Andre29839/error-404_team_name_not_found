@@ -22,8 +22,6 @@
   }
 }
 
-
-
 .hero-title {
   font-weight: 700;
   font-size: 32px;
@@ -103,9 +101,9 @@ CSS for Slider
 }
 
 .hero-descr {
+  width: 177px;
   height: 66px;
 
-  overflow-y: scroll;
   overflow: hidden;
   font-size: 14px;
   line-height: 1.17;
@@ -208,55 +206,50 @@ CSS for Slider
     }
   }
 
-    .hero-title {
+  .hero-title {
     font-size: 44px;
     line-height: 1.17;
 
     width: 332px;
   }
 
-    .hero-text {
+  .hero-text {
     display: none;
   }
 
-    .hero-text-magic {
+  .hero-text-magic {
     display: block;
 
     padding-bottom: 32px;
     width: 357px;
   }
 
-    .hero-section-slide {
+  .hero-section-slide {
     padding-top: 40px;
     padding-bottom: 80px;
     padding-left: 32px;
   }
 
-    .hero-title-slide {
+  .hero-title-slide {
     width: 445px;
     font-size: 44px;
     line-height: 1.17;
     font-weight: 700;
   }
 
-    .hero-descr {
-    width: 300px;
+  .hero-descr {
+    width: 295px;
   }
-  
-   .hero-descr {
-    width: 254px;
-  }
-  
-   .hero-btn-trailer {
-    font-size: 14px;
-    line-height: 1.42;
-  }
-  
-   .hero-btn-more {
+
+  .hero-btn-trailer {
     font-size: 14px;
     line-height: 1.42;
   }
 
+  .hero-btn-more {
+    font-size: 14px;
+    line-height: 1.42;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -287,7 +280,7 @@ CSS for Slider
     }
   }
 
-    .hero-title {
+  .hero-title {
     font-size: 64px;
     line-height: 1.17;
     margin-bottom: 16px;
@@ -295,7 +288,7 @@ CSS for Slider
     width: 464px;
   }
 
-    .hero-text-magic {
+  .hero-text-magic {
     display: block;
 
     font-size: 16px;
@@ -303,43 +296,61 @@ CSS for Slider
     width: 464px;
   }
 
-    .hero-section-slide {
+  .hero-section-slide {
     padding-top: 140px;
     padding-bottom: 240px;
     padding-left: 135px;
   }
-  
+
   .hero-title-slide {
     width: 670px;
     font-size: 64px;
     line-height: 1.17;
   }
-  
+
   .hero-descr {
     width: 367px;
   }
-  
+
   .hero-btn-trailer {
     font-size: 16px;
     line-height: 1.5;
   }
 
-    .hero-descr {
-    width: 367px;
-  }
-
-    .hero-btn-trailer {
+  .hero-btn-trailer {
     font-size: 16px;
     line-height: 1.5;
   }
 
-    .hero-btn-more {
+  .hero-btn-more {
     font-size: 16px;
     line-height: 1.5;
   }
-  
+}
+
+@media screen and (min-width: 1440px) {
   .hero-section-slide {
-    padding-top: 600px;
-    padding-bottom: 500px;
+    padding-top: 300px;
+    padding-bottom: 200px;
+  }
+
+  .hero-title-slide {
+    font-size: 85px;
+    line-height: 1.12;
+  }
+
+  .hero-descr {
+    width: 500px;
+    font-size: 19px;
+  }
+
+  .hero-btn-trailer {
+    font-size: 18px;
+    line-height: 1.17;
+  }
+
+  .hero-btn-more {
+    font-size: 18px;
+    line-height: 1.17;
   }
 }
