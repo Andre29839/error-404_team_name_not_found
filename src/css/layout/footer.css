@@ -21,6 +21,11 @@ body.light footer {
     padding: 0;
     margin-top: 0;
     padding-bottom: 28px;
+    width: 260px;
+    height: 40px;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .heart {
@@ -98,6 +103,7 @@ visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     position: absolute;
+    z-index: 999;
     width: 100%;
     max-width: 320px;
     height: 584px;
@@ -142,8 +148,7 @@ body.light .modal-ftr {
     padding: 0;
     cursor: pointer;
     background: transparent;
-    border: none;
-    
+    border: none;    
 }
 
 .mod-ftr-btn-icon{
@@ -204,6 +209,13 @@ body.light .mod-ftr-btn-icon {
    .footer-p {
     width: 250px;
 } 
+}
+}
 
+@media screen and (min-width: 768px) {
+    .students {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px 20px;
 }
 }
