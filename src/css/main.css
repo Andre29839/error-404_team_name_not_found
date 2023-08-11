@@ -12,4 +12,5 @@
 @import url('./utils/_mixins.css');
 @import url('./layout/container-library.css');
 @import url('./layout/stars.css');
-@import url('./layout/modal.css')
+@import url('./layout/modal.css');
+@import url('./layout/trailer.css');
