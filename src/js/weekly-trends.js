@@ -24,7 +24,7 @@ async function fetchTrendingMonthMovies() {
   const response = await fetch(url);
   const data = await response.json();
   const randomIndex = Math.floor(Math.random() * data.results.length);
-  // toStorage = data.results[randomIndex];
+  toStorage = data.results[randomIndex];
   return [data.results[randomIndex]];
 }
 

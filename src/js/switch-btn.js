@@ -26,7 +26,7 @@ else if (currentUrl.includes('catalog')) {
     navLink[1].children[1].classList.add("is-active")
 } else if (currentUrl.includes('library')) {
     navLink[0].children[0].classList.remove("is-active")
-    navLink[1].children[0].classList.remove("is-active")
+    // navLink[1].children[0].classList.remove("is-active")
     navLink[0].children[2].classList.add("is-active")
-    navLink[1].children[2].classList.add("is-active")
+    // navLink[1].children[2].classList.add("is-active")
 }
