@@ -6,6 +6,7 @@ const filterButton = document.querySelector(".filter-down-button");
 const listOfGenre = document.querySelector(".dropdown-list");
 const savedMovies = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
+
 let page = 1;
 const moviesPerPage = 9;
 
