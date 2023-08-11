@@ -1,9 +1,9 @@
-import "./additional-js/animation-scroll.js";
-import "./additional-js/mobile-menu.js";;
-import "./additional-js/catalog.js";
-import "./additional-js/modal-menu.js"
-import "./additional-js/hero_markup.js";
-import "./additional-js/hero_app.js";
-import "./additional-js/switch-btn.js"
-import "./additional-js/modal-footer.js"
+import "./animation-scroll.js";
+import "./mobile-menu.js";;
+import "./catalog.js";
+import "./modal-menu.js"
+import "./hero_markup.js";
+import "./hero_app.js";
+import "./switch-btn.js"
+import "./modal-footer.js"
 
