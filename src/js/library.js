@@ -15,6 +15,7 @@ function createMarkupToLibrary(array) {
 
     }) => 
         `<li class="movie-card">
+        <div class="gradient"></div>
     <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
 }" alt="${overview}" loading="lazy" />
     <div class="info">
