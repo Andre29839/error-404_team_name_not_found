@@ -21,7 +21,7 @@ function toggleModal() {
   refs.menuBackdrop.classList.toggle('visually-hidden');
   refs.menuContainer.classList.toggle('is-open');
   refs.body.classList.toggle('fixed');
-  if (refs, body.classList.contains('fixe')) {
+  if (refs, body.classList.contains('fixed')) {
     scrollPosition = window.scrollY;
   }
 }
