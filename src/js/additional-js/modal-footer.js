@@ -8,6 +8,7 @@
 
   refs.openModalBtn.addEventListener("click", toggleModal);
   refs.closeModalBtn.addEventListener("click", toggleModal);
+
   refs.backdrop.addEventListener("click", toggleModal);
 
   function closeFooterModal(evt) {
@@ -23,6 +24,10 @@
     let scrollTop = document.scrollingElement.scrollTop;
     refs.modal.style.top = "calc(" + scrollTop + "px + 50%)"; 
     refs.backdrop.style.top = "calc(" + scrollTop + "px)";
+    
+    document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
+  }
+})();
 
     document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
     
