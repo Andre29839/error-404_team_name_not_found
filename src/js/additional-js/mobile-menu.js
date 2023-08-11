@@ -25,3 +25,5 @@ function toggleModal() {
     scrollPosition = window.scrollY;
   }
 }
+  refs.body.classList.toggle('is-open');
+}
