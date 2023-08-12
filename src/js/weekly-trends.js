@@ -73,7 +73,7 @@ async function fetchTrendingMovies() {
 
   if (window.innerWidth >= 320 && window.innerWidth < 768) {
     numberOfImages = 1;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     numberOfImages = 3;
   }
 
