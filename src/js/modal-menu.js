@@ -1,4 +1,4 @@
-import { LIBRARY_KEY } from './helpers';
+import { LIBRARY_KEY,refs } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
@@ -72,15 +72,25 @@ export const moadlWind = document.addEventListener('DOMContentLoaded', () => {
       generalDiv.classList.add('visually-hidden')  ;
     }
   });
+
+
   const button = document.querySelector('.open-modal');
 
-  button.addEventListener('click', () => {
+ document.addEventListener('click', event => {
+  const openModalButton = event.target.closest('.open-modal');
+
+  if (openModalButton) {
+    const movieId = openModalButton.dataset.movieId;
+    const movie =`${refs.BASIC_URL}${refs.trending_week}?api_key=${refs.API_KEY}`;
+    
     modalContainer.classList.remove('visually-hidden');
-    modalContainer.innerHTML = modalMovieInfoMarkup(film);
-    addButtonLibrary = document.querySelector('.btn-add-library')
-    addButtonLibrary.addEventListener('click', dermo)
+    modalContainer.innerHTML = modalMovieInfoMarkup(movie);
+    addButtonLibrary = document.querySelector('.btn-add-library');
+    addButtonLibrary.addEventListener('click', dermo);
     modal.onShow();
-  });
+  }
+});
+
 });
 
 export function modalMovieInfoMarkup (film) {

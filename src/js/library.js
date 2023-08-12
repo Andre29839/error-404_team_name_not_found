@@ -31,7 +31,7 @@ function createMarkupToLibrary(array) {
 ,genre_ids,title,release_date,id,vote_average,overview
 
     }) => 
-        `<li class="movie-card">
+        `<li class="movie-card open-modal" >
         <div class="gradient"></div>
     <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
 }" alt="${overview}" loading="lazy" />
