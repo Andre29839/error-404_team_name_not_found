@@ -156,14 +156,11 @@ function addToLocal() {
 
     if (!existingMovie) {
       filmInStorage.push(filmData);
-      console.log(filmData);
       localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
 
       addButtonLibrary.textContent = "Remove from my library";
-      console.log("addToLocal");
     } else {
       const index = filmInStorage.findIndex(movie => movie.id === Number(movieId));
-      console.log("addToLocal123");
       if (index !== -1) {
         filmInStorage.splice(index, 1);
         localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
