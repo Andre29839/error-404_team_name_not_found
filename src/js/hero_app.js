@@ -1,7 +1,7 @@
 import { refs } from "./helpers";
 import { createMarkup} from "./hero_markup";
 import { onWatchTrailer } from './trailer';
-import { modalMovieInfoMarkup } from './modal-menu'
+// import { modalMovieInfoMarkup } from './modal-menu'
 
 
 
@@ -16,7 +16,7 @@ const refsHero = {
 
 
 document.addEventListener('click', onWatchTrailer);
-document.addEventListener('click', modalMovieInfoMarkup);
+// document.addEventListener('click', modalMovieInfoMarkup);
 
 
 async function getTrending(page = 1) {

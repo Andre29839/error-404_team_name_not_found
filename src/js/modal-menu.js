@@ -1,41 +1,10 @@
-import { LIBRARY_KEY,refs } from './helpers';
+import { LIBRARY_KEY, refs } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
 
-const film = {
-  adult: false,
-  backdrop_path: '/c6Splshb8lb2Q9OvUfhpqXl7uP0.jpg',
-  belongs_to_collection: null,
-  budget: 0,
-  genres: [
-    { id: 28, name: 'Action' },
-    { id: 53, name: 'Thriller' },
-  ],
-  homepage: 'https://www.openroadfilms.com/movies/kandahar',
-  id: 717930,
-  imdb_id: 'tt5761544',
-  original_language: 'en',
-  original_title: 'Kandahar',
-  overview:
-    'John Wick (Keanu Reeves) takes on his most lethal adversaries yet in the upcoming fourth instalment of the series. With the price on his head ever increasing,Reeves) takes on his most lethal adversaries yReeves) takes on his most lethal adversaries y John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. ',
-  popularity: 162.109,
-  poster_path: '/lCanGgsqF4xD2WA5NF8PWeT3IXd.jpg',
-  release_date: '2023-05-25',
-  revenue: 3000000,
-  runtime: 119,
-  status: 'Released',
-  tagline: 'The only thing more dangerous than the mission is the escape',
-  title: 'Kandahar',
-  video: false,
-  vote_average: 6.58,
-  vote_count: 318,
-};
-
-export const moadlWind = document.addEventListener('DOMContentLoaded', () => {
+export const modalWindow = document.addEventListener('DOMContentLoaded', async () => {
   const modalContainer = document.querySelector('.modal-container');
-
-  
 
   function onEscClose(event) {
     if (event.code !== 'Escape') {
@@ -67,33 +36,45 @@ export const moadlWind = document.addEventListener('DOMContentLoaded', () => {
       modal.close();
     }
   });
+
   document.body.addEventListener('click', event => {
-    if (!event.target.closest('.modal-container') && !button.contains(event.target)) {
-      generalDiv.classList.add('visually-hidden')  ;
+    if (!event.target.closest('.modal-container') && !event.target.closest('.open-modal')) {
+      generalDiv.classList.add('visually-hidden');
     }
   });
 
+  // const button = document.querySelector('.open-modal');
 
-  const button = document.querySelector('.open-modal');
-
- document.addEventListener('click', event => {
-  const openModalButton = event.target.closest('.open-modal');
-
-  if (openModalButton) {
-    const movieId = openModalButton.dataset.movieId;
-    const movie =`${refs.BASIC_URL}${refs.trending_week}?api_key=${refs.API_KEY}`;
+  document.addEventListener('click', async event => {
+    const openModalButton = event.target.closest('.open-modal');
     
-    modalContainer.classList.remove('visually-hidden');
-    modalContainer.innerHTML = modalMovieInfoMarkup(movie);
-    addButtonLibrary = document.querySelector('.btn-add-library');
-    addButtonLibrary.addEventListener('click', dermo);
-    modal.onShow();
-  }
+    if (openModalButton) {
+      const movieId = openModalButton.dataset.movieId;
+      const movieUrl = `${refs.BASIC_URL}/movie/${movieId}?api_key=${refs.API_KEY}`;
+      try {
+        const response = await fetch(movieUrl).then(res => res.json());
+
+        if (response) {
+          const filmData = response;
+
+          modalContainer.classList.remove('visually-hidden');
+          modalContainer.innerHTML = modalMovieInfoMarkup(filmData);
+          addButtonLibrary = document.querySelector('.btn-add-library');
+          addButtonLibrary.addEventListener('click', addToLocal);
+          modal.onShow();
+        } else {
+          console.error('Error fetching movie data:', response.statusText);
+          
+        }
+      } catch (error) {
+        console.error('Error fetching movie data:', error);
+        
+      }
+    }
+  });
 });
 
-});
-
-export function modalMovieInfoMarkup (film) {
+export function modalMovieInfoMarkup(filmData) {
   const {
     id,
     title,
@@ -104,9 +85,10 @@ export function modalMovieInfoMarkup (film) {
     overview,
     genres,
     poster_path,
-  } = film;
-
+  } = filmData;
+console.log(filmData);
   const genreList = genres.map(({ name }) => name).join(', ');
+
   let posterUrl = '';
 
   if (poster_path) {
@@ -128,65 +110,51 @@ export function modalMovieInfoMarkup (film) {
 
   return `
   <button class="modal__btn-close" type="button">
-            <svg width="14" height="14" class="modal__icon-moon">
-              <use href="./images/icons.svg#icon-cross"></use>
-            </svg> 
-          </button>
-      <div class="mod-con"> 
-            
-        <img class ="modal__image" src="${posterUrl}" alt="${
-    title || original_title
-  }" />
-  
-        <div class="modal__content">
-          <h2 class="modal__title">${title || original_title}</h2>
-          
-          <ul class="modal__list">
-            <li class="modal__item">
-              <div class="modal__desc">Vote / Votes</div>
-              <div class="modal__value">
-                <span class="tag">
-                  ${vote_average}
-                </span>
-                &nbsp;/&nbsp;
-                <span class="tag">
-                  ${vote_count}
-                </span>
-              </div>
-            </li>
-            <li class="modal__item">
-              <div class="modal__desc">Popularity</div>
-              <div class="modal__value">${popularity}</div>
-            </li>
-            <li class="modal__item">
-              <div class="modal__desc">Genre</div>
-              <div class="modal__value">${genreList}</div>
-            </li>
-          </ul>
-  
-          <div class="modal__about">
-            <h3 class="modal__subtitle">About</h3>
-            <p class="modal__text">${overview}</p>
+    <svg width="14" height="14" class="modal__icon-moon">
+      <use href="./images/icons.svg#icon-cross"></use>
+    </svg> 
+  </button>
+  <div class="mod-con"> 
+    <img class="modal__image" src="${posterUrl}" alt="${title || original_title}" />
+    <div class="modal__content">
+      <h2 class="modal__title">${title || original_title}</h2>
+      <ul class="modal__list">
+        <li class="modal__item">
+          <div class="modal__desc">Vote / Votes</div>
+          <div class="modal__value">
+            <span class="tag">${vote_average}</span>&nbsp;/&nbsp;<span class="tag">${vote_count}</span>
           </div>
-  
-          <button class="btn-add-library" type="button" data-movie-id="${id}">
-            Add to my library
-          </button>
-        
-        </div>
+        </li>
+        <li class="modal__item">
+          <div class="modal__desc">Popularity</div>
+          <div class="modal__value">${popularity}</div>
+        </li>
+        <li class="modal__item">
+          <div class="modal__desc">Genre</div>
+          <div class="modal__value">${genreList}</div>
+        </li>
+      </ul>
+      <div class="modal__about">
+        <h3 class="modal__subtitle">About</h3>
+        <p class="modal__text">${overview}</p>
       </div>
-    `;
+      <button class="btn-add-library" type="button" data-movie-id="${id}">
+        Add to my library
+      </button>
+    </div>
+  </div>
+  `;
 }
 
-function dermo() {
+function addToLocal() {
   if (addButtonLibrary) {
     const movieId = addButtonLibrary.dataset.movieId;
     const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
     const existingMovie = filmInStorage.find(movie => movie.id === Number(movieId));
-    console.log(existingMovie);
+
     if (!existingMovie) {
-      filmInStorage.push(film);
+      filmInStorage.push(filmData);
       localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
 
       addButtonLibrary.textContent = "Remove from my library";
@@ -200,5 +168,3 @@ function dermo() {
     }
   }
 }
-
-
