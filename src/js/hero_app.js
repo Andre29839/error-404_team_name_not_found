@@ -27,15 +27,6 @@ async function getTrending(page = 1) {
 }
 getTrending()
 
-// async function heroLiber() {
-//     if (window.location.href.includes('./my-library.html')) {
-//         refsHero.heroBtn.style.display = none;
-//       createMovie(null);
-//         return;
-//     }
-// }
-// heroLiber();
-
 async function createMovie() {
 try {
   const movieArr = await topDayFilm(1)
@@ -76,23 +67,3 @@ async function topDayFilm(movieNumber) {
         
     }
 }
-
-
-
-//*--------------------------             Визвати модальне вікно на деталі       ----------------------------------------------------*//
-
-// async function createMovie() {
-//     try {
-//         const movieArr = await topDayFilm(1);
-//         createMarkup(movieArr);
-//     } catch (error) {
-//         console.error("An error occurred:", error);
-//     }
-// }
-
-// function startInterval() {
-//     createMovie();
-//     setInterval(createMovie, 5000);
-// }
-
-// startInterval();
