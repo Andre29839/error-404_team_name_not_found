@@ -2,6 +2,7 @@ import { LIBRARY_KEY, refs } from './helpers';
 
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
+let filmData;
 
 export const modalWindow = document.addEventListener('DOMContentLoaded', async () => {
   const modalContainer = document.querySelector('.modal-container');
@@ -43,8 +44,6 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
     }
   });
 
-  // const button = document.querySelector('.open-modal');
-
   document.addEventListener('click', async event => {
     const openModalButton = event.target.closest('.open-modal');
     
@@ -55,7 +54,7 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
         const response = await fetch(movieUrl).then(res => res.json());
 
         if (response) {
-          const filmData = response;
+          filmData = response;
 
           modalContainer.classList.remove('visually-hidden');
           modalContainer.innerHTML = modalMovieInfoMarkup(filmData);
@@ -110,7 +109,7 @@ console.log(filmData);
 
   return `
   <button class="modal__btn-close" type="button">
-    <svg width="14" height="14" class="modal__icon-moon">
+    <svg width="11" height="11" class="modal__icon-moon">
       <use href="./images/icons.svg#icon-cross"></use>
     </svg> 
   </button>
@@ -147,7 +146,9 @@ console.log(filmData);
 }
 
 function addToLocal() {
+  
   if (addButtonLibrary) {
+    
     const movieId = addButtonLibrary.dataset.movieId;
     const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
@@ -155,11 +156,14 @@ function addToLocal() {
 
     if (!existingMovie) {
       filmInStorage.push(filmData);
+      console.log(filmData);
       localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
 
       addButtonLibrary.textContent = "Remove from my library";
+      console.log("addToLocal");
     } else {
       const index = filmInStorage.findIndex(movie => movie.id === Number(movieId));
+      console.log("addToLocal123");
       if (index !== -1) {
         filmInStorage.splice(index, 1);
         localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
