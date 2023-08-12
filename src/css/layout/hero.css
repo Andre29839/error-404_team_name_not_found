@@ -439,7 +439,7 @@ CSS for Library
         #111111 30.38%,
         rgba(17, 17, 17, 0) 65.61%
       ),
-      var(--total-black) url(../../images/lib/3lib_mob@2x.jpg) no-repeat center /
+      var(--total-black) url(../images/lib/3lib_mob@2x.jpg) no-repeat center /
         cover;
   }
 }
