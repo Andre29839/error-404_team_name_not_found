@@ -121,7 +121,6 @@ li {
   gap: 12px;
   margin-bottom: 12px;
   max-width: 230px;
-  margin-right: 60px;
 }
 
 .description-wrapper-right {
@@ -209,6 +208,7 @@ li {
 
 body.light .weekly-section, .month-section {
     background-color: var(--total-white);
+    
 }
 
 body.light .header-weekly, .month-title, .month-title-movie, .release-text, .vote-text, .popularity-text, .genre-text, .about-text {
@@ -263,6 +263,7 @@ body.light .vote-numbers, .votes-numbers, .descr-popularity-text, .descr-genre-t
     flex-wrap: wrap;
     justify-content: space-between;
     min-width: 200px;
+    margin-right: 60px;
   }
 
   .description-wrapper-right {
