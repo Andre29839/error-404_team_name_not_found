@@ -1,19 +1,25 @@
 import { refs,LIBRARY_KEY } from './helpers';
 
-const { BASIC_URL, API_KEY, trending_week, new_films } = refs;
+const { BASIC_URL, API_KEY, trending_week, new_films,movie_detailes } = refs;
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
-const MOVIE_ID = 'https://api.themoviedb.org/3/movie/';
 
 const refsMonth = {
   wrapper: document.querySelector('.month-wrapper'),
   addToLibraryBtn: document.querySelector('.add-to-library'),
   container: document.querySelector('.container-img-weekly'),
   removeLibraryBtn:document.querySelector('.remove-from-library'),
+  img: document.querySelector('.month-img')
 };
 
 refsMonth.addToLibraryBtn.addEventListener('click', onOpenLibraryBtn);
 window.addEventListener('resize', onResizeDisplay);
-refsMonth.removeLibraryBtn.addEventListener('click',onRemoveFromLibrary)
+refsMonth.removeLibraryBtn.addEventListener('click',onRemoveFromLibrary);
+
+// refsMonth.img.addEventListener('click', onClickModal);
+
+// function onClickModal(evt){
+
+// }
 
 let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
@@ -48,28 +54,41 @@ function onResizeDisplay() {
   }
 }
 
-async function getGenres(movieId){
-  const urlGenres = `${MOVIE_ID}${movieId}?api_key=${API_KEY}`
+export async function getGenres(movieId){
+  const urlGenres = `${BASIC_URL}${movie_detailes}${movieId}?api_key=${API_KEY}`
   const response = await fetch(urlGenres);
   const datas = await response.json();
   const genres = datas.genres.slice(0,2).map(({name}) => name).join(', ')
 return genres;
 }
 
+let shownMovieIds = []; 
+
 async function fetchTrendingMovies() {
   const url = `${BASIC_URL}${trending_week}?api_key=${API_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
 
-  if (window.innerWidth < 768) {
-    const randomIndex = Math.floor(Math.random() * data.results.length);
-    return [data.results[randomIndex]];
+  let numberOfImages = 3;
+
+  if (window.innerWidth >= 320 && window.innerWidth < 768) {
+    numberOfImages = 1;
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+    numberOfImages = 3;
   }
+
   const arrayFilms = [];
-  for (let i = 0; i < 3; i += 1) {
-    const randomIndex = Math.floor(Math.random() * data.results.length);
+  for (let i = 0; i < numberOfImages; i += 1) {
+    let randomIndex;
+    
+    do {
+      randomIndex = Math.floor(Math.random() * data.results.length);
+    } while (shownMovieIds.includes(data.results[randomIndex].id));
+
+    shownMovieIds.push(data.results[randomIndex].id);
     arrayFilms.push(data.results[randomIndex]);
   }
+
   return arrayFilms;
 }
 
@@ -100,6 +119,7 @@ export async function renderPageMarkup(array) {
         poster_path,
         release_date:date,
         overview,
+        vote_average,
       } = elem;
 const movieWeekGenre = await getGenres(id);
 const movieYear = await getYear(date);
@@ -109,12 +129,19 @@ markupWeekly += `<li data-id="${id}" class="container-img-list">
 <img src="${IMG_URL}${poster_path}" alt="${overview}" loading="lazy" class="img-weekly">
 <div class="img-wrapper">
 <h3 class="title-cinema">${title}</h3>
-<p class="genre-year-text">${movieWeekGenre} | ${movieYear}</p> 
+<p class="genre-year-text">${movieWeekGenre} | ${movieYear}</p>
+<div class="rating">
+    <div class="rating-body">
+      <div class="rating-active" style="width:${vote_average * 10}%"></div>
+    </div>
+  </div>
 </div> 
 </li>`
   }
 refsMonth.container.insertAdjacentHTML('beforeend', markupWeekly); 
 }
+
+
 
 async function renderMonthMarkup() {
   try {
