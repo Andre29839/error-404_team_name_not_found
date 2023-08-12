@@ -39,7 +39,7 @@ async function createMarkupToLibrary(array) {
     } = elem;
 const movieWeekGenre = await getGenres(id);
 const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-markupLibrary += `<li class="movie-card" data-movie-id="${id}">
+markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
          <div class="gradient"></div>
          <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
          }" alt="${overview}" loading="lazy" />
