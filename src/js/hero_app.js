@@ -1,7 +1,7 @@
 import { refs } from "./helpers";
 import { createMarkup} from "./hero_markup";
 import { onWatchTrailer } from './trailer';
-import { modalMovieInfoMarkup } from './modal-menu'
+// import { modalMovieInfoMarkup } from './modal-menu'
 
 
 
@@ -11,20 +11,12 @@ const refsHero = {
     heroSect: document.querySelector('.hero-section'),
     heroBtn: document.querySelector('.button-orange'),
     heroImg: document.querySelector('.hero-img'),
- backDropRef: document.querySelector('.hero-trailer-backdrop'),
-  trailerRef: document.querySelector('.trailer-container'),
-    trailerBtn: document.querySelector('.modal-trailer-btn'),
   moreDetails: document.querySelector('.hero-btn-more')
 };
 
 
 document.addEventListener('click', onWatchTrailer);
-
-
-
-// function onWatchDetails() {
-//      modalMovieInfoMarkup()
-// }
+// document.addEventListener('click', modalMovieInfoMarkup);
 
 
 async function getTrending(page = 1) {
@@ -46,11 +38,26 @@ async function heroLiber() {
 heroLiber();
 
 async function createMovie() {
-    const movieArr = await topDayFilm(1);
-    createMarkup(movieArr);
+try {
+  const movieArr = await topDayFilm(1)
+  const movieContainer = document.getElementById('hero-section')
+
+  if (movieContainer) {
+    movieContainer.classList.add('transition-fade')
+
+    setTimeout(() => {
+      movieContainer.classList.remove('transition-fade')
+      createMarkup(movieArr)
+    }, 0);
+  }
+} catch (error) {
+  console.error(error);
+}
 }
 
 createMovie();
+
+setInterval(createMovie, 6000);
 
 function createRandomMovie(arr, movieNumber) {
     let randomMovie = [];
@@ -71,37 +78,22 @@ async function topDayFilm(movieNumber) {
     }
 }
 
-document.addEventListener('click', onWatchTrailer);
-
-const ratings = document.querySelectorAll('.rating');
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-
-  ratings.forEach(function (rating) {
-
-const ratingActive = rating.querySelector('.rating-active');
-
-
-        const ratingValue = rating.querySelector('.rating-value');
-
-
-        const ratingNumber = parseInt(ratingValue.innerHTML);
-
-        
-
-ratingActive.style.width = `${ratingNumber * 10}%`;
-
-        for (let i = 0; i < ratingNumber; i++) {
-          ratingActive.children[i].classList.add('active');
-        }
-
-    
-    });
-});
-
 
 
 //*--------------------------             Визвати модальне вікно на деталі       ----------------------------------------------------*//
 
+// async function createMovie() {
+//     try {
+//         const movieArr = await topDayFilm(1);
+//         createMarkup(movieArr);
+//     } catch (error) {
+//         console.error("An error occurred:", error);
+//     }
+// }
+
+// function startInterval() {
+//     createMovie();
+//     setInterval(createMovie, 5000);
+// }
+
+// startInterval();
