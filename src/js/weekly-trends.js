@@ -96,7 +96,7 @@ async function fetchTrendingMovies() {
 
   if (window.innerWidth >= 320 && window.innerWidth < 768) {
     numberOfImages = 1;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     numberOfImages = 3;
   }
 
@@ -136,7 +136,6 @@ export async function renderPageMarkup(array) {
         vote_average,
       } = elem;
 const movieWeekGenre = await getGenres(id);
-
 
 markupWeekly += `<li data-id="${id}" class="container-img-list open-modal">
 <div class="gradient-wrap-img"></div>
