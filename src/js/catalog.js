@@ -5,6 +5,7 @@ const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
+const paginationDiv = document.querySelector('.tui-pagination');
 
 let totalResults;
 let input;
@@ -14,7 +15,8 @@ let userParams = {
   query: '',
   page: 1,
 }
-
+let resultsArr; 
+  
 searchForm.addEventListener('submit', onSubmitForm);
 
 async function fetchFilms() {
@@ -27,6 +29,15 @@ async function fetchFilms() {
   const moviesData = await response.json();
   return moviesData;
 }
+// if (dataText.trim() === []) {
+//    const oopsMarkup = `<p class="oops-text">OOPS...<br>
+//      We are very sorry!<br>
+//      You don’t have any movies at your library.</p>`
+//          gallery.innerHTML = oopsMarkup;
+//         paginationDiv.classList.add("visually-hidden");
+//     return;
+//   }
+//   paginationDiv.classList.remove("visually-hidden");
 
 function createDefaultMarkup(pictures) {
   const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -53,8 +64,24 @@ function onSubmitForm(e) {
   gallery.innerHTML = '';
 
   if (dataText.trim() === '') {
-    return alert('???');
+   const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     You don’t have any movies at your library.</p>`
+         gallery.innerHTML = oopsMarkup;
+        paginationDiv.classList.add("visually-hidden");
+    return;
   }
+  if (resultsArr === 0) {
+   const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     You don’t have any movies at your library.</p>`
+         gallery.innerHTML = oopsMarkup;
+        paginationDiv.classList.add("visually-hidden");
+    return;
+  }
+  paginationDiv.classList.remove("visually-hidden");
+  
+
   userParams.query = input;
   userParams.page = 1;
   appendMarkup();
@@ -72,12 +99,10 @@ async function updatePagination() {
     paginationInstance.on('afterMove', e => {
       const currentPage = e.page;
       userParams.page = currentPage;
-      // appendMarkup();
       loadMoviesForPage(currentPage);
-      updatePaginationMarkup(currentPage); // Оновити розмітку пагінації з номером поточної сторінки
+      updatePaginationMarkup(currentPage);
     });
 
-    // Оновити розмітку пагінації під час ініціалізації
     updatePaginationMarkup(currentPage);
 
   } catch (error) {
@@ -89,9 +114,9 @@ function updatePaginationMarkup(currentPage) {
   const paginationButtons = document.querySelectorAll('.tui-page-btn');
   paginationButtons.forEach(button => {
     if (button.textContent == currentPage) {
-      button.classList.add('tui-is-selected'); // Додати клас для виділення номера поточної сторінки
+      button.classList.add('tui-is-selected');
     } else {
-      button.classList.remove('tui-is-selected'); // Видалити клас для виділення з інших кнопок
+      button.classList.remove('tui-is-selected'); 
     }
   });
 }
@@ -152,7 +177,9 @@ let paginationInstance = new Pagination(pagContainer, options);
 async function appendMarkup() {
   try {
     const movies = await fetchFilms();
+
     const markupCreate = createDefaultMarkup(movies.results);
+    resultsArr = movies.total_results || 0;
     gallery.innerHTML = markupCreate;
 
     if (!userParams.query) {
