@@ -5,21 +5,15 @@ const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
 const refsMonth = {
   wrapper: document.querySelector('.month-wrapper'),
-  addToLibraryBtn: document.querySelector('.add-to-library'),
+  addToLibraryBtn: document.querySelector('button[data-action="save"]'),
   container: document.querySelector('.container-img-weekly'),
   removeLibraryBtn:document.querySelector('.remove-from-library'),
-  img: document.querySelector('.month-img')
+  cardModal: document.querySelector('.container-img-list'),
 };
 
 refsMonth.addToLibraryBtn.addEventListener('click', onOpenLibraryBtn);
 window.addEventListener('resize', onResizeDisplay);
 refsMonth.removeLibraryBtn.addEventListener('click',onRemoveFromLibrary);
-
-// refsMonth.img.addEventListener('click', onClickModal);
-
-// function onClickModal(evt){
-
-// }
 
 let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
@@ -29,24 +23,53 @@ async function fetchTrendingMonthMovies() {
   const url = `${BASIC_URL}${new_films}?api_key=${API_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
+
+  if (data.results.length === 0) {
+    const errorMarkup = `<p class="error-text">OOPS...<br>
+     We are very sorry!<br>
+     We can't find a movie for you to watch.</p>`;
+    refsMonth.wrapper.insertAdjacentHTML('afterbegin', errorMarkup);
+    return [];
+  }
+
   const randomIndex = Math.floor(Math.random() * data.results.length);
   toStorage = data.results[randomIndex];
-  return [data.results[randomIndex]];
+  return [toStorage];
 }
 
 function onOpenLibraryBtn() {
-  filmInStorage.push(toStorage);
-  localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
-  refsMonth.addToLibraryBtn.classList.add('visually-hidden')
-  refsMonth.removeLibraryBtn.classList.remove('visually-hidden')
+  const movieId = toStorage.id;
+
+  const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+  const existingMovieIndex = filmInStorage.findIndex(el => el.id === movieId);
+
+  if (existingMovieIndex) {
+    filmInStorage.push(toStorage);
+    localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+    refsMonth.addToLibraryBtn.classList.add('visually-hidden');
+    refsMonth.removeLibraryBtn.classList.remove('visually-hidden');
+  } else {
+    filmInStorage.splice(existingMovieIndex, 1);
+    localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+    refsMonth.addToLibraryBtn.classList.remove('visually-hidden');
+    refsMonth.removeLibraryBtn.classList.add('visually-hidden');
+  }
 }
 
-function onRemoveFromLibrary(){
-  refsMonth.addToLibraryBtn.classList.remove('visually-hidden')
-  refsMonth.removeLibraryBtn.classList.add('visually-hidden');
-  localStorage.removeItem(LIBRARY_KEY)
-}
+function onRemoveFromLibrary(evt) {
+  const movieIdToRemove = evt.currentTarget.dataset.action;
 
+  const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+
+
+  const movieIndexToRemove = filmInStorage.findIndex(elem => elem.id === Number(movieIdToRemove));
+
+  if (movieIndexToRemove) {
+    filmInStorage.splice(movieIndexToRemove, 1);
+    localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
+    updateLibraryButton(movieIdToRemove);
+  }
+}
 
 function onResizeDisplay() {
   if (window.innerWidth === 768) {
@@ -88,16 +111,7 @@ async function fetchTrendingMovies() {
     shownMovieIds.push(data.results[randomIndex].id);
     arrayFilms.push(data.results[randomIndex]);
   }
-
   return arrayFilms;
-}
-
-export async function getYear(data) {
-  if (!data) {
-    return 'There is no release date';
-  }
-  const year = await data.slice(0, 4);
-  return year;
 }
 
 export async function renderAndAppendMarkup() {
@@ -117,19 +131,19 @@ export async function renderPageMarkup(array) {
         title,
         id,
         poster_path,
-        release_date:date,
+        release_date,
         overview,
         vote_average,
       } = elem;
 const movieWeekGenre = await getGenres(id);
-const movieYear = await getYear(date);
 
-markupWeekly += `<li data-id="${id}" class="container-img-list">
+
+markupWeekly += `<li data-id="${id}" class="container-img-list open-modal">
 <div class="gradient-wrap-img"></div>
 <img src="${IMG_URL}${poster_path}" alt="${overview}" loading="lazy" class="img-weekly">
 <div class="img-wrapper">
 <h3 class="title-cinema">${title}</h3>
-<p class="genre-year-text">${movieWeekGenre} | ${movieYear}</p>
+<p class="genre-year-text">${movieWeekGenre} | ${release_date.slice(0, 4)}</p>
 <div class="rating">
     <div class="rating-body">
       <div class="rating-active" style="width:${vote_average * 10}%"></div>
@@ -138,23 +152,19 @@ markupWeekly += `<li data-id="${id}" class="container-img-list">
 </div> 
 </li>`
   }
-refsMonth.container.insertAdjacentHTML('beforeend', markupWeekly); 
+refsMonth.container.insertAdjacentHTML('beforeend', markupWeekly);
 }
-
-
 
 async function renderMonthMarkup() {
   try {
     const monthMovies = await fetchTrendingMonthMovies();
-   renderTrendingMonthMarkup(monthMovies);
-    // refsMonth.wrapper.insertAdjacentHTML('beforeend', monthMarkup);
+    renderTrendingMonthMarkup(monthMovies);
+    updateLibraryButton(monthMovies);
   } catch (error) {
     console.log('Error fetching or rendering movies:', error);
   }
 }
 renderMonthMarkup();
-
-// 
 
 async function renderTrendingMonthMarkup(array) {
   let markup = '';
@@ -193,8 +203,23 @@ async function renderTrendingMonthMarkup(array) {
       </div>
       <p class="about-text">ABOUT</p>
       <p class="description-text">${overview}</p>
-      </div>
-      `
+      </div>`;
+      updateLibraryButton(movie);
 }
 refsMonth.wrapper.insertAdjacentHTML('beforeend', markup);
-} 
+}
+
+function updateLibraryButton(movie) {
+  const movieId = typeof movie === 'number' ? movie : movie.id;
+  const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+
+  const existingMovieIndex = filmInStorage.findIndex(el => el.id === movieId);
+
+  if (existingMovieIndex === -1) {
+    refsMonth.addToLibraryBtn.classList.remove('visually-hidden');
+    refsMonth.removeLibraryBtn.classList.add('visually-hidden');
+  } else {
+    refsMonth.addToLibraryBtn.classList.add('visually-hidden');
+    refsMonth.removeLibraryBtn.classList.remove('visually-hidden');
+  }
+}
