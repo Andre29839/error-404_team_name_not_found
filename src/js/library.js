@@ -26,26 +26,6 @@ filterButton.addEventListener("click", function () {
 })
 
 
-function createMarkupToLibrary(array) {
-    const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-   const markup =  array.map(({poster_path
-,genre_ids,title,release_date,id,vote_average,overview
-
-    }) => 
-        `<li class="movie-card open-modal" data-movie-id="${id}">
-        <div class="gradient"></div>
-    <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
-}" alt="${overview}" loading="lazy" />
-    <div class="info">
-      <p class="movie-title">
-        ${title}
-      </p>
-      <p class="movie-description">
-        ${genre_ids} | ${release_date}
-      </p>
-      <p class="movie-rating">
-        ${vote_average}
-      </p>
 async function createMarkupToLibrary(array) {
   let markupLibrary ='';
   for (const elem of array) {
@@ -59,7 +39,7 @@ async function createMarkupToLibrary(array) {
     } = elem;
 const movieWeekGenre = await getGenres(id);
 const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-markupLibrary += `<li class="movie-card">
+markupLibrary += `<li class="movie-card" data-movie-id="${id}">
          <div class="gradient"></div>
          <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
          }" alt="${overview}" loading="lazy" />
@@ -94,7 +74,7 @@ async function renderFavoriteFilm() {
      } else {
        
       const libraryFilmMarkup = await createMarkupToLibrary(currentMovies);
-      //  myLibraryDiv.insertAdjacentHTML("beforeend", libraryFilmMarkup);
+
          buttonSearch.classList.add("visually-hidden");
          buttonLoadMore.classList.remove("visually-hidden"); 
        
@@ -116,7 +96,3 @@ function onClickBtnLoadMore() {
   page += 1;
   renderFavoriteFilm();
 }
-
-
-
-
