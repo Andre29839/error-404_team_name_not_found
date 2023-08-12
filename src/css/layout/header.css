@@ -82,6 +82,7 @@ margin-bottom: 40px;
   display: block;
   color: var(--ligth-grey); 
   transition: 1000ms;
+  text-transform: uppercase;
 }
 
 body.light header {
@@ -93,6 +94,28 @@ body.light header {
   transition: color 0.6s, transform 0.6s;
   transform: scale(1.1);
   color: var(--orange);
+}
+
+.scroll-to-top {
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  bottom: 65px;
+  right: 0px;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.go-up-btn {
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 3px;
+  right: 20px;
+  color: var(--total-white);
 }
 
 body.light .switcher__ball {
@@ -117,7 +140,25 @@ body.light .backdrop-menu {
   background-color: var(--total-black);
 }
 
+body.light .go-up-btn {
+  color: var(--grey);
+}
+
 @media screen and (min-width: 768px) {
+
+  .scroll-to-top {
+    right: 40px;
+    bottom: 80px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 48px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+  }
+
    .web-site-name {
     display: block;
     color: var(--total-white);
@@ -125,6 +166,7 @@ body.light .backdrop-menu {
     font-size: 24px;
     font-weight: 400;
     line-height: 1.16;
+    text-transform: capitalize;
   }
 
   body.light .web-site-name {
@@ -142,7 +184,7 @@ body.light .backdrop-menu {
     text-align: center;
     justify-content: center;
     gap: 32px;
-    margin: 0 169px 0 59px;
+    margin: 0 139px 0 59px;
     align-items: center;
     flex: none;
   }
@@ -150,7 +192,8 @@ body.light .backdrop-menu {
   .nav-list-menu {    
     color: var(--grey); 
     transition: 1000ms;
-     max-width: max-content;
+    max-width: max-content;
+    text-transform: uppercase;
   }
 
   .nav-list-menu:hover,
@@ -191,7 +234,17 @@ body.light .backdrop-menu {
 
 @media screen and (min-width: 1280px) {
 
-    .nav-list {
+  .scroll-to-top {
+    height: 200px;
+    width: 200px;
+  }
+
+  .go-up-btn {
+    bottom: 3px;
+    right: 48px;
+    font-size: 32px;
+  }
+  .nav-list {
     gap: 40px;
     margin: 0;
   }
@@ -220,4 +273,20 @@ body.light .backdrop-menu {
     height: 28px;
     transform: translateY(-6px) translateX(-44px) rotate(-180deg);
   }
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-image: url('../images/.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  cursor: pointer;
 }
