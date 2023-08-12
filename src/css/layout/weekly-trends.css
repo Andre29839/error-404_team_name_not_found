@@ -59,6 +59,9 @@ li {
 }
 
 .img-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap:10px;
   position: absolute;
   bottom: 12px;
   left: 12px;
@@ -221,7 +224,7 @@ li {
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
 
-body.light .header-weekly, .month-title {
+body.light .header-weekly, body.light .month-title {
   color: var(--total-black);
 }
 
@@ -229,21 +232,30 @@ body.light .weekly-section{
     background-color: var(--total-white);   
 }
 
-body.light .header-weekly, .month-title, .month-title-movie, .release-text, .vote-text, .popularity-text, .genre-text, .about-text {
+body.light .header-weekly, body.light .month-title, body.light .month-title-movie, body.light .release-text, body.light .vote-text, body.light .popularity-text, body.light .genre-text, body.light .about-text, body.light .descr-vote-text {
     color: var(--total-black);
 }
 
-body.light .vote-numbers, .votes-numbers, .descr-popularity-text, .descr-genre-text, .description-text{
+body.light .vote-numbers, body.light .votes-numbers, body.light .descr-popularity-text, body.light .descr-genre-text, body.light .description-text{
     color: var(--ligth-black);
 }
 
-body.light .vote-numbers, .votes-numbers{
+body.light .vote-numbers, body.light .votes-numbers{
   background-color: var(--light-white);
 }
 
-body.light .weekly-section, .month-section {
+body.light .weekly-section, body.light .month-section {
   transition: all 0.5s ease-in; 
 }
+
+.container-img-list {
+  transform: scale(1);
+  transition: transfom 250ms linear;
+}
+.container-img-list:hover{
+  transform: scale(1.02);
+}
+
 
 @media only screen and (min-width: 768px) {
   .header-weekly {
