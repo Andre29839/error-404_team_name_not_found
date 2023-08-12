@@ -150,7 +150,7 @@ body.light .students {
     border: 1px solid var(--grey);
 }
 .students::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
 }
 
 .student {

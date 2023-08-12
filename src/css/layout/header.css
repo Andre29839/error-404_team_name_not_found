@@ -84,6 +84,10 @@ margin-bottom: 40px;
   transition: 1000ms;
 }
 
+body.light header {
+  transition: all 0.5s ease-in;
+}
+
 .nav-menu:hover, body.light .nav-menu:hover,
 .nav-menu:focus, body.light .nav-menu:focus {
   transition: color 0.6s, transform 0.6s;
