@@ -88,3 +88,62 @@
     height: 600px;
   }
 }
+
+/*---------------        
+CSS for Ooops Modal    
+---------------------*/
+
+.ooops-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ooops-modal-container {
+  position: relative;
+  width: 280px;
+
+  background-color: var(--total-black);
+  border-radius: 16px;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+}
+
+.ooops-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.17;
+  margin: 0 auto;
+  padding-top: 39px;
+  padding-left: 33px;
+  padding-right: 33px;
+  padding-bottom: 24px;
+}
+
+.ooops-img {
+  margin: 0 auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.ooops-svg {
+  stroke: var(--total-white);
+}
+
+.ooops-svg:hover {
+  stroke: var(--orange);
+}
+@media screen and (min-width: 768px) {
+  .ooops-modal-container {
+    width: 609px;
+  }
+}

@@ -2,8 +2,11 @@ import { Notify } from 'notiflix';
 import { refs } from './helpers'
 
 const trailerRefs = {
-  backDropRef: document.querySelector('.trailer-backdrop'), // Replace with your actual selector
-  trailerRef: document.querySelector('.trailer-container') // Replace with your actual selector
+  backDropRef: document.querySelector('.trailer-backdrop'), 
+  trailerRef: document.querySelector('.trailer-container'),
+  ooopsDropRef: document.querySelector('.ooops-modal-backdrop'),
+  ooopsRef: document.querySelector('.oops-container'),
+  closeOoopsButton: document.querySelector('.close-button')
 };
 
 const { BASIC_URL, API_KEY } = refs
@@ -13,16 +16,15 @@ async function getFilmTrailer(someId) {
   const url = `${BASIC_URL}/movie/${someId}/videos?api_key=${API_KEY}&language=en-US`;
   
   try {
-    const result = await fetch(url);
+    const result = await feth(url);
 
     if (!result.ok) {
       throw new Error(`Request failed with status: ${result.status}`);
     }
 
     const data = await result.json();
-    return data.results[0]?.key || null; // Assuming you want the first video's key
+    return data.results[0]?.key || null; 
   } catch (error) {
-    Notify.warning('Error fetching movie:', error);
     return null;
   }
 };
@@ -61,9 +63,39 @@ async function getTrailerByFilmId(id) {
   if (trailerKey) {
     renderTrailer(trailerKey);
   } else {
-    Notify.warning('No trailers found for this movie.');
+    openModal();
   }
 }
+
+function openModal() {
+   document.body.classList.add('is-scroll-block');
+  trailerRefs.ooopsDropRef.classList.remove('visually-hidden');
+  trailerRefs.closeOoopsButton.addEventListener('click', closeModal);
+  trailerRefs.ooopsDropRef.addEventListener('click', listenBackdropModal);
+  document.body.addEventListener('keydown', listenKeyDawnModal);
+}
+
+function closeModal() {
+  document.body.classList.remove('is-scroll-block');
+  trailerRefs.ooopsDropRef.classList.add('visually-hidden');
+  trailerRefs.closeOoopsButton.removeEventListener('click', closeModal);
+  trailerRefs.trailerRef.innerHTML = '';
+  document.body.removeEventListener('keydown', listenKeyDawnModal);
+  trailerRefs.ooopsDropRef.removeEventListener('click', listenBackdropModal);
+}
+
+function listenBackdropModal(evt) {
+  if (evt.target.classList.contains('ooops-modal-backdrop')) {
+    closeModal();
+  }
+}
+
+function listenKeyDawnModal(evt) {
+  if (evt.key === 'Escape') {
+    closeModal();
+  }
+}
+
 
 function onWatchTrailer(evt) {
   if (evt.target.classList.contains('hero-btn-trailer')) {

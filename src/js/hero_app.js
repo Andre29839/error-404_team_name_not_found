@@ -10,7 +10,7 @@ const { BASIC_URL, API_KEY } = refs
 const refsHero = {
     heroSect: document.querySelector('.hero-section'),
     heroBtn: document.querySelector('.button-orange'),
-    heroImg: document.querySelector('.hero-img'),
+    heroImg: document.querySelector('.hero-section-slide'),
   moreDetails: document.querySelector('.hero-btn-more')
 };
 
@@ -27,15 +27,14 @@ async function getTrending(page = 1) {
 }
 getTrending()
 
-async function heroLiber() {
-    if (window.location.href.includes('../partials/my-library.html')) {
-        refsHero.heroBtn.style.display = none;
-        refsHero.heroImg.classList.remove('hero-img')
-        refsHero.heroImg.classList.add('background-library');
-        return;
-    }
-}
-heroLiber();
+// async function heroLiber() {
+//     if (window.location.href.includes('./my-library.html')) {
+//         refsHero.heroBtn.style.display = none;
+//       createMovie(null);
+//         return;
+//     }
+// }
+// heroLiber();
 
 async function createMovie() {
 try {
@@ -48,7 +47,7 @@ try {
     setTimeout(() => {
       movieContainer.classList.remove('transition-fade')
       createMarkup(movieArr)
-    }, 0);
+    }, 900);
   }
 } catch (error) {
   console.error(error);
@@ -57,7 +56,7 @@ try {
 
 createMovie();
 
-setInterval(createMovie, 6000);
+setInterval(createMovie, 8000);
 
 function createRandomMovie(arr, movieNumber) {
     let randomMovie = [];
