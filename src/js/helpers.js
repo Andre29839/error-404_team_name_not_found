@@ -13,7 +13,7 @@ export const refs = {
 export const LIBRARY_KEY = 'favorite-film';
 
 export async function getGenres(movieId){
-    const urlGenres = `${BASIC_URL}${movie_detailes}${movieId}?api_key=${API_KEY}`
+    const urlGenres = `${refs.BASIC_URL}${refs.movie_detailes}${movieId}?api_key=${refs.API_KEY}`
     const response = await fetch(urlGenres);
     const datas = await response.json();
     const genres = datas.genres.slice(0,2).map(({name}) => name).join(', ')
