@@ -124,7 +124,7 @@ export async function renderPageMarkup(array) {
 const movieWeekGenre = await getGenres(id);
 const movieYear = await getYear(date);
 
-markupWeekly += `<li data-id="${id}" class="container-img-list">
+markupWeekly += `<li data-movie-id="${id}" class="container-img-list">
 <div class="gradient-wrap-img"></div>
 <img src="${IMG_URL}${poster_path}" alt="${overview}" loading="lazy" class="img-weekly">
 <div class="img-wrapper">
