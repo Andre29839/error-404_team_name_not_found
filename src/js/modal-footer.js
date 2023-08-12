@@ -20,11 +20,13 @@
   }
     
   function toggleModal() {
-    refs.modal.classList.toggle("visually-hidden");
-    refs.backdrop.classList.toggle("visually-hidden");
     let scrollTop = document.scrollingElement.scrollTop;
     refs.modal.style.top = "calc(" + scrollTop + "px + 50%)"; 
     refs.backdrop.style.top = "calc(" + scrollTop + "px)";
+
+    refs.modal.classList.toggle("visually-hidden");
+    refs.backdrop.classList.toggle("visually-hidden");
+    
         if (refs.backdrop.classList.contains("visually-hidden")) {
       document.removeEventListener("keydown", closeFooterModal)
     } else {
