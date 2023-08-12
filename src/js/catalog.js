@@ -2,11 +2,12 @@ import Pagination from 'tui-pagination';
 import { refs } from "./helpers";
 import { modalMovieInfoMarkup } from "./modal-menu";
 
-const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
+const { API_KEY, BASIC_URL, search_films, trending_week, new_films, } = refs;
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
  
+let totalResults;
 let input;
 let userParams = {
   primary_release_year: '',
@@ -20,9 +21,11 @@ searchForm.addEventListener('submit', onSubmitForm);
 
 async function fetchFilms() { 
     const response = await fetch(`${BASIC_URL}${new_films}?api_key=${API_KEY}`)
-  const moviesData = await response.json(); 
+  const moviesData = await response.json();
+  totalResults = moviesData.total_results;
+console.log(totalResults);
   console.log(moviesData);
-  return moviesData.results;
+  return moviesData;
 }
 
 function createDefaultMarkup(pictures) {
@@ -67,7 +70,7 @@ async function appendMarkup() {
 
     const movies = await fetchFilms();
     const markupCreate = createDefaultMarkup(movies);
-    gallery.insertAdjacentHTML('beforeend', markupCreate);
+    gallery.innerHTML = markupCreate;
 
     const movieCards = document.querySelectorAll('.movie-card');
 
@@ -124,13 +127,14 @@ async function getFilmsOnSearch() {
     region: '',
     year: userParams.year,
   })
+  console.log(params.query);
   try {
     const response = await fetch(`${BASIC_URL}${new_films}?${params}`);
     const searchData = await response.json();
     const searchResults = searchData.results;
 
     const markupSearchResults = createDefaultMarkup(searchResults);
-    gallery.insertAdjacentHTML('beforeend', markupSearchResults)
+    gallery.innerHTML = markupSearchResults;
   } catch (error) {
     console.log(error);
   }
@@ -139,7 +143,8 @@ async function getFilmsOnSearch() {
 
 // ПАГІНАЦІЯ
 const pagContainer = document.getElementById('pagination');
-const totalMovie = 100;
+const totalMovie = totalResults;
+console.log(totalMovie);
 const itemsPerPage = 20;
 const visiblePage = 4;
 
