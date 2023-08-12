@@ -1,5 +1,5 @@
 
-function createSlideMarkup(
+  function createSlideMarkup(
   backdrop_path,
   title,
   overview,
@@ -19,9 +19,8 @@ var(--total-black) url('https://image.tmdb.org/t/p/original${backdrop_path}') no
   </div>
   <div class="rating">
     <div class="rating-body">
-      <div class="rating-active"></div>
+      <div class="rating-active" style="width:${vote_average * 10}%"></div>
     </div>
-    <div class="rating-value">${vote_average / 2}</div>
   </div>
   <p class="hero-descr">${overview}</p>
   <div class="hero-btn-wrap" data-id="${id}">
