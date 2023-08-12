@@ -36,6 +36,3 @@
     document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
   }
 })();
-
-    
-
