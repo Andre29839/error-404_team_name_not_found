@@ -17,6 +17,7 @@
   "dependencies": {
     "@lemonadejs/rating": "^1.0.1",
     "aos": "^2.3.4",
+    "lazysizes": "^5.3.2",
     "modern-normalize": "^2.0.0",
     "notiflix": "^3.2.6",
     "pagination": "^0.4.6",

@@ -5,80 +5,21 @@
 </div>
 <div class="ooops-modal-backdrop visually-hidden">
   <div class="ooops-modal-container">
-    <p class="ooops-text">
-      OOPS...</br> We are very sorry!</br> But we couldn’t find the trailer.
-    </p>
-  <picture>
-                    <source
-                      srcset="
-                        ./images/oops_opt/oops_des@1x.webp 1x,
-                        ./images/oops_opt/oops_des@2x.webp  2x
-                      "
-                      type="image/webp"
-                      width="363"
-                      height="318"
-                      media="(min-width: 1280px)"
-                    />
-                    <source
-                      srcset="
-                        ./images/oops_opt/oops_des@1x.png 1x,
-                        ./images/oops_opt/oops_des@2x.png 2x
-                      "
-                      type="image/jpg"
-                       width="363"
-                      height="318"
-                      media="(min-width: 1280px)"
-                    />
-                    <source
-                      srcset="
-                        ./images/oops_opt/oops_tab@1x.webp 1x,
-                        ./images/oops_opt/oops_tab@2x.webp 2x
-                      "
-                      type="image/webp"
-                      width="296"
-                      height="260"
-                      media="(min-width: 768px)"
-                    />
-                    <source
-                      srcset="
-                        ./images/oops_opt/oops_tab@1x.png 1x,
-                        ./images/oops_opt/oops_tab@2x.png 2x
-                      "
-                      type="image/jpg"
-                      width="296"
-                      height="260"
-                      media="(min-width: 768px)"
-                    />
-                    <source class="ooops-img-mob"
-                      srcset="
-                        ./images/oops_opt/oops_mob@1x.webp 1x,
-                        ./images/oops_opt/oops_mob@2x.webp 2x
-                      "
-                      type="image/webp"
-                      width="159"
-                       height="153"
-                      media="(max-width: 767.9px)"
-                    />
-                    <source class="ooops-img-mob"
-                      srcset="
-                        ./images/oops_opt/oops_mob@1x.png 1x,
-                        ./images/oops_opt/oops_mob@2x.png 2x
-                      "
-                      type="image/jpg"
-                      width="159"
-                       height="153"
-                      media="(max-width: 767.9px)"
-                    />
-                    <img
-                      src="./images/oops_opt/oops_des@1x.png"
-                      alt="Popcorn"
-                      loading="lazy"
-                    />
-                  </picture>
-    <span class="close-button">
+    <div class="ooops-wraper">
+      <p class="ooops-text">
+        OOPS...</br> We are very sorry!</br> But we couldn’t find the trailer.
+      </p>
+      <img
+      alt="Popcorn"
+     srcset="
+    ./images/oops_opt/oops_tab@1x.png 1x,
+    ./images/oops_opt/oops_tab@2x.png 2x"
+      class="lazyload btn-oops" />
+    <span class="close-button-oops">
       <svg class="ooops-svg" width="11" height="11">
         <use href="./images/icons.svg#icon-cross"></use>
       </svg>
     </span>
+    </div>
   </div>
 </div>

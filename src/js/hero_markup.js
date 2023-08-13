@@ -8,7 +8,7 @@
   name
 ) {
   return `
-  <section class="hero-section-slide" id="hero-section" style="background: linear-gradient(
+  <section class="hero-section-slide animate" id="hero-section" style="background: linear-gradient(
   86.77deg,
   var(--total-black) 30.38%,
   rgba(17, 17, 17, 0) 65.61%

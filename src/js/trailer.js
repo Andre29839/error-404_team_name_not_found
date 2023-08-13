@@ -1,12 +1,13 @@
 import { Notify } from 'notiflix';
 import { refs } from './helpers'
+import 'lazysizes';
 
 const trailerRefs = {
   backDropRef: document.querySelector('.trailer-backdrop'), 
   trailerRef: document.querySelector('.trailer-container'),
   ooopsDropRef: document.querySelector('.ooops-modal-backdrop'),
   ooopsRef: document.querySelector('.oops-container'),
-  closeOoopsButton: document.querySelector('.close-button')
+  closeOoopsButton: document.querySelector('.close-button-oops')
 };
 
 const { BASIC_URL, API_KEY } = refs
@@ -16,7 +17,7 @@ async function getFilmTrailer(someId) {
   const url = `${BASIC_URL}/movie/${someId}/videos?api_key=${API_KEY}&language=en-US`;
   
   try {
-     const result = await fetch(url);
+     const result = await fetc(url);
 
     if (!result.ok) {
       throw new Error(`Request failed with status: ${result.status}`);
