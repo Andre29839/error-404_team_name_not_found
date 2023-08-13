@@ -184,18 +184,18 @@ async function renderTrendingMonthMarkup(array) {
       <div class = "wrapper-month">
       <h4 class="month-title-movie">${title}</h4>
       <div class="wrapper-month-section">
-      <div class="description-wrapper-left">      
+      <ul class="trends-wrapper"> 
       <p class="release-text">Release date</p>
-      <p class="descr-release-text">${release_date}</p>
       <p class="vote-text">Vote / Votes</p>
-      <p class="descr-vote-text"><span class="vote-numbers">${vote_average}</span> / <span class="votes-numbers">${vote_count}</span></p>
-      </div>
-      <div class="description-wrapper-right">
       <p class="popularity-text">Popularity</p>
-      <p class="descr-popularity-text">${popularity.toFixed(1)}</p>
       <p class="genre-text">Genre</p>
+      </ul>  
+      <ul class="trends-wrapper-second"> 
+      <p class="descr-release-text">${release_date}</p>
+      <p class="descr-vote-text"><span class="vote-numbers">${vote_average}</span> / <span class="votes-numbers">${vote_count}</span></p>
+      <p class="descr-popularity-text">${popularity.toFixed(1)}</p>
       <p class="descr-genre-text">${movieGenre}</p>
-      </div>
+      </ul>  
       </div>
       <p class="about-text">ABOUT</p>
       <p class="description-text">${overview}</p>

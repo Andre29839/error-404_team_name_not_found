@@ -123,9 +123,10 @@ export function modalMovieInfoMarkup(filmData) {
 
   return `
   <button class="modal__btn-close" type="button">
-    <svg width="11" height="11" class="modal__icon-moon">
-      <use href="./images/icons.svg#icon-cross"></use>
-    </svg> 
+      <svg class="modal__icon-moon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 4.5L4.5 13.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.5 4.5L13.5 13.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
   </button>
   <div class="mod-con"> 
     <img class="modal__image" src="${posterUrl}" alt="${title || original_title}" />

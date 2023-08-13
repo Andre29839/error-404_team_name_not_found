@@ -221,3 +221,7 @@ body.light .ooops-text {
 body.light .ooops-modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+body.light .ooops-svg {
+  stroke: var(--total-black);
+}
