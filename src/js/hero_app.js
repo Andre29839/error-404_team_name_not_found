@@ -1,5 +1,5 @@
 import { refs } from "./helpers";
-import { createMarkup} from "./hero_markup";
+import { createMarkup } from "./hero_markup";
 import { onWatchTrailer } from './trailer';
 
 
@@ -10,12 +10,10 @@ const refsHero = {
     heroSect: document.querySelector('.hero-section'),
     heroBtn: document.querySelector('.button-orange'),
     heroImg: document.querySelector('.hero-section-slide'),
-  moreDetails: document.querySelector('.hero-btn-more')
 };
 
 
 document.addEventListener('click', onWatchTrailer);
-
 
 async function getTrending(page = 1) {
   const url = `${BASIC_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
@@ -45,7 +43,7 @@ try {
 
 createMovie();
 
-setInterval(createMovie, 8000);
+setInterval(createMovie, 10000);
 
 function createRandomMovie(arr, movieNumber) {
     let randomMovie = [];
