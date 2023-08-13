@@ -187,6 +187,13 @@ body.light .genre-select, .filter-option{
     border: 1px solid var(--grey);
 } 
 
+body.light .filter-down-button,.genre-item{
+    color: var(--total-black);
+    background-color: var(--total-white);
+    border-radius: 8px;
+    border: 1px solid var(--grey-white-theme, #595959);
+}
+
 @media screen and (min-width:768px){
     .info{
       gap: 0px;
@@ -296,4 +303,14 @@ body.light .genre-select, .filter-option{
        column-gap: 16px;
        padding: 48px 0 40px 0;
     }
+
+    .filter-down-button, .genre-item{
+        width:260px;
+        height: 44px;
+        font-size: 16px;
+        line-height: 1.18;
+    }
+
 } 
+
+
