@@ -274,7 +274,7 @@ body.light .weekly-section, body.light .month-section {
   }
 
   .container-img-weekly {
-    gap: 16px;
+    gap: 5px;
     display: flex;
     flex-wrap: nowrap;
   }
@@ -335,6 +335,12 @@ body.light .weekly-section, body.light .month-section {
   }
   .stars-descr{
     font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .container-img-weekly{
+    gap:16px;
   }
 }
 
