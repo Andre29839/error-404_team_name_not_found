@@ -11,27 +11,33 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
   function onEscClose(event) {
     if (event.code !== 'Escape') {
       return;
+      
     }
     modal.close();
-    document.body.classList.remove('is-scroll-block')
     overflow.classList.remove('visually-hidden')
+    document.body.classList.remove('is-scroll-block')
+    overflow.classList.add('visually-hidden')
   }
 
   const modal = {
     onShow: () => {
       document.addEventListener('keydown', onEscClose);
+      
       document.body.classList.add('is-scroll-block')
       overflow.classList.remove('visually-hidden')
     },
     onClose: () => {
       document.removeEventListener('keydown', onEscClose);
+      
       modalContainer.classList.add('visually-hidden');
-      document.body.classList.remove('is-scroll-block')
+      
+      document.body.classList.remove('is-scroll-block');
+      
     },
     close: () => {
       modal.onClose();
+      overflow.classList.add('visually-hidden')
       document.body.classList.remove('is-scroll-block')
-      overflow.classList.remove('visually-hidden')
     },
   };
   
@@ -39,10 +45,9 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
     const closeButton = event.target.closest('.modal__btn-close');
     if (closeButton) {
       modal.close();
-      overflow.classList.remove('visually-hidden')
     } else if (!event.target.closest('.modal__content')) {
       modal.close();  
-      overflow.classList.remove('visually-hidden')
+      overflow.classList.add('visually-hidden')
     }
   });
 
@@ -61,10 +66,8 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
       const movieUrl = `${refs.BASIC_URL}/movie/${movieId}?api_key=${refs.API_KEY}`;         
       try {
         const response = await fetch(movieUrl).then(res => res.json());
-        
         if (response) {
           filmData = response;
-          
           modalContainer.classList.remove('visually-hidden'); 
           overflow.classList.remove('visually-hidden')
           modalContainer.innerHTML = modalMovieInfoMarkup(filmData);
@@ -123,9 +126,10 @@ export function modalMovieInfoMarkup(filmData) {
 
   return `
   <button class="modal__btn-close" type="button">
-    <svg width="11" height="11" class="modal__icon-moon">
-      <use href="./images/icons.svg#icon-cross"></use>
-    </svg> 
+  <svg class="modal-svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg%22%3E
+  <path d="M13.5 4.5L4.5 13.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.5 4.5L13.5 13.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
   </button>
   <div class="mod-con"> 
     <img class="modal__image" src="${posterUrl}" alt="${title || original_title}" />
@@ -181,9 +185,12 @@ function addToLocal() {
       localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
 
       addButtonLibrary.textContent = "Remove from my library";
+      
     } else {
       const index = filmInStorage.findIndex(movie => movie.id === Number(movieId));
+      
       if (index !== -1) {
+        window.location.reload();
         filmInStorage.splice(index, 1);
         localStorage.setItem(LIBRARY_KEY, JSON.stringify(filmInStorage));
         addButtonLibrary.textContent = "Add to my library";
