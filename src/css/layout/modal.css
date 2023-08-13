@@ -19,8 +19,9 @@ body.light .modal__icon-moon {
 
 .modal-container {
   width: 280px;
+  height: 847px;
   background-color: var(--total-black);
-  padding: 52px 16px 52px 16px;
+  padding: 52px 16px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -44,7 +45,7 @@ body.light .modal-container {
 .modal__title {
   color: var(--total-white);
 
-  padding-bottom: 20px;
+  padding-bottom: 29px;
   font-size: 20px;
   font-weight: 500;
   line-height: 1,5;
@@ -66,7 +67,7 @@ body.light .modal__title {
 
   font-size: 14px;
   font-weight: 500;
-/*   line-height: 16px; */
+  line-height: 1.1;
 }
 
 body.light .modal__desc {
@@ -77,7 +78,7 @@ body.light .modal__desc {
   color: var(--ligth-white);
   font-size: 14px;
   font-weight: 500;
-/*   line-height: 16px; */
+  line-height: 1.1;
 }
 
 body.light .modal__value {
@@ -100,7 +101,7 @@ body.light .modal__value {
   padding-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
-/*   line-height: normal; */
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -112,7 +113,8 @@ body.light .modal__subtitle {
   color: var(--ligth-white);
   font-size: 12px;
   font-weight: 400;
-/*   line-height: 20px; */
+  line-height: 1.7;
+  width: 248px;
 
   overflow-y: auto;
 }
@@ -178,12 +180,14 @@ body.light .btn-add-library:focus {
   
   .modal__btn-close {
     position: absolute;
+    top: 24px;
+    right: 24px;
   }
   
   .modal-container {
     width: 704px;
-    max-height: 488px;
-    padding: 24px 60px 44px 44px;
+    height: 488px;
+    padding: 44px 49px 44px 44px;
   }
 
     .mod-con {
@@ -194,6 +198,7 @@ body.light .btn-add-library:focus {
     width: 294px;
     max-height: 400px;
     padding-right: 16px;
+    border-radius: 5px;
     padding-bottom: 0;
   }
 
@@ -203,13 +208,26 @@ body.light .btn-add-library:focus {
   }
 
     .modal__desc {
-  font-size: 14px;
-  line-height: normal;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+    .tag {
+    font-size: 14px;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
     .modal__subtitle {
-    font-size: 16px;
+    font-size: 14px;
     padding-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .modal__text {
+    width: 301px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
   }
 }
 
@@ -219,17 +237,26 @@ body.light .btn-add-library:focus {
   
   .modal-container {
     width: 846px;
-    /* height: 598px; */
-    padding: 40px 40px 60px 60px;
+    height: 598px;
+    padding: 60px;
   }
 
     .modal__image {
     width: 375px;
-    height: 478;
+    height: 478px;
     padding: 0 32px;
   }
 
     .modal__desc {
     font-size: 16px;
+  }
+  .modal__subtitle {
+    font-size: 16px;
+    padding-bottom: 16px;
+  }
+  .modal__text {
+    width: 331px;
+    height: 159px;
+    flex-shrink: 0;
   }
 }
