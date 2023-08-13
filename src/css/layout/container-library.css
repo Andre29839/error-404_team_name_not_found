@@ -245,8 +245,7 @@ body.light .filter-down-button, body.light .genre-item{
 
     .my-library, .gallery{
  
-       row-gap:28px;
-       column-gap: 16px;
+       gap: 28px 16px;
        padding: 36px 0 40px 0;
     }
 
@@ -311,8 +310,7 @@ body.light .filter-down-button, body.light .genre-item{
     }
 
     .my-library, .gallery{
-       row-gap:24px;
-       column-gap: 6px;
+       gap: 32px 16px;
        padding: 48px 0 40px 0;
        width: 1216px;
     }
@@ -325,11 +323,3 @@ body.light .filter-down-button, body.light .genre-item{
     }
 
 } 
-
-@media screen and (min-width:1300px) {
-
-    .my-library, .gallery{
-      gap: 16px;
-    }
-
-}

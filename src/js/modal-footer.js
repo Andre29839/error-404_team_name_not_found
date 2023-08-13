@@ -1,3 +1,5 @@
+const { log } = require("console");
+
 (() => {
   const refs = {
     openModalBtn: document.querySelector("[modal-footer-open]"),
@@ -6,6 +8,8 @@
     backdrop: document.querySelector("[ftr-backdrop]"),
     students: document.querySelector("footer .students"),
   };
+
+  const currentUrl = window.location.pathname
 
   refs.openModalBtn.addEventListener("click", toggleModal);
   refs.closeModalBtn.addEventListener("click", toggleModal);
@@ -19,15 +23,7 @@
     }
   }
     
-  function toggleModal(evt) {
-    if (evt) { 
-      evt.preventDefault();
-    }
-    
-    let scrollTop = document.scrollingElement.scrollTop;
-    
-    
-    refs.backdrop.style.top = "calc(" + scrollTop + "px)";
+  function toggleModal() {
 
     refs.modal.classList.toggle("visually-hidden");
     refs.backdrop.classList.toggle("visually-hidden");

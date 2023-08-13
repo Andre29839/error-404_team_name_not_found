@@ -1,13 +1,14 @@
-.list {
+.list{
     list-style: none;
 }
 
-.link {
+.link{
     text-decoration: none;
 }
 
 footer {
     background-color: var(--total-black);
+    transition: all 0.5s ease-in;
 }
 
 body.light footer {
@@ -22,7 +23,7 @@ body.light footer {
     padding: 0;
     margin-top: 0;
     padding-bottom: 28px;
-    width: 260px;
+    width: 260px;    
     margin-left: auto;
     margin-right: auto;
 }
@@ -55,59 +56,52 @@ body.light .st-descript {
 }
 
 div[ftr-backdrop].backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
+    
     top: 0;
     left: 0;
     z-index: 900;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.2);
-    opacity: 1;
+    width: 100%;
+    /* height: 100vh; */
+    background-color: var(--total-white);
+    opacity: 0.2;
     visibility: visible;
-    /* transition: 0.5s ease-in; */
+    transition: 0.5s ease-in;
 }
 
-body.light div[ftr-backdrop].backdrop {
-    background-color: rgba(0, 0, 0, 0.2);
+body.light div[ftr-backdrop].backdrop{
+        background-color: var(--total-black);
 }
-
 .modal-ftr {
     display: flex;
     flex-direction: column;
-
+    position: absolute;
     z-index: 999;
     width: 100%;
     max-width: 320px;
     height: 584px;
-    top: 50%;
+    top: 350px;
     left: 50%;
-    /* transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 28px;
     border-radius: 16px;
     transition: 0.5s ease-in;
-    overflow: hidden;
-}
-
-.modal-ftr {
+    /* overflow: hidden; */
     background-color: var(--total-black);
     box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
 
 body.light .modal-ftr {
     background-color: var(--total-white);
-
+    
 }
 
-.modal-ftr-top {
+.modal-ftr-top{
     width: 100%;
     height: 24px;
-
+    
     display: flex;
     justify-content: flex-end;
 }
@@ -123,10 +117,10 @@ body.light .modal-ftr {
     padding: 0;
     cursor: pointer;
     background: transparent;
-    border: none;
+    border: none;    
 }
 
-.mod-ftr-btn-icon {
+.mod-ftr-btn-icon{
     stroke: var(--ligth-white);
     stroke-width: 5px;
 }
@@ -136,7 +130,7 @@ body.light .mod-ftr-btn-icon {
 
 }
 
-.students-title {
+.students-title{
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
@@ -151,15 +145,13 @@ body.light .mod-ftr-btn-icon {
     overflow-y: auto;
     scrollbar-width: 0px;
 }
-
-.students:last-child {
+.students:last-child{
     padding-bottom: 0px;
 }
 
 body.light .students {
     border: 1px solid var(--grey);
 }
-
 .students::-webkit-scrollbar {
     width: 0px;
 }
@@ -171,16 +163,16 @@ body.light .students {
 
 body.light .student {
     border: 1px solid var(--light-grey);
-
+   
 }
 
-.sign {
+.sign{
     display: flex;
     justify-content: space-between;
     padding: 16px;
 }
 
-.st-name {
+.st-name{
     font-size: 12px;
     font-weight: 500;
     line-height: 1.6;
@@ -188,27 +180,28 @@ body.light .student {
     text-transform: uppercase;
 }
 
-.st-descript {
+.st-descript{
     font-size: 12px;
     font-weight: 500;
     line-height: 1.6;
 }
-
-.gith {
+ 
+.gith{
     width: 24px;
     height: 24px;
     fill: var(--total-white);
 }
 
-body.light .gith {
+body.light .gith{
     fill: var(--total-black);
 }
 
 .footer-p {
     width: 250px;
-}
-
-@media screen and (min-width: 768px) {
+} 
+  
+@media screen and (min-width: 768px) {     
+    
     .footer-content {
         width: 100%;
         font-size: 16px;
@@ -220,14 +213,15 @@ body.light .gith {
     .modal-ftr {
         max-width: 704px;
         height: 584px;
-
+        top: 350px;
+        
         padding-top: 20px;
         padding-right: 44px;
         padding-left: 44px;
-        padding-bottom: 44px;
+        padding-bottom: 44px;  
     }
-
-    .st-list {
+   
+    .st-list{
         display: flex;
         flex-wrap: wrap;
         gap: 5px 20px;
@@ -236,7 +230,7 @@ body.light .gith {
         padding-bottom: 0px;
     }
 
-    .student {
+    .student{
         display: flex;
         flex-direction: column;
         flex-basis: calc((100% - 20px) / 2);
@@ -256,6 +250,7 @@ body.light .gith {
     .modal-ftr {
         max-width: 846px;
         height: 584px;
+        top: 500px;
 
         padding-top: 20px;
         padding-right: 60px;
@@ -270,5 +265,3 @@ body.light .gith {
     }
 
 }
-
-/* stroke="#f87719" style="stroke: var(--color1, #f87719)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" */

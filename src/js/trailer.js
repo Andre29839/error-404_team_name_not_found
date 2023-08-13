@@ -15,7 +15,7 @@ async function getFilmTrailer(someId) {
   const url = `${BASIC_URL}/movie/${someId}/videos?api_key=${API_KEY}&language=en-US`;
   
   try {
-     const result = await fetc(url);
+     const result = await fetch(url);
 
     if (!result.ok) {
       throw new Error(`Request failed with status: ${result.status}`);

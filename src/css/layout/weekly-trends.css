@@ -68,6 +68,7 @@ li {
 }
 
 .month-section {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   padding-right: 20px;
@@ -106,7 +107,9 @@ li {
 
 .wrapper-month-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 12px;
+  position: relative;
 }
 
 .description-wrapper-left {
@@ -146,7 +149,6 @@ li {
 }
 
 .descr-vote-text {
-  margin-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
 }
@@ -228,7 +230,7 @@ body.light .vote-numbers, body.light .votes-numbers, body.light .descr-popularit
 }
 
 body.light .vote-numbers, body.light .votes-numbers{
-  background-color: var(--light-white);
+  background-color: var(--ligth-white);
 }
 
 body.light .weekly-section, body.light .month-section {
@@ -254,7 +256,54 @@ body.light .weekly-section, body.light .month-section {
   margin-right: auto;
 }
 
+.trends-wrapper {
+    margin-right: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.trends-wrapper-second {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.wrapper-month-section {
+  margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 768px) {
+
+      .popularity-text, .descr-popularity-text, .genre-text, .descr-genre-text {
+       position: absolute;
+    }
+
+    .popularity-text {
+       left: 400px;
+    }
+
+    .descr-popularity-text {
+        left: 551px;
+    }
+
+    .genre-text {
+        left: 400px;
+        top: 30px;
+    }
+
+    .descr-genre-text {
+      left: 551px;
+      top: 30px;
+      width: 130px;
+    }
+
+  .trends-wrapper {
+    margin-right: 58px;
+  }
 
   .container-img-list {
     width: 224px;
@@ -288,7 +337,6 @@ body.light .weekly-section, body.light .month-section {
   }
 
   .month-img {
-    max-width: 704px;
     margin-bottom: 32px;
     border-radius: 5px;
   }
@@ -326,7 +374,7 @@ body.light .weekly-section, body.light .month-section {
   }
 
   .wrapper-month-section {
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: row;
   }
 
@@ -346,14 +394,28 @@ body.light .weekly-section, body.light .month-section {
 
 @media only screen and (min-width: 1280px) {
 
+  .popularity-text, .descr-popularity-text, .genre-text, .descr-genre-text {
+    position: inherit;
+  }
+
+  .trends-wrapper {
+    margin-right: auto;
+  }
+
 .img-wrapper{
     gap: 15px;
     }
 
+.trends-wrapper-second {
+  margin-right: 100px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
 
   .month-wrapper {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   .title-cinema {
@@ -375,13 +437,9 @@ body.light .weekly-section, body.light .month-section {
 
   .description-text {
     margin-bottom: 20px;
+    max-width: none;
     font-weight: 400;
     line-height: 1.4;
-    width: 248px;
-    max-height: 160px;
-    white-space: normal;
-    text-overflow: ellipsis;
-    overflow-y: auto;
   }
 
   .wrapper-month {
@@ -390,8 +448,9 @@ body.light .weekly-section, body.light .month-section {
 
   .wrapper-month-section {
     display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
   }
+  
   .description-wrapper-left{
     margin-bottom: 12px;
     max-width: 280px;
@@ -408,12 +467,19 @@ body.light .weekly-section, body.light .month-section {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
+    position: absolute;
+    bottom: 33px;
+    right: 353px;
   }
-  .remove-from-library{
+
+  .remove-from-library {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
+    position: absolute;
+    bottom: 33px;
+    right: 316px;
   }
 
   .container-img-list{

@@ -396,9 +396,9 @@ CSS for Slider
   }
 
   .hero-section-slide {
-    height: 800px;
+    height: 550px;
 
-    padding-top: 200px;
+    padding-top: 90px;
     padding-bottom: 150px;
   }
 
@@ -422,6 +422,16 @@ CSS for Slider
     line-height: 1.17;
   }
 }
+
+@media screen and (min-width: 1920px) {
+
+    .hero-section-slide {
+    height: 800px;
+
+    padding-top: 200px;
+    padding-bottom: 150px;
+  }
+} 
 
 /*---------------        
 CSS for Library    
