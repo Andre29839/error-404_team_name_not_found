@@ -19,9 +19,14 @@
     }
   }
     
-  function toggleModal() {
+  function toggleModal(evt) {
+    if (evt) { 
+      evt.preventDefault();
+    }
+    
     let scrollTop = document.scrollingElement.scrollTop;
-    refs.modal.style.top = "calc(" + scrollTop + "px + 50%)"; 
+    
+    
     refs.backdrop.style.top = "calc(" + scrollTop + "px)";
 
     refs.modal.classList.toggle("visually-hidden");
