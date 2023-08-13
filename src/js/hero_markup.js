@@ -27,7 +27,7 @@ var(--total-black) url('https://image.tmdb.org/t/p/original${backdrop_path}') no
     <button type="button" class="hero-btn hero-btn-trailer" id="hero-btn-trailer" data-id="${id}">
       Watch trailer
     </button>
-  <button type="button" class="hero-btn-more" data-modal-open data-id="${id}">
+  <button type="button" class="hero-btn-more open-modal" data-movie-id="${id}">
     More details
   </button>
   </div>
