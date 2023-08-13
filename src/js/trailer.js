@@ -1,6 +1,5 @@
 import { Notify } from 'notiflix';
 import { refs } from './helpers'
-import 'lazysizes';
 
 const trailerRefs = {
   backDropRef: document.querySelector('.trailer-backdrop'), 
