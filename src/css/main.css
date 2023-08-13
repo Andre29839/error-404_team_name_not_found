@@ -1,6 +1,5 @@
 @import url('./utils/_variables.css');
 @import url('./base/_common.css');
-@import url('./base/_container.css');
 @import url('./layout/body.css');
 @import url('./layout/container-films.css');
 @import url('./layout/error-section.css');
@@ -14,3 +13,4 @@
 @import url('./layout/stars.css');
 @import url('./layout/modal.css');
 @import url('./layout/trailer.css');
+@import url('./base/_container.css');

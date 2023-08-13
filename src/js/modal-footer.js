@@ -1,5 +1,3 @@
-const { log } = require("console");
-
 (() => {
   const refs = {
     openModalBtn: document.querySelector("[modal-footer-open]"),
@@ -9,33 +7,31 @@ const { log } = require("console");
     students: document.querySelector("footer .students"),
   };
 
-  const currentUrl = window.location.pathname
-
-  refs.openModalBtn.addEventListener("click", toggleModal);
-  refs.closeModalBtn.addEventListener("click", toggleModal);
-
-  refs.backdrop.addEventListener("click", toggleModal);
+  refs.openModalBtn.addEventListener("click", openModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
+  refs.backdrop.addEventListener("click", closeModal);
 
   function closeFooterModal(evt) {
-    
     if (evt.code === "Escape") {
-      toggleModal();
+      closeModal();
     }
   }
-    
-  function toggleModal() {
 
-    refs.modal.classList.toggle("visually-hidden");
-    refs.backdrop.classList.toggle("visually-hidden");
+  function openModal() {
+    refs.modal.classList.remove("visually-hidden");
+    refs.backdrop.classList.remove("visually-hidden");
     
-        if (refs.backdrop.classList.contains("visually-hidden")) {
-      document.removeEventListener("keydown", closeFooterModal)
-    } else {
-      document.addEventListener("keydown", closeFooterModal);
-      refs.backdrop.focus();
-      refs.students.scrollTop = 0;    
-    }
-    
-    document.body.style.overflow = refs.backdrop.classList.contains("visually-hidden") ? "" : "hidden";
+    document.addEventListener("keydown", closeFooterModal);
+    refs.backdrop.focus();
+    refs.students.scrollTop = 0;    
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    refs.modal.classList.add("visually-hidden");
+    refs.backdrop.classList.add("visually-hidden");
+
+    document.removeEventListener("keydown", closeFooterModal);
+    document.body.style.overflow = "";
   }
 })();
