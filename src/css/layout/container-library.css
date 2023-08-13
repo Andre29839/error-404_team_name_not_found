@@ -187,7 +187,7 @@ body.light .genre-select, .filter-option{
     border: 1px solid var(--grey);
 } 
 
-body.light .filter-down-button,.genre-item{
+body.light .filter-down-button, body.light .genre-item{
     color: var(--total-black);
     background-color: var(--total-white);
     border-radius: 8px;
@@ -195,6 +195,7 @@ body.light .filter-down-button,.genre-item{
 }
 
 @media screen and (min-width:768px){
+
     .info{
       gap: 0px;
       }
@@ -248,7 +249,18 @@ body.light .filter-down-button,.genre-item{
        column-gap: 16px;
        padding: 36px 0 40px 0;
     }
+
+        .container-img-weekly {
+    gap: 12px 6px;
+    min-width: 700px;
+  }
    
+}
+
+@media only screen and (min-width: 800px) {
+  .container-img-weekly{
+    gap:16px;
+  }
 }
 
 @media screen and (min-width:1280px){
@@ -299,9 +311,10 @@ body.light .filter-down-button,.genre-item{
     }
 
     .my-library, .gallery{
-       row-gap:32px;
-       column-gap: 16px;
+       row-gap:24px;
+       column-gap: 6px;
        padding: 48px 0 40px 0;
+       width: 1216px;
     }
 
     .filter-down-button, .genre-item{
@@ -313,4 +326,10 @@ body.light .filter-down-button,.genre-item{
 
 } 
 
+@media screen and (min-width:1300px) {
 
+    .my-library, .gallery{
+      gap: 16px;
+    }
+
+}

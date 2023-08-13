@@ -22,7 +22,9 @@
     "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
+    "assert": "^2.0.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "util": "^0.12.5"
   }
 }
