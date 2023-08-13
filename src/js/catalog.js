@@ -94,7 +94,6 @@ async function updatePagination() {
       ...options,
       totalItems: totalResults,
     };
-console.log(updatedOptions.totalItems);
    let paginationInstance = new Pagination(pagContainer, updatedOptions);
 
     paginationInstance.on('afterMove', e => {
@@ -226,8 +225,3 @@ async function loadTrendingMovies() {
   }
 }
   
-
-
-
-
-
