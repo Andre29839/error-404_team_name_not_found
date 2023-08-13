@@ -31,9 +31,10 @@ try {
   if (movieContainer) {
     movieContainer.classList.add('transition-fade')
 
-    setTimeout(() => {
-      movieContainer.classList.remove('transition-fade')
+    setTimeout(() => { 
       createMarkup(movieArr)
+      const movieContainer = document.getElementById('hero-section')
+      movieContainer.classList.remove('transition-fade')
     }, 900);
   }
 } catch (error) {
