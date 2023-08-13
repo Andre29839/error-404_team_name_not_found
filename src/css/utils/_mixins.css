@@ -1,0 +1,43 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.button-orange {
+  display: block;
+  background: linear-gradient(145deg, #ffc226 0%, #f84119 100%);
+  border: transparent;
+  border-radius: 74px;
+  color: var(--total-black);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    outline 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-transparent {
+  display: block;
+  background-color: transparent;
+  outline: 1px solid var(--total-white);
+  border: transparent;
+  border-radius: 74px;
+  color: var(--total-white);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    outline 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,14 @@
+:root {
+    --orange: #F87719;
+    --total-black: #111111;
+    --ligth-black: #282828;
+    --grey: #595959;
+    --ligth-grey: #B7B7B7;
+    --ligth-white: #F8F8F8;
+    --total-white: #FFFFFF;
+    --red: #F84119;
+    --yellow: #FFC226;
+    --shadow: rgba(1, 1, 1, 0.25);
+    --linear-btn: linear-gradient(145deg, var(--yellow) 0%, var(--red) 100%);
+    --linear-star: linear-gradient(145deg, var(--red) 0%, rgba(248, 159, 25, 0.68) 100%);
+}
