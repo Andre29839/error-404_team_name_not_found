@@ -11,30 +11,33 @@ const refsMonth = {
 };
 
 refsMonth.addToLibraryBtn.addEventListener('click', onOpenLibraryBtn);
-window.addEventListener('resize', onResizeDisplay);
 refsMonth.removeLibraryBtn.addEventListener('click', onRemoveFromLibrary);
 
 let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
 let toStorage;
 
-async function fetchTrendingMonthMovies() {
-  const url = `${BASIC_URL}${new_films}?api_key=${API_KEY}`;
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.results.length === 0) {
-    const errorMarkup = `<p class="error-text">OOPS...<br>
-     We are very sorry!<br>
-     We can't find a movie for you to watch.</p>`;
+  async function fetchTrendingMonthMovies() {
+    try {
+      const url = `${BASIC_URL}${new_films}?api_key=${API_KEY}`;
+      const response = await fetch(url);
+      const data = await response.json();
+  
+      if (data.results.length === 0) {
+        return;
+      } 
+      const randomIndex = Math.floor(Math.random() * data.results.length);
+      toStorage = data.results[randomIndex];
+      return [toStorage];
+    } catch (error) {
+      console.log('Error fetching or rendering movies:', error);
+      const errorMarkup = `<p class="error-text">Oops...<br> Something went wrong.<br> Please try again later.</p>`;
+      refsMonth.addToLibraryBtn.classList.add('visually-hidden')
     refsMonth.wrapper.insertAdjacentHTML('afterbegin', errorMarkup);
-    return [];
-  }
 
-  const randomIndex = Math.floor(Math.random() * data.results.length);
-  toStorage = data.results[randomIndex];
-  return [toStorage];
-}
+      return;
+    }
+  }
 
 function onOpenLibraryBtn() {
   const movieId = toStorage.id;
@@ -71,12 +74,6 @@ function onRemoveFromLibrary(evt) {
   }
 }
 
-function onResizeDisplay() {
-  if (window.innerWidth === 768) {
-    renderAndAppendMarkup();
-  }
-}
-
 export async function getGenres(movieId) {
   const urlGenres = `${BASIC_URL}${movie_detailes}${movieId}?api_key=${API_KEY}`;
   const response = await fetch(urlGenres);
@@ -97,7 +94,7 @@ async function fetchTrendingMovies() {
 
   let numberOfImages = 3;
 
-  if (window.innerWidth >= 320 && window.innerWidth < 768) {
+  if (window.innerWidth < 768) {
     numberOfImages = 1;
   } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     numberOfImages = 3;

@@ -198,6 +198,7 @@ li {
   padding: 12px 24px;
   font-size: 12px;
   margin-top: 20px;
+  font-weight: 500;
 }
 
 .add-to-library:hover,
@@ -244,6 +245,13 @@ body.light .weekly-section, body.light .month-section {
 
 .title-genre-descr{
   padding-left: 12px;
+}
+
+.error-text{
+  font-size: 28px;
+  color: var(--total-white);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -385,10 +393,6 @@ body.light .weekly-section, body.light .month-section {
     max-width: 280px;
   }
 
-.error-text{
-  font-size: 28px;
-  color: var(--total-black);
-}
   .add-to-library {
     display: block;
     margin-left: auto;
