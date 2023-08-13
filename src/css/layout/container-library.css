@@ -110,7 +110,7 @@
 
      position: relative;
      cursor: pointer;
-     width: 280px;
+     width: 246px;
      height: 420px;
       border-radius: 5px;
      transition:  box-shadow 0.3s ease; 
@@ -133,7 +133,7 @@
 .info{
   display: flex;
   align-items: flex-end;
-  gap: 50px;
+  gap: 15px;
   position: absolute; 
   bottom: 12px; 
 
