@@ -5,7 +5,6 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
-  /* background-color: tomato; */
 }
 
 .is-scroll-block {
@@ -28,12 +27,16 @@
   right: 20px;
 }
 
-.modal__icon-moon{
+.modal-svg{
   stroke: var(--total-white);
+  fill: var(--total-white);
+  color: var(--total-white);
 }
 
-body.light .modal__icon-moon {
+
+body.light .modal-svg {
   stroke: var(--total-black);
+  fill: var(--ligth-black);
 }
 
 .modal-container {
