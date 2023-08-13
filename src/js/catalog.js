@@ -1,14 +1,19 @@
 import Pagination from 'tui-pagination';
 import { refs, getGenres } from "./helpers";
 
-
 const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const paginationDiv = document.querySelector('.tui-pagination');
 
+
+const pagContainer = document.getElementById('pagination');
 let totalResults;
+const totalMovie = totalResults;
+const itemsPerPage = 20;
+const visiblePage = 4;
+
 let input;
 let userParams = {
   primary_release_year: '',
@@ -20,14 +25,38 @@ let resultsArr;
   
 searchForm.addEventListener('submit', onSubmitForm);
 
+const options = {
+  totalItems: totalResults,
+  itemsPerPage: itemsPerPage,
+  visiblePages: visiblePage,
+  centerAlign: true,
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>'
+  }
+};
+
 async function fetchFilms() {
-  let url = `${BASIC_URL}${trending_week}?api_key2=${API_KEY}`;
+  let url = `${BASIC_URL}${trending_week}?api_key=${API_KEY}`;
   if (userParams.query) {
     url = `${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${userParams.page}`;
   }
-  const response = await fetch(url);
-  const moviesData = await response.json();
-  return moviesData;
+  const response = await fetch(url).then(res => res.json());
+  // options.
+  console.log(response);
+  return response;
 }
 
 async function createDefaultMarkup(pictures) {
@@ -60,7 +89,7 @@ markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
     </div>
   </div>
          </li>`}
-return gallery.innerHTML = markupLibrary;
+gallery.innerHTML = markupLibrary;
 };
 
 function onSubmitForm(e) {
@@ -88,88 +117,76 @@ function onSubmitForm(e) {
   appendMarkup();
 }
 
+
 async function updatePagination() {
   try {
     const updatedOptions = {
       ...options,
-      totalItems: totalResults,
+      // totalItems: totalResults,
     };
-   let paginationInstance = new Pagination(pagContainer, updatedOptions);
-
+    paginationInstance = new Pagination(pagContainer, updatedOptions);
+// console.log(updatedOptions);
     paginationInstance.on('afterMove', e => {
       const currentPage = e.page;
       userParams.page = currentPage;
+
       loadMoviesForPage(currentPage);
-      updatePaginationMarkup(currentPage);
+      updatePaginationMarkup(currentPage, updatedOptions.totalItems);
     });
-
-    updatePaginationMarkup(currentPage);
-
+ 
   } catch (error) {
     console.log(error);
   }
 }
 
-function updatePaginationMarkup(currentPage) {
+
+function updatePaginationMarkup(currentPage, totalPages) {
   const paginationButtons = document.querySelectorAll('.tui-page-btn');
   paginationButtons.forEach(button => {
     if (button.textContent == currentPage) {
       button.classList.add('tui-is-selected');
     } else {
-      button.classList.remove('tui-is-selected'); 
+      button.classList.remove('tui-is-selected');
     }
+
+    // if (totalPages > visiblePage && (currentPage > 1 && currentPage < totalPages)) {
+    //   const moreButton = document.querySelector('.tui-more-button');
+    //   moreButton.style.display = 'inline-block';
+    // } else {
+    //   const moreButton = document.querySelector('.tui-more-button');
+    //   moreButton.style.display = 'none';
+    // }
   });
 }
 
-let currentPage = 1;
+let currentPage;
 let movies = [];
 
+
 async function loadMoviesForPage(page) {
-  const startIndex = (page - 1) * itemsPerPage;
   try {
     userParams.page = page;
     const response = await fetch(`${BASIC_URL}${new_films}?api_key=${API_KEY}&query=${userParams.query}&include_adult=false&primary_release_year=${userParams.primary_release_year}&page=${page}&region=&year=${userParams.year}`);
+    // console.log(`${BASIC_URL}${new_films}?api_key=${API_KEY}&query=${userParams.query}&include_adult=false&primary_release_year=${userParams.primary_release_year}&page=${page}&region=&year=${userParams.year}`);
     const moviesData = await response.json();
     movies = moviesData.results;
+    if (moviesData.totalPages == userParams.page) {
+  paginationDiv.classList.add("visually-hidden");
+}
+    // console.log(moviesData);
+    // console.log(userParams.page);
+  //   const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(userParams.query.toLowerCase()));
 
-    const markupCreate = createDefaultMarkup(movies);
+   createDefaultMarkup(movies);
 
-    totalResults = moviesData.total_results;
-    updatePaginationMarkup(currentPage);
+    totalPages = moviesData.total_pages;
+    updatePaginationMarkup(currentPage, totalPages);
 
   } catch (error) {
     console.log(error);
   }
 }
 
-
-const pagContainer = document.getElementById('pagination');
-const totalMovie = totalResults;
-const itemsPerPage = 20;
-const visiblePage = 4;
-
-const options = {
-  totalItems: totalMovie,
-  itemsPerPage: itemsPerPage,
-  visiblePages: visiblePage,
-  centerAlign: true,
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>'
-  }
-};
 
 let paginationInstance = new Pagination(pagContainer, options);
 
@@ -177,7 +194,6 @@ async function appendMarkup() {
   try {
     const movies = await fetchFilms();
     resultsArr = movies.total_results || 0;
-    
  if (resultsArr === 0) {
       const oopsMarkup = `<p class="oops-text">OOPS...<br>
         We are very sorry!<br>
@@ -186,8 +202,7 @@ async function appendMarkup() {
       paginationDiv.classList.add("visually-hidden");
       return;
     }
-
-    const markupCreate = createDefaultMarkup(movies.results);
+   createDefaultMarkup(movies.results);
 
     if (!userParams.query) {
       loadMoviesForPage(currentPage);
@@ -210,8 +225,8 @@ async function loadTrendingMovies() {
     const moviesData = await response.json();
     movies = moviesData.results;
 
-    const markupCreate = createDefaultMarkup(movies);
-
+   createDefaultMarkup(movies);
+    options.totalItems = moviesData.total_results;
     totalResults = moviesData.total_results;
     updatePagination();
 
