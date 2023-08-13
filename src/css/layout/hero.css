@@ -92,11 +92,24 @@ CSS for Slider
 .hero-section-slide {
   padding: 0 20px;
   margin: 0 auto;
-
   padding-top: 40px;
   padding-bottom: 80px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
 
-  transition: opacity 0.8s;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-section-slide.animate {
+  opacity: 1;
+  animation: fade-in 3s ease forwards;
 }
 
 .hero-title-slide {
