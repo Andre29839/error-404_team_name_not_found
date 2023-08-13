@@ -288,9 +288,9 @@ body.light .go-up-btn {
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
-  background-image: url('../images/scroll-bar-light.svg');
+  background-image: url('../images/scroll-bar-light.svg#film-movie-2');
 }
 
 body.light::-webkit-scrollbar-thumb {
- background-image: url('../images/scroll-bar-dark.svg');
+ background-image: url('../images/scroll-bar-dark.svg#film-movie-2');
 }
