@@ -3,6 +3,7 @@ import { LIBRARY_KEY, refs } from './helpers';
 let addButtonLibrary;
 const generalDiv = document.querySelector('.modal-container')
 let filmData;
+const overflow = document.querySelector('.overflow')
 
 export const modalWindow = document.addEventListener('DOMContentLoaded', async () => {
   const modalContainer = document.querySelector('.modal-container');
@@ -11,56 +12,68 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
     if (event.code !== 'Escape') {
       return;
     }
-
     modal.close();
+    document.body.classList.remove('is-scroll-block')
+    overflow.classList.remove('visually-hidden')
   }
 
   const modal = {
     onShow: () => {
       document.addEventListener('keydown', onEscClose);
+      document.body.classList.add('is-scroll-block')
+      overflow.classList.remove('visually-hidden')
     },
     onClose: () => {
       document.removeEventListener('keydown', onEscClose);
       modalContainer.classList.add('visually-hidden');
+      document.body.classList.remove('is-scroll-block')
     },
     close: () => {
       modal.onClose();
+      document.body.classList.remove('is-scroll-block')
+      overflow.classList.remove('visually-hidden')
     },
   };
-
+  
   modalContainer.addEventListener('click', event => {
     const closeButton = event.target.closest('.modal__btn-close');
-
     if (closeButton) {
       modal.close();
+      overflow.classList.remove('visually-hidden')
     } else if (!event.target.closest('.modal__content')) {
-      modal.close();
+      modal.close();  
+      overflow.classList.remove('visually-hidden')
     }
   });
 
   document.body.addEventListener('click', event => {
     if (!event.target.closest('.modal-container') && !event.target.closest('.open-modal')) {
       generalDiv.classList.add('visually-hidden');
+      overflow.classList.add('visually-hidden');
+      document.body.classList.remove('is-scroll-block')
     }
   });
 
   document.addEventListener('click', async event => {
     const openModalButton = event.target.closest('.open-modal');
-    
     if (openModalButton) {
       const movieId = openModalButton.dataset.movieId;
-      const movieUrl = `${refs.BASIC_URL}/movie/${movieId}?api_key=${refs.API_KEY}`;
+      const movieUrl = `${refs.BASIC_URL}/movie/${movieId}?api_key=${refs.API_KEY}`;         
       try {
         const response = await fetch(movieUrl).then(res => res.json());
-
+        
         if (response) {
           filmData = response;
-
-          modalContainer.classList.remove('visually-hidden');
+          
+          modalContainer.classList.remove('visually-hidden'); 
+          overflow.classList.remove('visually-hidden')
           modalContainer.innerHTML = modalMovieInfoMarkup(filmData);
           addButtonLibrary = document.querySelector('.btn-add-library');
           addButtonLibrary.addEventListener('click', addToLocal);
+          const filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+          filmInStorage.some(elem => elem.id === Number(movieId)) ? addButtonLibrary.textContent = "Remove from my library" : addButtonLibrary.textContent = "Add to my library";
           modal.onShow();
+          
         } else {
           console.error('Error fetching movie data:', response.statusText);
           
@@ -69,8 +82,10 @@ export const modalWindow = document.addEventListener('DOMContentLoaded', async (
         console.error('Error fetching movie data:', error);
         
       }
+      
     }
   });
+    
 });
 
 export function modalMovieInfoMarkup(filmData) {
@@ -85,7 +100,6 @@ export function modalMovieInfoMarkup(filmData) {
     genres,
     poster_path,
   } = filmData;
-console.log(filmData);
   const genreList = genres.map(({ name }) => name).join(', ');
 
   let posterUrl = '';

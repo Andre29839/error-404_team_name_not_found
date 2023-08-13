@@ -1,3 +1,17 @@
+.overflow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(46, 47, 66, 0.4);
+  /* background-color: tomato; */
+}
+
+.is-scroll-block {
+  overflow: hidden;
+}
+
 .modal__content {
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +47,8 @@ body.light .modal__icon-moon {
   transform: translate(-50%, -50%);
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   border-radius: 16px;
-  overflow-y: hidden;
+  overflow: hidden;
+  z-index: 10000000000;
 }
 
 body.light .modal-container {
@@ -147,7 +162,9 @@ body.light .modal__subtitle {
   font-weight: 400;
   line-height: 1.7;
   width: 248px;
-  max-height: 180px;
+  max-height: 100px;
+  white-space: normal;
+  text-overflow: ellipsis;
 
   overflow-y: auto;
 }
@@ -275,9 +292,6 @@ body.light .btn-add-library:focus {
   }
   .modal__text {
     width: 301px;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.6;
   }
 }
 
@@ -309,7 +323,7 @@ body.light .btn-add-library:focus {
   }
   .modal__text {
     width: 331px;
-    max-height: 159px;
+    max-height: 120px;
     flex-shrink: 0;
   }
 }
