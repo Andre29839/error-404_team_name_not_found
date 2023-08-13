@@ -56,11 +56,11 @@ margin-bottom: 40px;
 .switcher__ball {
   transition-duration: 500ms;
   position: absolute;
-  width: 17px;
-  height: 17px;
-  left: 29px;
+  width: 18px;
+  height: 18px;
+  left: 28px;
   top: 2px;
-  right: 2px;
+  right: 2.5px;
   background-repeat: no-repeat;
   cursor: pointer;
   background-image: url('../images/btn.svg');
@@ -83,10 +83,6 @@ margin-bottom: 40px;
   color: var(--ligth-grey); 
   transition: 1000ms;
   text-transform: uppercase;
-}
-
-body.light header {
-  transition: all 0.5s ease-in;
 }
 
 .nav-menu:hover, body.light .nav-menu:hover,
@@ -116,6 +112,10 @@ body.light header {
   bottom: 3px;
   right: 20px;
   color: var(--total-white);
+}
+
+body.light header {
+  transition: all 0.5s ease-in;
 }
 
 body.light .switcher__ball {
@@ -220,7 +220,7 @@ body.light .go-up-btn {
 
   .switcher__ball {
     bottom: 3px;
-    left: 37px;
+    left: 38px;
     width: 25px;
     height: 25px;
   }
@@ -228,7 +228,7 @@ body.light .go-up-btn {
   body.light .switcher__ball {
     width: 25.5px;
     height: 25.5px;
-    transform: translateY(-5.5px) translateX(-42px) rotate(-180deg);
+    transform: translateY(-6px) translateX(-42px) rotate(-180deg);
   }
 }
 
@@ -261,17 +261,17 @@ body.light .go-up-btn {
   }
 
     .switcher__ball {
-    left: 40px;
-    top: 2.5px;
-    width: 28px;
-    height: 28px;
+    left: 41px;
+    top: 1.5px;
+    width: 29px;
+    height: 29px;
   }
 
     body.light .switcher__ball {
     top: 2px;
     width: 28px;
     height: 28px;
-    transform: translateY(-6px) translateX(-44px) rotate(-180deg);
+    transform: translateY(-6px) translateX(-46px) rotate(-180deg);
   }
 }
 

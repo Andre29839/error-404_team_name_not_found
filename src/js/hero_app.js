@@ -15,8 +15,6 @@ const refsHero = {
 
 document.addEventListener('click', onWatchTrailer);
 
-
-
 async function getTrending(page = 1) {
   const url = `${BASIC_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
     const res = await fetch(url);

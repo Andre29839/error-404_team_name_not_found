@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
-import { refs } from "./helpers";
+import { refs, getGenres } from "./helpers";
+
 
 const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
 
@@ -20,39 +21,47 @@ let resultsArr;
 searchForm.addEventListener('submit', onSubmitForm);
 
 async function fetchFilms() {
-  let url = `${BASIC_URL}${trending_week}?api_key=${API_KEY}`;
+  let url = `${BASIC_URL}${trending_week}?api_key2=${API_KEY}`;
   if (userParams.query) {
     url = `${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${userParams.page}`;
   }
-  
   const response = await fetch(url);
   const moviesData = await response.json();
   return moviesData;
 }
-// if (dataText.trim() === []) {
-//    const oopsMarkup = `<p class="oops-text">OOPS...<br>
-//      We are very sorry!<br>
-//      You don’t have any movies at your library.</p>`
-//          gallery.innerHTML = oopsMarkup;
-//         paginationDiv.classList.add("visually-hidden");
-//     return;
-//   }
-//   paginationDiv.classList.remove("visually-hidden");
 
-function createDefaultMarkup(pictures) {
-  const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-  const markup = pictures.map(({ title, poster_path, genre_ids, vote_average, overview, release_date }) =>
-    `<li class="movie-card">
-      <div class="gradient"></div>
-      <img class="movie-img" src="${WEEK_IMG_URL}${poster_path}" alt="${overview}" loading="lazy" />
-      <div class="info">
-        <p class="movie-title">${title}</p>
-        <p class="movie-description">${genre_ids} | ${release_date}</p>
-        <p class="movie-rating">${vote_average}</p>
-      </div>
-    </li>`).join('');
-  return markup;
-}
+async function createDefaultMarkup(pictures) {
+  let markupLibrary ='';
+  for (const elem of pictures) {
+    const {
+      title,
+      id,
+      poster_path,
+      release_date,
+      overview,
+      vote_average,
+    } = elem;
+const movieWeekGenre = await getGenres(id);
+const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
+markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
+         <div class="gradient"></div>
+         <img class="movie-img" src="${WEEK_IMG_URL}${poster_path
+         }" alt="${overview}" loading="lazy" />
+         <div class="info">
+        <div class="name-and-discr">
+         <p class="movie-title">
+         ${title}
+         </p>
+         <p class="movie-description">
+         ${movieWeekGenre} | ${release_date.slice(0, 4)}
+         </p></div>
+         <div class="rating-body stars">
+      <div class="rating-active" style="width:${vote_average * 10}%"></div>
+    </div>
+  </div>
+         </li>`}
+return gallery.innerHTML = markupLibrary;
+};
 
 function onSubmitForm(e) {
   e.preventDefault();
@@ -66,15 +75,7 @@ function onSubmitForm(e) {
   if (dataText.trim() === '') {
    const oopsMarkup = `<p class="oops-text">OOPS...<br>
      We are very sorry!<br>
-     You don’t have any movies at your library.</p>`
-         gallery.innerHTML = oopsMarkup;
-        paginationDiv.classList.add("visually-hidden");
-    return;
-  }
-  if (resultsArr === 0) {
-   const oopsMarkup = `<p class="oops-text">OOPS...<br>
-     We are very sorry!<br>
-     You don’t have any movies at your library.</p>`
+     We don’t have any results matching your search.</p>`
          gallery.innerHTML = oopsMarkup;
         paginationDiv.classList.add("visually-hidden");
     return;
@@ -93,8 +94,7 @@ async function updatePagination() {
       ...options,
       totalItems: totalResults,
     };
-
-    paginationInstance = new Pagination(pagContainer, updatedOptions);
+   let paginationInstance = new Pagination(pagContainer, updatedOptions);
 
     paginationInstance.on('afterMove', e => {
       const currentPage = e.page;
@@ -133,7 +133,6 @@ async function loadMoviesForPage(page) {
     movies = moviesData.results;
 
     const markupCreate = createDefaultMarkup(movies);
-    gallery.innerHTML = markupCreate;
 
     totalResults = moviesData.total_results;
     updatePaginationMarkup(currentPage);
@@ -145,7 +144,7 @@ async function loadMoviesForPage(page) {
 
 
 const pagContainer = document.getElementById('pagination');
-const totalMovie = 396;
+const totalMovie = totalResults;
 const itemsPerPage = 20;
 const visiblePage = 4;
 
@@ -177,10 +176,18 @@ let paginationInstance = new Pagination(pagContainer, options);
 async function appendMarkup() {
   try {
     const movies = await fetchFilms();
+    resultsArr = movies.total_results || 0;
+    
+ if (resultsArr === 0) {
+      const oopsMarkup = `<p class="oops-text">OOPS...<br>
+        We are very sorry!<br>
+        We don’t have any results matching your search.</p>`;
+      gallery.innerHTML = oopsMarkup;
+      paginationDiv.classList.add("visually-hidden");
+      return;
+    }
 
     const markupCreate = createDefaultMarkup(movies.results);
-    resultsArr = movies.total_results || 0;
-    gallery.innerHTML = markupCreate;
 
     if (!userParams.query) {
       loadMoviesForPage(currentPage);
@@ -204,16 +211,17 @@ async function loadTrendingMovies() {
     movies = moviesData.results;
 
     const markupCreate = createDefaultMarkup(movies);
-    gallery.innerHTML = markupCreate;
 
     totalResults = moviesData.total_results;
     updatePagination();
 
   } catch (error) {
-    console.log(error);
+   const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     Something went wrong!</p>`
+         gallery.innerHTML = oopsMarkup;
+    paginationDiv.classList.add("visually-hidden");
+    return; 
   }
 }
-
-
-
-
+  
