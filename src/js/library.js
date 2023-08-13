@@ -1,4 +1,4 @@
-import { LIBRARY_KEY,getGenres } from './helpers';
+import { LIBRARY_KEY,refs } from './helpers';
 
 const myLibraryDiv = document.querySelector("#my-library");
 const buttonSearch = document.querySelector(".search-movie-btn-link");
@@ -96,3 +96,93 @@ function onClickBtnLoadMore() {
   page += 1;
   renderFavoriteFilm();
 }
+
+
+
+const dropdownList = document.querySelector(".dropdown-list");
+dropdownList.addEventListener("click", findFilmWidthGenre);
+
+
+
+async function findFilmWidthGenre(e) {
+  e.preventDefault()
+  const myMovies = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+  const dataName = e.target.dataset.name;
+  myLibraryDiv.innerHTML = "";
+
+  const GENRE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
+
+  let hasMatchingMovies = false;
+
+  for (const movie of myMovies) {
+    const genreOfMovie = await getGenres(movie.id);
+
+    if (genreOfMovie.includes(dataName)) {
+      hasMatchingMovies = true;
+
+      const markupGanre = `<li class="movie-card open-modal" data-movie-id="${movie.id}">
+         <div class="gradient"></div>
+         <img class="movie-img" src="${GENRE_IMG_URL}${movie.poster_path}" alt="${movie.overview}" loading="lazy" />
+         <div class="info">
+          <div class="name-and-discr">
+           <p class="movie-title">${movie.title}</p>
+           <p class="movie-description">${genreOfMovie} | ${movie.release_date.slice(0, 4)}</p>
+          </div>
+          <div class="rating-body stars">
+            <div class="rating-active" style="width:${movie.vote_average * 10}%"></div>
+          </div>
+        </div>
+       </li>`;
+
+      myLibraryDiv.insertAdjacentHTML("beforeend", markupGanre);
+    }
+    
+  }
+
+  if (!hasMatchingMovies) {
+    const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     We didn't find movies with this genre.</p>`;
+
+    myLibraryDiv.innerHTML = oopsMarkup;
+    buttonSearch.classList.remove("visually-hidden");
+    buttonLoadMore.classList.add("visually-hidden");
+  }
+}
+
+
+async function getGenres(movieId) {
+  const urlGenres = `${refs.BASIC_URL}${refs.movie_detailes}${movieId}?api_key=${refs.API_KEY}`;
+  const response = await fetch(urlGenres);
+  const datas = await response.json();
+  const genres = datas.genres.slice(0, 2).map(({ name }) => name.toLowerCase());
+
+  return genres;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+ 
