@@ -120,16 +120,24 @@ console.log(filmData);
       <ul class="modal__list">
         <li class="modal__item">
           <div class="modal__desc">Vote / Votes</div>
-          <div class="modal__value">
-            <span class="tag">${vote_average}</span>&nbsp;/&nbsp;<span class="tag">${vote_count}</span>
-          </div>
         </li>
         <li class="modal__item">
           <div class="modal__desc">Popularity</div>
-          <div class="modal__value">${popularity}</div>
         </li>
         <li class="modal__item">
           <div class="modal__desc">Genre</div>
+        </li>
+      </ul>
+      <ul class="modal__list_second">
+         <li class="modal__item__second">
+          <div class="modal__value">
+            <span class="tag">${vote_average}</span>&nbsp;/&nbsp;<span class="tag tag-last">${vote_count}</span>
+          </div>
+        </li>
+        <li class="modal__item">
+          <div class="modal__value">${popularity}</div>
+        </li>
+        <li class="modal__item">
           <div class="modal__value">${genreList}</div>
         </li>
       </ul>
