@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix';
 import { refs } from './helpers'
 
 const trailerRefs = {
