@@ -375,9 +375,13 @@ body.light .weekly-section, body.light .month-section {
 
   .description-text {
     margin-bottom: 20px;
-    max-width: none;
     font-weight: 400;
     line-height: 1.4;
+    width: 248px;
+    max-height: 160px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow-y: auto;
   }
 
   .wrapper-month {

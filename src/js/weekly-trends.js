@@ -174,12 +174,12 @@ async function renderTrendingMonthMarkup(array) {
       vote_count,
       popularity,
       overview,
+      poster_path,
     } = movie;
 
     const movieGenre = await getGenres(id);
-
     markup += `<li data-id="${id}" class="js-card-month">
-      <img src="${IMG_URL}${backdrop_path}" alt="" class="month-img">
+    <img src="${window.innerWidth < 768 ? IMG_URL + poster_path : IMG_URL + backdrop_path}" alt="${overview}" class="month-img">
       </li>
       <div class = "wrapper-month">
       <h4 class="month-title-movie">${title}</h4>
