@@ -77,7 +77,7 @@ body.light .footer-backdrop {
 .modal-footer {
     display: flex;
     flex-direction: column;
-    position: absolute;
+/*     position: absolute; */
     z-index: 999;
     width: 100%;
     max-width: 320px;
@@ -90,7 +90,7 @@ body.light .footer-backdrop {
     border-radius: 16px;
     transition: 0.5s ease-in;
     overflow: hidden;
-    margin: 0 auto;
+/*     margin: 0 auto; */
 
     background-color: var(--total-black);
     box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
