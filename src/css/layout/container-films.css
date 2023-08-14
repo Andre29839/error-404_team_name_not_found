@@ -17,6 +17,7 @@
   display: flex;
   column-gap: 16px;
   justify-content: center;
+  position: relative;;
 }
 
 .input-catalog {
@@ -131,6 +132,66 @@
 
 .tui-first, .tui-last {
   display: none;
+}
+
+.svg-reset {
+  position: absolute;
+  left: 140px;
+  top: 11px;
+}
+
+@media screen and (min-width:330px) {
+  .svg-reset {
+    left: 145px;
+  }
+}
+
+@media screen and (min-width:340px) {
+  .svg-reset {
+    left: 152.5px;
+  }
+}
+
+@media screen and (min-width:350px) {
+  .svg-reset {
+    left: 160px;
+  }
+}
+
+
+@media screen and (min-width:768px) {
+  .svg-reset {
+    left: 380px;
+    top: 13px;
+  }
+}
+
+@media screen and (min-width:780px) {
+  .svg-reset {
+    left: 387.5px;
+    top: 13px;
+  }
+}
+
+@media screen and (min-width:790px) {
+  .svg-reset {
+    left: 395px;
+    top: 13px;
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .svg-reset {
+    left: 695px;
+    top: 15px;
+  }
+}
+
+@media screen and (min-width:1290px) {
+  .svg-reset {
+    left: 705px;
+    top: 15px;
+  }
 }
 
 .tui-pagination .tui-next,.tui-pagination .tui-prev,.tui-pagination .tui-next-is-ellip {

@@ -525,3 +525,43 @@ body.light .weekly-section, body.light .month-section {
     font-size: 25px;
   }
 }
+
+@media only screen and (min-width: 1290px) {
+  .add-to-library {
+    right: 270px;
+  }
+
+  .remove-from-library {
+    right: 234px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .add-to-library {
+    right: 273px;
+  }
+
+  .remove-from-library {
+    right: 237px;
+  }
+}
+
+@media only screen and (min-width: 1310px) {
+  .add-to-library {
+    right: 283px;
+  }
+
+  .remove-from-library {
+    right: 246px;
+  }
+}
+
+@media only screen and (min-width: 1320px) {
+  .add-to-library {
+    right: 285px;
+  }
+
+  .remove-from-library {
+    right: 250px;
+  }
+}

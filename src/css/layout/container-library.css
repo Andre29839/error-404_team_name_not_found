@@ -269,7 +269,7 @@ body.light .filter-down-button, body.light .genre-item{
 
 @media only screen and (min-width: 800px) {
   .container-img-weekly{
-    gap:16px;
+    gap:14px;
   }
 }
 
