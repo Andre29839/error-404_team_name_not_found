@@ -97,11 +97,11 @@ markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
          </li>`}
   gallery.innerHTML = markupLibrary;
   
-  first = document.querySelector(".tui-first");
-  last = document.querySelector(".tui-last");
-  first_first = document.querySelector(".tui-next")
-  last_last = document.querySelector(".tui-prev")
-  elipse = document.querySelector(".tui-next-is-ellip")
+ const first = document.querySelector(".tui-first");
+ const last = document.querySelector(".tui-last");
+ const first_first = document.querySelector(".tui-next")
+ const last_last = document.querySelector(".tui-prev")
+ const elipse = document.querySelector(".tui-next-is-ellip")
 
   first.classList.remove("tui-page-btn")
   last.classList.remove("tui-page-btn")
