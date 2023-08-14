@@ -20,6 +20,8 @@
 .logo {
   margin-top: 8px;
   margin-bottom: 8px;
+  width: 40px;
+  height: 32px;
 }
 
 .menu-logo {
@@ -146,6 +148,10 @@ body.light .go-up-btn {
 
 @media screen and (min-width: 768px) {
 
+  .flex-container {
+    height: 60px;
+  }
+
   .scroll-to-top {
     right: 40px;
     bottom: 80px;
@@ -156,7 +162,8 @@ body.light .go-up-btn {
     height: 48px;
     margin-top: 6px;
     margin-bottom: 6px;
-
+    width: 45px;
+    height: 36px;
   }
 
    .web-site-name {
@@ -233,6 +240,11 @@ body.light .go-up-btn {
 }
 
 @media screen and (min-width: 1280px) {
+
+  .logo {
+    width: 45px;
+    height: 36px;
+  }
 
   .scroll-to-top {
     height: 200px;

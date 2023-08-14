@@ -74,7 +74,7 @@ li {
   margin-left: auto;
   margin-right: auto;
   padding-right: 20px;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .month-title {
@@ -278,7 +278,19 @@ body.light .weekly-section, body.light .month-section {
   margin-bottom: 20px;
 }
 
+.movie-img {
+  width: 280px;
+  height: 406px;
+}
+
+
+
 @media only screen and (min-width: 768px) {
+
+  .movie-img {
+    width: 224px;
+    height: 325px;
+  }
 
       .popularity-text, .descr-popularity-text, .genre-text, .descr-genre-text {
        position: absolute;
@@ -341,6 +353,8 @@ body.light .weekly-section, body.light .month-section {
   .month-img {
     margin-bottom: 32px;
     border-radius: 5px;
+    width: 704px;
+    height: 400px;
   }
 
   .month-title-movie {
@@ -402,9 +416,14 @@ body.light .weekly-section, body.light .month-section {
 
   .month-img {
     width: 805px;
+    height: 458px;
+    margin-bottom: 100px;
   }
 
-
+.movie-img {
+  width: 395px;
+  height: 574px;
+}
 
   .popularity-text, .descr-popularity-text, .genre-text, .descr-genre-text {
     position: inherit;
@@ -455,7 +474,7 @@ body.light .weekly-section, body.light .month-section {
   }
 
   .wrapper-month {
-    width: 400px;
+    width: 411px;
     padding: 0 0 0 16px;
   }
 
@@ -481,7 +500,7 @@ body.light .weekly-section, body.light .month-section {
     margin-right: auto;
     margin-top: 0;
     position: absolute;
-    bottom: 33px;
+    bottom: 102px;
     right: 268px;
     margin-bottom: 0;
   }
@@ -492,7 +511,7 @@ body.light .weekly-section, body.light .month-section {
     margin-right: auto;
     margin-top: 0;
     position: absolute;
-    bottom: 33px;
+    bottom: 102px;
     right: 232px;
     margin-bottom: 0;
   }
