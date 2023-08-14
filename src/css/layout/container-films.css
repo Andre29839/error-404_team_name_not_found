@@ -1,0 +1,247 @@
+.form-position {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .form-position {
+    padding-top: 60px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .form-position {
+    padding-top: 80px;
+  }
+}
+
+.search-form {
+  display: flex;
+  column-gap: 16px;
+  justify-content: center;
+}
+
+.input-catalog {
+  width: 224px;
+  height: 40px;
+  padding: 12px 20px;
+
+  font-size: 14px;
+  line-height: 1.14;
+  border: 1px solid var(--grey-color);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--grey-color);
+}
+@media screen and (min-width: 768px) {
+  .input-catalog {
+    width: 204px;
+    height: 44px;
+    padding: 14px 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .input-catalog {
+    width: 334px;
+    height: 48px;
+    padding: 15px 24px;
+
+    font-size: 16px;
+    line-height: 1.19;
+  }
+}
+
+.button-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--primary-text-color);
+  border-radius: 50%;
+  border: none;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+}
+@media screen and (min-width: 768px) {
+  .button-search {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .button-search {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.button-search:hover {
+  border: 1px solid #f87719;
+  background-image: none;
+  background-color: #fff;
+  color: #f87719;
+  transition: color 250ms var(--timing-function),
+    border 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    background-image 250ms var(--timing-function);
+}
+
+.search__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 1280px) {
+  .search__icon {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+/* PAGINATION */
+.pagination {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.tui-pagination {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.tui-pagination .tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  /* padding: 7px; */
+
+  font-size: 10px;
+  line-height: 1;
+  color: var(--grey-color);
+  border: 1px solid var(--grey-color);
+  border-radius: 50%;
+}
+
+.tui-pagination .tui-page-btn:hover {
+  border: 1px solid var(--primary-text-color);
+  color: var(--primary-text-color);
+  transition: color 250ms var(--timing-function),
+    border 250ms var(--timing-function);
+}
+
+.tui-pagination .tui-is-selected:hover {
+  border: none;
+  color: var(--primary-text-color);
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  color: var(--primary-text-color);
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border: none;
+  cursor: default;
+}
+
+.tui-pagination .tui-is-selected:hover {
+  background-color: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+}
+
+.tui-pagination .tui-ico-first,
+.tui-pagination .tui-ico-last {
+  width: 11px;
+  height: 11px;
+  fill: currentColor;
+  transition: color 250ms var(--timing-function);
+}
+
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-next {
+  width: 8px;
+  height: 11px;
+  fill: currentColor;
+  transition: color 250ms var(--timing-function);
+}
+
+.tui-pagination .tui-ico-ellip {
+  width: 10px;
+  height: 2px;
+  margin-top: 14px;
+  fill: currentColor;
+  transition: color 250ms var(--timing-function);
+}
+
+.tui-pagination .tui-is-disabled {
+  display: none;
+}
+
+.tui-page-inputs .tui-page-current {
+  background-color: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next,
+.tui-pagination .tui-last,
+.tui-pagination .tui-first:hover,
+.tui-pagination .tui-prev:hover,
+.tui-pagination .tui-next:hover,
+.tui-pagination .tui-last:hover,
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip,
+.tui-pagination .tui-prev-is-ellip:hover,
+.tui-pagination .tui-next-is-ellip:hover {
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tui-pagination {
+    padding-top: 44px;
+    column-gap: 16px;
+  }
+
+  .tui-pagination .tui-page-btn {
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .tui-pagination .tui-ico-first,
+  .tui-pagination .tui-ico-last {
+    width: 14px;
+    height: 15px;
+  }
+
+  .tui-pagination .tui-ico-prev,
+  .tui-pagination .tui-ico-next {
+    width: 8px;
+    height: 15px;
+  }
+
+  .tui-pagination .tui-ico-ellip {
+    width: 10px;
+    height: 2px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tui-pagination {
+    padding-top: 60px;
+  }
+}
+
+.tui-page-btn.custom-class {
+  color: var(--arrow-color);
+}
+
+.tui-page-btn.custom-class:hover {
+  color: var(--primary-text-color);
+}
