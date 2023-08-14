@@ -6,7 +6,20 @@ const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
+<<<<<<< Updated upstream
  
+=======
+const paginationDiv = document.querySelector('.tui-pagination');
+const svgReset = document.querySelector('.svg-reset');
+const sectionContainer = document.querySelector('.section-container');
+
+const pagContainer = document.getElementById('pagination');
+let totalResults;
+const totalMovie = totalResults;
+const itemsPerPage = 20;
+const visiblePage = 4;
+
+>>>>>>> Stashed changes
 let input;
 let userParams = {
   primary_release_year: '',
@@ -16,6 +29,13 @@ let userParams = {
 }
 
 searchForm.addEventListener('submit', onSubmitForm);
+svgReset.addEventListener('click', onClickSvgReset);
+
+function onClickSvgReset() {
+  searchForm.reset();
+ svgReset.classList.add("visually-hidden");
+}
+
 
 
 async function fetchFilms() { 
@@ -65,6 +85,7 @@ async function appendMarkup() {
   try {
 
 
+<<<<<<< Updated upstream
     const movies = await fetchFilms();
     const markupCreate = createDefaultMarkup(movies);
     gallery.insertAdjacentHTML('beforeend', markupCreate);
@@ -96,10 +117,36 @@ appendMarkup();
 
 // ВІДПРАВКА ФОРМИ
 function onSubmitForm(e) {
+=======
+   searchForm.elements.searchQuery.addEventListener("focus", function() {
+  svgReset.classList.remove("visually-hidden");
+});
+
+
+ async function onSubmitForm(e) {
+>>>>>>> Stashed changes
   e.preventDefault();
 
   const dataText = searchForm.elements.searchQuery.value;
   input = dataText;
+<<<<<<< Updated upstream
+=======
+   
+   e.target.reset();
+   svgReset.classList.add("visually-hidden");
+   gallery.innerHTML = '';
+   
+   
+  if (dataText.trim() === '') {
+    const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     We don’t have any results matching your search.</p>`
+    gallery.innerHTML = oopsMarkup;
+    paginationDiv.classList.add("visually-hidden");
+    return;
+  }
+  paginationDiv.classList.remove("visually-hidden");
+>>>>>>> Stashed changes
   
      e.target.reset();
   gallery.innerHTML = '';
@@ -195,4 +242,72 @@ async function loadMoviesForPage(page) {
 }
 
 
+<<<<<<< Updated upstream
 
+=======
+let paginationInstance = new Pagination(pagContainer, options);
+paginationInstance.on('afterMove', e => {
+  if (typeFetch === 'trending') {
+    loadTrendingMovies(e.page);
+      sectionContainer.scrollIntoView({ behavior: "smooth" });
+    return;
+  };
+
+      const currentPage = e.page;
+      userParams.page = currentPage;
+
+      loadMoviesForPage(currentPage);
+      updatePaginationMarkup(currentPage);
+});
+    
+async function appendMarkup() {
+  try {
+    const movies = await fetchFilms();
+    resultsArr = movies.total_results || 0;
+ if (resultsArr === 0) {
+      const oopsMarkup = `<p class="oops-text">OOPS...<br>
+        We are very sorry!<br>
+        We don’t have any results matching your search.</p>`;
+      gallery.innerHTML = oopsMarkup;
+      paginationDiv.classList.add("visually-hidden");
+      return;
+    }
+   createDefaultMarkup(movies.results);
+
+    if (!userParams.query) {
+      loadMoviesForPage(currentPage);
+    }
+    
+  } catch (error) {
+    console.log(error);
+  }
+  return resultsArr;
+}
+
+
+async function onLoad() {
+ const total = await loadTrendingMovies();
+  paginationInstance.reset(total);
+}
+onLoad();
+
+async function loadTrendingMovies(page=1) {
+  try {
+    const response = await fetch(`${BASIC_URL}${trending_week}?api_key=${API_KEY}&page=${page}`);
+    const moviesData = await response.json();
+    movies = moviesData.results;
+
+   createDefaultMarkup(movies);
+    options.totalItems = moviesData.total_results;
+    totalResults = moviesData.total_results;
+return totalResults
+  } catch (error) {
+   const oopsMarkup = `<p class="oops-text">OOPS...<br>
+     We are very sorry!<br>
+     Something went wrong!</p>`
+         gallery.innerHTML = oopsMarkup;
+    paginationDiv.classList.add("visually-hidden");
+    return; 
+  }
+}
+>>>>>>> Stashed changes
