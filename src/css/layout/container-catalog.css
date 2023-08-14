@@ -1,0 +1,144 @@
+.catalog-search {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .catalog-search {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog-search {
+    padding-top: 80px;
+  }
+}
+
+.catalog__form {
+  display: flex;
+  column-gap: 16px;
+  justify-content: center;
+}
+
+.catalog__form-input {
+  width: 224px;
+  height: 40px;
+  padding: 12px 20px;
+
+  font-size: 14px;
+  line-height: 1.14;
+  border: 1px solid var(--grey-color);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--grey-color);
+}
+
+.catalog__form-input::placeholder {
+  color: var(--grey-color);
+}
+
+@media screen and (min-width: 768px) {
+  .catalog__form-input {
+    width: 204px;
+    height: 44px;
+    padding: 14px 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog__form-input {
+    width: 334px;
+    height: 48px;
+    padding: 15px 24px;
+
+    font-size: 16px;
+    line-height: 1.19;
+  }
+}
+
+.input-container {
+  position: relative;
+}
+
+.clear__icon {
+  display: none;
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  width: 18px;
+  height: 18px;
+
+  fill: var(--white-input-color);
+  transition: fill 250ms var(--timing-function);
+}
+
+.clear__icon:hover {
+  cursor: pointer;
+  fill: var(--primary-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .clear__icon {
+    top: 13px;
+    right: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .clear__icon {
+    top: 15px;
+    right: 24px;
+  }
+}
+
+.catalog__form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--primary-text-color);
+  border-radius: 50%;
+  border: none;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  color: var(--primary-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .catalog__form-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog__form-button {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.catalog__form-button:hover {
+  border: 1px solid #f87719;
+  background-image: none;
+  background-color: #fff;
+  color: #f87719;
+  transition: color 250ms var(--timing-function),
+    border 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    background-image 250ms var(--timing-function);
+}
+
+.search__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 1280px) {
+  .search__icon {
+    width: 23px;
+    height: 23px;
+  }
+}
