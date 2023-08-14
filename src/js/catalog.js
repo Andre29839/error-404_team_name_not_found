@@ -54,7 +54,6 @@ async function fetchFilms() {
     url = `${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${userParams.page}`;
   }
   const response = await fetch(url).then(res => res.json());
-  // options.
   console.log(response);
   return response;
 }
@@ -92,8 +91,11 @@ markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
 gallery.innerHTML = markupLibrary;
 };
 
-function onSubmitForm(e) {
+
+ async function onSubmitForm(e) {
   e.preventDefault();
+   isActiveFetch = true;
+   typeFetch = 'searchmovies';
 
   const dataText = searchForm.elements.searchQuery.value;
   input = dataText;
@@ -102,11 +104,11 @@ function onSubmitForm(e) {
   gallery.innerHTML = '';
 
   if (dataText.trim() === '') {
-   const oopsMarkup = `<p class="oops-text">OOPS...<br>
+    const oopsMarkup = `<p class="oops-text">OOPS...<br>
      We are very sorry!<br>
      We don’t have any results matching your search.</p>`
-         gallery.innerHTML = oopsMarkup;
-        paginationDiv.classList.add("visually-hidden");
+    gallery.innerHTML = oopsMarkup;
+    paginationDiv.classList.add("visually-hidden");
     return;
   }
   paginationDiv.classList.remove("visually-hidden");
@@ -114,33 +116,12 @@ function onSubmitForm(e) {
 
   userParams.query = input;
   userParams.page = 1;
-  appendMarkup();
+   const total = await appendMarkup();
+   paginationInstance.reset(total);
+   isActiveFetch = false;
 }
 
-
-async function updatePagination() {
-  try {
-    const updatedOptions = {
-      ...options,
-      // totalItems: totalResults,
-    };
-    paginationInstance = new Pagination(pagContainer, updatedOptions);
-// console.log(updatedOptions);
-    paginationInstance.on('afterMove', e => {
-      const currentPage = e.page;
-      userParams.page = currentPage;
-
-      loadMoviesForPage(currentPage);
-      updatePaginationMarkup(currentPage, updatedOptions.totalItems);
-    });
- 
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-function updatePaginationMarkup(currentPage, totalPages) {
+function updatePaginationMarkup(currentPage) {
   const paginationButtons = document.querySelectorAll('.tui-page-btn');
   paginationButtons.forEach(button => {
     if (button.textContent == currentPage) {
@@ -148,39 +129,29 @@ function updatePaginationMarkup(currentPage, totalPages) {
     } else {
       button.classList.remove('tui-is-selected');
     }
-
-    // if (totalPages > visiblePage && (currentPage > 1 && currentPage < totalPages)) {
-    //   const moreButton = document.querySelector('.tui-more-button');
-    //   moreButton.style.display = 'inline-block';
-    // } else {
-    //   const moreButton = document.querySelector('.tui-more-button');
-    //   moreButton.style.display = 'none';
-    // }
   });
 }
 
 let currentPage;
 let movies = [];
+let isActiveFetch = false;
+let typeFetch = 'trending'; 
 
 
 async function loadMoviesForPage(page) {
   try {
     userParams.page = page;
-    const response = await fetch(`${BASIC_URL}${new_films}?api_key=${API_KEY}&query=${userParams.query}&include_adult=false&primary_release_year=${userParams.primary_release_year}&page=${page}&region=&year=${userParams.year}`);
-    // console.log(`${BASIC_URL}${new_films}?api_key=${API_KEY}&query=${userParams.query}&include_adult=false&primary_release_year=${userParams.primary_release_year}&page=${page}&region=&year=${userParams.year}`);
+    const response = await fetch(`${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${page}`);
     const moviesData = await response.json();
     movies = moviesData.results;
+    // paginationInstance.movePageTo(userParams.page);
+    
     if (moviesData.totalPages == userParams.page) {
   paginationDiv.classList.add("visually-hidden");
 }
-    // console.log(moviesData);
-    // console.log(userParams.page);
-  //   const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(userParams.query.toLowerCase()));
-
    createDefaultMarkup(movies);
 
     totalPages = moviesData.total_pages;
-    updatePaginationMarkup(currentPage, totalPages);
 
   } catch (error) {
     console.log(error);
@@ -189,7 +160,20 @@ async function loadMoviesForPage(page) {
 
 
 let paginationInstance = new Pagination(pagContainer, options);
+paginationInstance.on('afterMove', e => {
+  if (typeFetch === 'trending') {
+    loadTrendingMovies(e.page);
+    return
+  };
 
+  // if (isActiveFetch) return;
+      const currentPage = e.page;
+      userParams.page = currentPage;
+
+      loadMoviesForPage(currentPage);
+      updatePaginationMarkup(currentPage);
+});
+    
 async function appendMarkup() {
   try {
     const movies = await fetchFilms();
@@ -207,29 +191,32 @@ async function appendMarkup() {
     if (!userParams.query) {
       loadMoviesForPage(currentPage);
     }
-
-    updatePagination();
-
+    // paginationInstance.movePageTo(userParams.page);
+    
   } catch (error) {
     console.log(error);
   }
+  return resultsArr;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  loadTrendingMovies();
-});
 
-async function loadTrendingMovies() {
+async function onLoad() {
+ const total = await loadTrendingMovies();
+  paginationInstance.reset(total);
+}
+onLoad();
+
+async function loadTrendingMovies(page=1) {
   try {
-    const response = await fetch(`${BASIC_URL}${trending_week}?api_key=${API_KEY}`);
+    const response = await fetch(`${BASIC_URL}${trending_week}?api_key=${API_KEY}&page=${page}`);
     const moviesData = await response.json();
     movies = moviesData.results;
 
    createDefaultMarkup(movies);
     options.totalItems = moviesData.total_results;
     totalResults = moviesData.total_results;
-    updatePagination();
-
+    // paginationInstance.reset(totalResults);
+return totalResults
   } catch (error) {
    const oopsMarkup = `<p class="oops-text">OOPS...<br>
      We are very sorry!<br>
