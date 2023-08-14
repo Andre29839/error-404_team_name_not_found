@@ -6,7 +6,8 @@ const { API_KEY, BASIC_URL, search_films, trending_week, new_films } = refs;
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const paginationDiv = document.querySelector('.tui-pagination');
-
+const svgReset = document.querySelector('.svg-reset');
+const sectionContainer = document.querySelector('.section-container');
 
 const pagContainer = document.getElementById('pagination');
 let totalResults;
@@ -24,6 +25,13 @@ let userParams = {
 let resultsArr; 
   
 searchForm.addEventListener('submit', onSubmitForm);
+svgReset.addEventListener('click', onClickSvgReset);
+
+function onClickSvgReset() {
+  searchForm.reset();
+ svgReset.classList.add("visually-hidden");
+}
+
 
 const options = {
   totalItems: totalResults,
@@ -87,8 +95,25 @@ markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
     </div>
   </div>
          </li>`}
-gallery.innerHTML = markupLibrary;
+  gallery.innerHTML = markupLibrary;
+  
+  first = document.querySelector(".tui-first");
+  last = document.querySelector(".tui-last");
+  first_first = document.querySelector(".tui-next")
+  last_last = document.querySelector(".tui-prev")
+  elipse = document.querySelector(".tui-next-is-ellip")
+
+  first.classList.remove("tui-page-btn")
+  last.classList.remove("tui-page-btn")
+  first_first.classList.remove("tui-page-btn")
+  last_last.classList.remove("tui-page-btn")
+  elipse.classList.remove("tui-page-btn")
 };
+
+
+   searchForm.elements.searchQuery.addEventListener("focus", function() {
+  svgReset.classList.remove("visually-hidden");
+});
 
 
  async function onSubmitForm(e) {
@@ -98,10 +123,12 @@ gallery.innerHTML = markupLibrary;
 
   const dataText = searchForm.elements.searchQuery.value;
   input = dataText;
-
-  e.target.reset();
-  gallery.innerHTML = '';
-
+   
+   e.target.reset();
+   svgReset.classList.add("visually-hidden");
+   gallery.innerHTML = '';
+   
+   
   if (dataText.trim() === '') {
     const oopsMarkup = `<p class="oops-text">OOPS...<br>
      We are very sorry!<br>
@@ -161,10 +188,10 @@ let paginationInstance = new Pagination(pagContainer, options);
 paginationInstance.on('afterMove', e => {
   if (typeFetch === 'trending') {
     loadTrendingMovies(e.page);
-    return
+      sectionContainer.scrollIntoView({ behavior: "smooth" });
+    return;
   };
 
-  // if (isActiveFetch) return;
       const currentPage = e.page;
       userParams.page = currentPage;
 
@@ -189,7 +216,6 @@ async function appendMarkup() {
     if (!userParams.query) {
       loadMoviesForPage(currentPage);
     }
-    // paginationInstance.movePageTo(userParams.page);
     
   } catch (error) {
     console.log(error);
@@ -213,7 +239,6 @@ async function loadTrendingMovies(page=1) {
    createDefaultMarkup(movies);
     options.totalItems = moviesData.total_results;
     totalResults = moviesData.total_results;
-    // paginationInstance.reset(totalResults);
 return totalResults
   } catch (error) {
    const oopsMarkup = `<p class="oops-text">OOPS...<br>
@@ -224,4 +249,3 @@ return totalResults
     return; 
   }
 }
-  

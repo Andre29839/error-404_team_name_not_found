@@ -20,7 +20,7 @@
 }
 
 .input-catalog {
-  width: 224px;
+  width: 150px;
   height: 40px;
   padding: 12px 20px;
 
@@ -29,8 +29,14 @@
   border: 1px solid var(--grey);
   border-radius: 8px;
   background-color: transparent;
-  color: var(--grey);
+  color: var(--ligth-grey);
 }
+@media screen and (min-width: 380px) {
+ .input-catalog {
+  width: 184px;
+ }
+}
+
 @media screen and (min-width: 768px) {
   .input-catalog {
     width: 204px;
@@ -121,6 +127,14 @@
   color: var(--grey);
   border: 1px solid var(--grey);
   border-radius: 50%;
+}
+
+.tui-first, .tui-last {
+  display: none;
+}
+
+.tui-pagination .tui-next,.tui-pagination .tui-prev,.tui-pagination .tui-next-is-ellip {
+        border: transparent;
 }
 
 .tui-pagination .tui-page-btn:hover {
