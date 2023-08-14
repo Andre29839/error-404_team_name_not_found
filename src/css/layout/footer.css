@@ -71,20 +71,20 @@ div[ftr-backdrop].backdrop {
 }
 
 body.light div[ftr-backdrop].backdrop {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2)npm ;
 }
 
 .modal-ftr {
     display: flex;
     flex-direction: column;
-
+    position: absolute;
     z-index: 999;
     width: 100%;
     max-width: 320px;
     height: 584px;
-    top: 50%;
-    left: 50%;
-    /* transform: translate(-50%, -50%); */
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(50%, 50%); */
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
@@ -92,6 +92,7 @@ body.light div[ftr-backdrop].backdrop {
     border-radius: 16px;
     transition: 0.5s ease-in;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .modal-ftr {
