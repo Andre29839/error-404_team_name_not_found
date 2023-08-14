@@ -5,23 +5,56 @@ const buttonSearch = document.querySelector(".search-movie-btn-link");
 const buttonLoadMore = document.querySelector(".load-more-btn");
 const filterButton = document.querySelector(".filter-down-button");
 const listOfGenre = document.querySelector(".dropdown-list");
+const seeAll =document.querySelector(".seeall");
 const savedMovies = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+
 
 let page = 1;
 const moviesPerPage = 9;
 
+
+seeAll.addEventListener("click", (e) => {
+  e.preventDefault();
+  myLibraryDiv.innerHTML = "";
+  filterButton.textContent = "Genre";
+  page = 1;
+  renderFavoriteFilm();
+ 
+
+
+})
+
 buttonLoadMore.addEventListener("click", onClickBtnLoadMore);
 listOfGenre.addEventListener("click", function (e) {
-  if (e.target.tagName !== 'A') { return } 
+  if (e.target.tagName !== 'A') {
+   
+    return
+  } 
  
   let eventText = e.target.textContent;
   filterButton.textContent = eventText;
+  listOfGenre.classList.add("visually-hidden")
+
+  
   
 
 });
-filterButton.addEventListener("click", function () {
-  listOfGenre.classList.toggle("visually-hidden");
-  listOfGenre.classList.toggle("active");
+
+///////закриття фільтру при кліку на який завгодно інший елемент 
+
+document.addEventListener("click", function (e) {
+  // перевірка кліку не по listOfGenre и не по filterButton
+  if (e.target !== listOfGenre && e.target !== filterButton) {
+    listOfGenre.classList.add("visually-hidden");
+  }
+});
+
+filterButton.addEventListener("click", function (e) {
+  
+  listOfGenre.classList.remove("visually-hidden");
+  listOfGenre.classList.add("active");
+ 
+  
    
 })
 
@@ -74,7 +107,7 @@ async function renderFavoriteFilm() {
 
      } else {
        
-      const libraryFilmMarkup = await createMarkupToLibrary(currentMovies);
+       await createMarkupToLibrary(currentMovies);
 
          buttonSearch.classList.add("visually-hidden");
          buttonLoadMore.classList.remove("visually-hidden"); 
@@ -91,6 +124,30 @@ async function renderFavoriteFilm() {
     
 }
 renderFavoriteFilm()
+
+async function addGenresIntoList() {
+  const myMovies = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
+  const existingGenres = [];
+
+  for (const movie of myMovies) {
+    const genreOfMovie = await getGenres(movie.id);
+
+    genreOfMovie.forEach(genre => {
+      if (!existingGenres.includes(genre)) {
+        existingGenres.push(genre);
+
+        const myGenreList = `<li data-name="${genre}">
+          <a class="genre-item" href="#" data-name="${genre}">${genre}</a>
+        </li>`;
+        listOfGenre.insertAdjacentHTML("beforeend", myGenreList);
+      }
+    });
+  }
+}
+
+addGenresIntoList();
+
+
 
 
 function onClickBtnLoadMore() {
@@ -134,7 +191,8 @@ async function findFilmWidthGenre(e) {
           </div>
         </div>
        </li>`;
-
+      
+      
       myLibraryDiv.insertAdjacentHTML("beforeend", markupGanre);
     }
     
@@ -156,34 +214,10 @@ async function getGenres(movieId) {
   const urlGenres = `${refs.BASIC_URL}${refs.movie_detailes}${movieId}?api_key=${refs.API_KEY}`;
   const response = await fetch(urlGenres);
   const datas = await response.json();
-  const genres = datas.genres.slice(0, 2).map(({ name }) => name.toLowerCase());
+  const genres = datas.genres.slice(0, 2).map(({ name }) => name);
 
   return genres;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
 
 
  

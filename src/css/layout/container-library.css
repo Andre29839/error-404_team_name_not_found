@@ -24,6 +24,11 @@
     line-height: 1.4;
 }
 
+.dropdown{
+  display: flex;
+
+}
+
  .filter-down-button{
 
     cursor: pointer;
@@ -88,6 +93,14 @@
 .dropdown-list{
     position:absolute;
     z-index: 100;
+}
+
+.seeall{
+  color: var(--orange);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.18;
+  padding-top: 10px
 }
 
 .my-library, .gallery{
@@ -264,6 +277,13 @@ body.light .filter-down-button, body.light .genre-item{
     gap: 12px 6px;
     min-width: 700px;
   }
+
+  .seeall{
+ 
+  font-size: 24px;
+  line-height: 1.16;
+ 
+  }
    
 }
 
@@ -336,5 +356,12 @@ body.light .filter-down-button, body.light .genre-item{
        padding: 48px 0 40px 0;
        width: 1213px;
     }
+
+      .seeall{
+ 
+  font-size: 28px;
+  line-height: 1.17;
+ 
+}
 
 } 
