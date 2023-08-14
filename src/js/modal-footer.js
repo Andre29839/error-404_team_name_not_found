@@ -21,6 +21,11 @@
     refs.modal.classList.remove("visually-hidden");
     refs.backdrop.classList.remove("visually-hidden");
     
+    window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+    
     document.addEventListener("keydown", closeFooterModal);
     refs.backdrop.focus();
     refs.students.scrollTop = 0;    
@@ -33,5 +38,7 @@
 
     document.removeEventListener("keydown", closeFooterModal);
     document.body.style.overflow = "";
-  }
+  }{
+  
+}
 })();
