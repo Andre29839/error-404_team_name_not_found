@@ -54,7 +54,6 @@ async function fetchFilms() {
     url = `${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${userParams.page}`;
   }
   const response = await fetch(url).then(res => res.json());
-  console.log(response);
   return response;
 }
 
@@ -144,7 +143,6 @@ async function loadMoviesForPage(page) {
     const response = await fetch(`${BASIC_URL}${search_films}?api_key=${API_KEY}&query=${userParams.query}&page=${page}`);
     const moviesData = await response.json();
     movies = moviesData.results;
-    // paginationInstance.movePageTo(userParams.page);
     
     if (moviesData.totalPages == userParams.page) {
   paginationDiv.classList.add("visually-hidden");
