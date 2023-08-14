@@ -76,7 +76,7 @@
 }
 
 .button-search:hover {
-  border: 1px solid #f87719;
+  border: 1px solid var(--orange);
   stroke: var(--orange);
   background-image: var(--total-white);
 }
