@@ -111,10 +111,9 @@ markupLibrary += `<li class="movie-card open-modal" data-movie-id="${id}">
 };
 
 
-   searchForm.elements.searchQuery.addEventListener("focus", function() {
+searchForm.elements.searchQuery.addEventListener("focus", function () {
   svgReset.classList.remove("visually-hidden");
-});
-
+})
 
  async function onSubmitForm(e) {
   e.preventDefault();

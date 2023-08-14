@@ -30,7 +30,7 @@
   border: 1px solid var(--grey);
   border-radius: 8px;
   background-color: transparent;
-  color: var(--ligth-grey);
+  color: var(--grey);
 }
 @media screen and (min-width: 380px) {
  .input-catalog {
@@ -138,6 +138,11 @@
   position: absolute;
   left: 140px;
   top: 11px;
+  stroke: var(--total-white);
+}
+
+body.light .svg-reset {
+  stroke: var(--total-black);
 }
 
 @media screen and (min-width:330px) {
