@@ -69,7 +69,8 @@ async function renderFavoriteFilm() {
      You don’t have any movies at your library.</p>`
          myLibraryDiv.insertAdjacentHTML("afterBegin", oopsMarkup);
          buttonSearch.classList.remove("visually-hidden");
-         buttonLoadMore.classList.add("visually-hidden");
+       buttonLoadMore.classList.add("visually-hidden");
+       filterButton.classList.add("visually-hidden");
 
      } else {
        
