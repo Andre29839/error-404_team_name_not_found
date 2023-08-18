@@ -108,7 +108,7 @@ async function renderFavoriteFilm() {
      } else {
        
        await createMarkupToLibrary(currentMovies);
-
+seeAll.classList.add("visually-hidden");
          buttonSearch.classList.add("visually-hidden");
          buttonLoadMore.classList.remove("visually-hidden"); 
        
@@ -176,6 +176,7 @@ async function findFilmWidthGenre(e) {
     const genreOfMovie = await getGenres(movie.id);
 
     if (genreOfMovie.includes(dataName)) {
+      seeAll.classList.remove("visually-hidden");
       hasMatchingMovies = true;
 
       const markupGanre = `<li class="movie-card open-modal" data-movie-id="${movie.id}">
