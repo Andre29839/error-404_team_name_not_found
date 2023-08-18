@@ -104,6 +104,7 @@ async function renderFavoriteFilm() {
          buttonSearch.classList.remove("visually-hidden");
        buttonLoadMore.classList.add("visually-hidden");
        filterButton.classList.add("visually-hidden");
+       seeAll.classList.add("visually-hidden");
 
      } else {
        
