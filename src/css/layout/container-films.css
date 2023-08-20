@@ -17,7 +17,7 @@
   display: flex;
   column-gap: 16px;
   justify-content: center;
-  position: relative;;
+  position: relative;
 }
 
 .input-catalog {
@@ -33,9 +33,9 @@
   color: var(--grey);
 }
 @media screen and (min-width: 380px) {
- .input-catalog {
-  width: 184px;
- }
+  .input-catalog {
+    width: 184px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -130,7 +130,8 @@
   border-radius: 50%;
 }
 
-.tui-first, .tui-last {
+.tui-first,
+.tui-last {
   display: none;
 }
 
@@ -145,62 +146,63 @@ body.light .svg-reset {
   stroke: var(--total-black);
 }
 
-@media screen and (min-width:330px) {
+@media screen and (min-width: 330px) {
   .svg-reset {
     left: 145px;
   }
 }
 
-@media screen and (min-width:340px) {
+@media screen and (min-width: 340px) {
   .svg-reset {
     left: 152.5px;
   }
 }
 
-@media screen and (min-width:350px) {
+@media screen and (min-width: 350px) {
   .svg-reset {
     left: 160px;
   }
 }
 
-
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .svg-reset {
     left: 380px;
     top: 13px;
   }
 }
 
-@media screen and (min-width:780px) {
+@media screen and (min-width: 780px) {
   .svg-reset {
     left: 387.5px;
     top: 13px;
   }
 }
 
-@media screen and (min-width:790px) {
+@media screen and (min-width: 790px) {
   .svg-reset {
     left: 395px;
     top: 13px;
   }
 }
 
-@media screen and (min-width:1280px) {
+@media screen and (min-width: 1280px) {
   .svg-reset {
     left: 695px;
     top: 15px;
   }
 }
 
-@media screen and (min-width:1290px) {
+@media screen and (min-width: 1290px) {
   .svg-reset {
     left: 705px;
     top: 15px;
   }
 }
 
-.tui-pagination .tui-next,.tui-pagination .tui-prev,.tui-pagination .tui-next-is-ellip {
-        border: transparent;
+.tui-pagination .tui-next,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next-is-ellip {
+  border: transparent;
 }
 
 .tui-pagination .tui-page-btn:hover {
@@ -285,4 +287,11 @@ body.light .svg-reset {
   .tui-pagination {
     margin-bottom: 100px;
   }
+}
+
+.movie-img {
+  background-image: url(../../images/defaultImage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
