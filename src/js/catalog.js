@@ -73,7 +73,6 @@ async function createDefaultMarkup(pictures) {
   for (const elem of pictures) {
     const { title, id, poster_path, release_date, overview, vote_average } =
       elem;
-    console.log(poster_path);
     const movieWeekGenre = await getGenres(id);
     const WEEK_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
