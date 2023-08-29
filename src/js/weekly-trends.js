@@ -1,4 +1,5 @@
 import { refs, LIBRARY_KEY } from './helpers';
+import { defaultImage } from '../images/defaultImage.jpg';
 
 const { BASIC_URL, API_KEY, trending_week, new_films, movie_detailes } = refs;
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -17,27 +18,27 @@ let filmInStorage = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || [];
 
 let toStorage;
 
-  async function fetchTrendingMonthMovies() {
-    try {
-      const url = `${BASIC_URL}${new_films}?api_key=${API_KEY}`;
-      const response = await fetch(url);
-      const data = await response.json();
-  
-      if (data.results.length === 0) {
-        return;
-      } 
-      const randomIndex = Math.floor(Math.random() * data.results.length);
-      toStorage = data.results[randomIndex];
-      return [toStorage];
-    } catch (error) {
-      console.log('Error fetching or rendering movies:', error);
-      const errorMarkup = `<p class="error-text">Oops...<br> Something went wrong.<br> Please try again later.</p>`;
-      refsMonth.addToLibraryBtn.classList.add('visually-hidden')
-    refsMonth.wrapper.insertAdjacentHTML('afterbegin', errorMarkup);
+async function fetchTrendingMonthMovies() {
+  try {
+    const url = `${BASIC_URL}${new_films}?api_key=${API_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
 
+    if (data.results.length === 0) {
       return;
     }
+    const randomIndex = Math.floor(Math.random() * data.results.length);
+    toStorage = data.results[randomIndex];
+    return [toStorage];
+  } catch (error) {
+    console.log('Error fetching or rendering movies:', error);
+    const errorMarkup = `<p class="error-text">Oops...<br> Something went wrong.<br> Please try again later.</p>`;
+    refsMonth.addToLibraryBtn.classList.add('visually-hidden');
+    refsMonth.wrapper.insertAdjacentHTML('afterbegin', errorMarkup);
+
+    return;
   }
+}
 
 function onOpenLibraryBtn() {
   const movieId = toStorage.id;
@@ -174,13 +175,19 @@ async function renderTrendingMonthMarkup(array) {
       vote_count,
       popularity,
       overview,
-      poster_path
+      poster_path,
     } = movie;
 
     const movieGenre = await getGenres(id);
+    const imagePath =
+      window.innerWidth < 768
+        ? poster_path || defaultImage
+        : backdrop_path || defaultImage;
 
     markup += `<li data-id="${id}" class="js-card-month">
-    <img width="280px" heigth="402px" src="${window.innerWidth < 768 ? IMG_URL + poster_path : IMG_URL + backdrop_path}" alt="${overview}" class="month-img"></img>
+    <img width="280px" height="402px" src="${
+      IMG_URL + imagePath
+    }" alt="${overview}" class="month-img"></img>
       </li>
       <div class = "wrapper-month">
       <h4 class="month-title-movie">${title}</h4>
