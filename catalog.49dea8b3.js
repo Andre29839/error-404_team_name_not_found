@@ -67,4 +67,4 @@ var(--total-black) url('https://image.tmdb.org/t/p/original${e}') no-repeat cent
     </div>
   </div>
   `}(s),(o=document.querySelector(".btn-add-library")).addEventListener("click",d);let r=JSON.parse(localStorage.getItem(n.LIBRARY_KEY))||[];r.some(e=>e.id===Number(t))?o.textContent="Remove from my library":o.textContent="Add to my library",i.onShow()}else console.error("Error fetching movie data:",l.statusText)}catch(e){console.error("Error fetching movie data:",e)}}})})});
-//# sourceMappingURL=catalog.d19a34d0.js.map
+//# sourceMappingURL=catalog.49dea8b3.js.map
